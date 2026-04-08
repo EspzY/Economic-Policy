@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import LectureCard from '../components/LectureCard.astro';
+import ProgressDashboard from '../components/progress/ProgressDashboard';
+import StatCard from '../components/StatCard.astro';
+import { pastExams, seminars, studyPrinciples } from '../data/resources';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lectures = (await getCollection('lectures')).sort((left, right) => left.data.number - right.data.number);
+const lectureSummaries = lectures.map((lecture) => ({
+  slug: lecture.id,
+  title: lecture.data.title,
+  topic: lecture.data.topic,
+}));
+const featuredLectures = lectures.filter((lecture) => lecture.data.status !== 'scaffolded').slice(0, 4);
+---
+
+<BaseLayout
+  title="Economic Policy Study Site"
+  description="An English lecture-by-lecture study site for GRA6631 Economic Policy."
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Structured for a 20-day sprint</p>
+      <h1>Learn Economic Policy without drowning in disconnected PDFs.</h1>
+      <p class="lead">
+        This project turns the course material into guided lecture modules, exam-focused review paths,
+        and active checkpoints. The goal is not to repeat the slides. The goal is to help you actually
+        understand them.
+      </p>
+      <div class="chip-row">
+        <a href="/lectures" class="primary-link">Start with the lectures</a>
+        <a href="/roadmap" class="secondary-button">Open the 20-day roadmap</a>
+        <a href="/quizzes" class="secondary-button">Open the quiz bank</a>
+      </div>
+    </div>
+
+    <div class="hero-aside">
+      <StatCard label="Lecture modules" value={lectures.length} note="Scaffolded around the real course folders." />
+      <StatCard label="Seminar sets" value={seminars.length} note="Practice material linked directly from the source PDFs." />
+      <StatCard label="Past exams" value={pastExams.length} note="Exam archive with solutions where available." />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Study design</p>
+      <h2>How the site is meant to work</h2>
+      <p>
+        The course has a heavy theory block in monetary policy and then broadens into debt, inequality,
+        and sustainability. The site mirrors that structure so students can build foundations before moving
+        into application and exam practice.
+      </p>
+    </div>
+
+    <div class="card-grid">
+      {studyPrinciples.map((principle, index) => <StatCard label={`Principle ${index + 1}`} value={index + 1} note={principle} />)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Current build</p>
+      <h2>Start with the modules already being authored</h2>
+      <p>
+        The lecture architecture is in place for the whole course. The first modules now have substantive
+        content and checkpoints, while later modules are scaffolded with verified source links and topic framing.
+      </p>
+    </div>
+
+    <div class="lecture-grid">
+      {featuredLectures.map((lecture) => <LectureCard lecture={lecture} />)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Momentum</p>
+      <h2>Track what you have actually studied</h2>
+      <p>
+        Progress is stored locally in the browser. Mark lectures as studied, answer checkpoints, and use the
+        dashboard to see what still needs work.
+      </p>
+    </div>
+
+    <ProgressDashboard client:load lectures={lectureSummaries} />
+  </section>
+</BaseLayout>

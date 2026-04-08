@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+public/materials/
+src/generated/materials-manifest.json
+
+# Course source materials (do not commit/push; keep as local inputs)
+Lecture */
+Problem sets/
+Exams/
+*.pdf

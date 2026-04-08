@@ -1,0 +1,222 @@
+---
+title: Lecture 7
+number: 7
+topic: Unconventional Monetary Policy, Forward Guidance, and the Slope of the Phillips Curve
+summary: Connect forward-guidance mechanics to the forward-guidance puzzle and then evaluate what Phillips-curve evidence does and does not identify.
+status: authored
+estimatedStudyHours: 6
+sourceFiles:
+  - Lecture 6/Lecture_forward_guidance_slides.pdf
+  - Lecture 6/Complementary lecture forwardguidance puzzle.pdf
+  - Lecture 7/Leture7 Slope Phillips Curve.pdf
+learningObjectives:
+  - Distinguish Delphic and Odyssean forward guidance.
+  - Derive why forward guidance is powerful in canonical NK algebra, and why this creates the forward-guidance puzzle.
+  - Understand why the lower bound creates a role for unconventional policy communication.
+  - Explain why observed inflation-unemployment correlations do not mechanically identify the structural Phillips-curve slope.
+examFocus:
+  - Forward guidance is explicitly examined in recent exam material.
+  - Be able to separate Delphic versus Odyssean communication in policy arguments.
+  - Discuss Phillips-curve flattening claims with identification discipline.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+import PhillipsCurveLens from '../../components/learning/PhillipsCurveLens.astro';
+
+## Overview
+
+Lecture 7 combines two advanced but connected ideas:
+
+1. forward guidance as an expectations-management tool at or near the lower bound
+2. the empirical and conceptual challenge of identifying the slope of the Phillips curve
+
+Both topics are about expectations, identification, and policy credibility, not just formula memorization.
+
+## Part A: Forward guidance in the lower-bound environment
+
+### A1. Why unconventional communication matters
+
+The forward-guidance slides start from a low-rate world where large negative demand shocks can push policy into a
+liquidity-trap-like region. In that environment, future policy promises can affect current outcomes through expectations.
+
+Canonical block shown in the lecture:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa x_t + u_t^{\pi}
+$$
+
+$$
+x_t = E_t x_{t+1} - \frac{1}{\sigma}(i_t - E_t\pi_{t+1} - r_t^n)
+$$
+
+with a non-negativity/lower-bound constraint on policy rates.
+
+### A2. Delphic versus Odyssean forward guidance
+
+The slides define:
+
+- Delphic guidance: central-bank forecast communication, no commitment
+- Odyssean guidance: commitment-type communication meant to shape future policy expectations
+
+Policy language in exams:
+
+- Delphic = information channel
+- Odyssean = commitment channel
+
+Time-contingent and state-contingent forms are both discussed in the lecture.
+
+### A3. Forward-guidance puzzle (complementary lecture)
+
+The complementary note rewrites the simplified model and solves forward:
+
+$$
+y_t = -\frac{1}{\sigma}\sum_{s=t}^{\infty} E_t r_s
+$$
+
+$$
+\pi_t = \kappa \sum_{s=t}^{\infty}\beta^{s-t}E_t y_s
+$$
+
+This implies very strong effects from news about distant future rates. A far-horizon rate cut can have very large
+current effects in the baseline model. That is the forward-guidance puzzle: theoretical power that looks unrealistically
+large in many practical settings.
+
+### A4. Direction of current research in the note
+
+The complementary lecture shows discounting-style extensions:
+
+$$
+\pi_t = \alpha_{\pi}\beta E_t\pi_{t+1} + \kappa y_t
+$$
+
+$$
+y_t = \alpha_y E_t y_{t+1} - \frac{1}{\sigma}(i_t - E_t\pi_{t+1})
+$$
+
+with $0<\alpha_{\pi},\alpha_y<1$, which attenuates distant-horizon effects.
+
+Economic mechanisms discussed:
+
+- finite horizons / mortality risk
+- cognitive inattention
+- credit constraints / incomplete markets
+
+## Part B: The slope of the Phillips curve
+
+### B1. Structural equation versus reduced-form correlation
+
+The lecture states the modern NKPC form:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa x_t + u_t^{\pi}
+$$
+
+or in unemployment-gap language:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} - \kappa_u \tilde{u}_t + u_t^{\pi}
+$$
+
+The parameter of interest is the structural slope ($\kappa$ or $\kappa_u$), not raw scatterplot correlation.
+
+### B2. Identification challenges highlighted in the slides
+
+The lecture emphasizes three major omitted-variable/identification issues:
+
+1. expected inflation is hard to observe
+2. natural output or supply-side drivers are hard to observe
+3. cost-push shocks are often unobserved
+
+These can bias naive slope estimates toward zero or even misleading signs.
+
+### B3. Why “flattening” claims require care
+
+Episodes like “missing inflation” or “missing disinflation” can reflect:
+
+- expectation shifts
+- policy-regime changes
+- supply disturbances
+
+not only changes in structural slope.
+
+<PhillipsCurveLens />
+
+## Exam-level interpretation template
+
+When asked whether the Phillips curve flattened:
+
+1. distinguish reduced-form correlation from structural slope
+2. state identification problems explicitly
+3. explain at least one channel that can shift correlation without changing slope
+4. only then discuss whether slope change is still plausible
+
+This template matches the style of the Lecture 7 discussion and the corresponding exam-style question framing.
+
+## Common pitfalls
+
+- Calling all guidance “commitment” (confusing Delphic and Odyssean).
+- Ignoring the lower-bound context when motivating forward guidance.
+- Treating forward-guidance puzzle algebra as literal policy magnitude without model-friction caveats.
+- Reading scatterplots as direct estimates of structural $\kappa$.
+
+## Control questions
+
+1. Why can far-horizon policy news have large current effects in the baseline forward-guidance algebra?
+2. What is the difference between Delphic and Odyssean guidance in one sentence each?
+3. Why can a flatter inflation-unemployment correlation occur even if structural $\kappa$ is unchanged?
+
+<QuizCard
+  client:load
+  id="lecture7-guidance-types"
+  lectureSlug="lecture-07"
+  question="Which statement best distinguishes Delphic from Odyssean forward guidance?"
+  hints={[
+    'One is primarily information about expected conditions; the other is commitment to policy behavior.',
+    'Think forecast channel versus commitment channel.',
+  ]}
+  options={[
+    {
+      label: 'Delphic is commitment to future policy, while Odyssean is just a forecast.',
+      correct: false,
+      explanation: 'This is reversed. Delphic is forecast-like communication; Odyssean carries commitment content.',
+    },
+    {
+      label: 'Delphic communicates likely outcomes without commitment, while Odyssean is commitment-oriented guidance.',
+      correct: true,
+      explanation: 'Correct. This is the distinction emphasized in the lecture.',
+    },
+    {
+      label: 'Both terms mean exactly the same thing in NK models.',
+      correct: false,
+      explanation: 'No. The distinction matters for credibility and expectation effects.',
+    },
+  ]}
+/>
+
+<QuizCard
+  client:load
+  id="lecture7-pc-identification"
+  lectureSlug="lecture-07"
+  question="Why is it risky to infer structural Phillips-curve slope directly from inflation-unemployment scatterplots?"
+  hints={[
+    'The NKPC has expected inflation and cost-push terms, not only real-activity pressure.',
+    'Supply shocks and expectation shifts can move points without slope changes.',
+  ]}
+  options={[
+    {
+      label: 'Because scatterplots include no data on inflation dynamics at all.',
+      correct: false,
+      explanation: 'They do include inflation data, but identification of causal slope is still problematic.',
+    },
+    {
+      label: 'Because omitted expectations and supply/cost-push forces can change correlation without revealing causal slope.',
+      correct: true,
+      explanation: 'Exactly. This is the central identification warning in the lecture.',
+    },
+    {
+      label: 'Because Phillips-curve slope is fixed by accounting identities and cannot vary or be estimated.',
+      correct: false,
+      explanation: 'The slope is a structural parameter that can be estimated, but only with careful identification.',
+    },
+  ]}
+/>

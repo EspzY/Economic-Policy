@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { studyPrinciples } from '../data/resources';
+---
+
+<BaseLayout title="How To Use This Site | Economic Policy Study Site">
+  <section class="page-intro">
+    <p class="eyebrow">Use the structure well</p>
+    <h1>How to Use This Site</h1>
+    <p>
+      Treat the site as a study system, not a reading website. Each lecture page should lead to explanation,
+      note-making, self-testing, and then direct practice with problem sets or exams.
+    </p>
+  </section>
+
+  <section class="split-grid section">
+    <article class="card">
+      <h2>Suggested workflow for each lecture</h2>
+      <ol class="bullet-list">
+        <li>Read the overview and learning goals before opening the source slides.</li>
+        <li>Study the intuition and formal blocks slowly enough to explain them in your own words.</li>
+        <li>Use the checkpoint question before declaring the lecture done.</li>
+        <li>Open the linked seminar or exam material to test transfer, not just recognition.</li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <h2>Habits that matter</h2>
+      <ul class="bullet-list">
+        {studyPrinciples.map((principle) => <li>{principle}</li>)}
+      </ul>
+    </article>
+  </section>
+</BaseLayout>
+

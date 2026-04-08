@@ -1,0 +1,30 @@
+---
+import { materialHref } from '../lib/materials';
+
+interface Props {
+  files: string[];
+  title?: string;
+}
+
+const { files, title = 'Source Material' } = Astro.props;
+---
+
+<section class="card source-card">
+  <div class="section-heading">
+    <p class="eyebrow">Grounding</p>
+    <h2>{title}</h2>
+  </div>
+
+  <ul class="source-list">
+    {
+      files.map((file) => (
+        <li>
+          <a href={materialHref(file)} target="_blank" rel="noreferrer">
+            {file}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+

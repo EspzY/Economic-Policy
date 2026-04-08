@@ -1,0 +1,10 @@
+---
+import QuizBank from '../components/interactive/QuizBank';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { quizBank } from '../data/quiz-bank';
+---
+
+<BaseLayout title="Quizzes | Economic Policy Study Site" description="Filterable quiz bank for active recall across the course.">
+  <QuizBank client:load questions={quizBank} />
+</BaseLayout>
+

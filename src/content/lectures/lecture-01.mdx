@@ -1,0 +1,267 @@
+---
+title: Lecture 1
+number: 1
+topic: Monetary Policy Objectives, Rules, and Systematic Versus Unsystematic Policy
+summary: Build the vocabulary of central-bank objectives, instruments, and policy rules before the course moves into the New Keynesian model.
+status: authored
+estimatedStudyHours: 4
+sourceFiles:
+  - GRA6631_2026_LecturePlan.pdf
+  - Lecture 1/GRA6631_2026_Lecture1.pdf
+  - Lecture 1/GRA6631_Complementary_Lecture1.pdf
+learningObjectives:
+  - Separate objectives (targets), instruments (what the central bank sets), and rules (systematic mappings).
+  - Interpret the Taylor rule and the Taylor principle in words and in equations.
+  - Explain systematic versus unsystematic (shock) components and why expectations make the distinction important.
+examFocus:
+  - Be able to define the main policy concepts in clean prose.
+  - Explain the difference between a goal of policy and the way policy is implemented.
+  - Use the language of systematic and unsystematic policy precisely, including what a "monetary policy shock" means.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+
+## Big Picture (Why This Lecture Matters)
+
+The rest of the course is built around a single idea: monetary policy is a stabilization tool that works largely through **expectations**.
+Before we can solve models (Lecture 2) or discuss optimal policy (Lectures 4 to 6), we need a clean vocabulary for:
+
+- what the central bank is trying to stabilize (objectives)
+- what it can actually set today (instrument)
+- how that instrument is moved in a predictable way (rules)
+- what part of policy is predictable versus surprising (systematic vs unsystematic)
+
+The slides literally frame the first part of the course as stabilization policy with two guiding questions: **what to stabilize** and **how**.
+Lecture 1 is where you learn to answer those questions in precise, exam-grade language.
+
+### Connection to later lectures
+
+- Lecture 2 introduces the 3-equation New Keynesian model where expectations enter directly through the NKPC and DIS equations.
+- Lecture 3 shows why rules must anchor expectations (determinacy) and why "optimal allocations" are not automatically implementable rules.
+- Lectures 4 to 6 use the same vocabulary to discuss commitment, discretion, credibility, and forward guidance.
+
+## Objectives: What Outcomes Are We Trying To Stabilize?
+
+Lecture 1 starts from real-world mandates and then translates them into the language used in the models later.
+
+### United States (slides)
+
+The slides summarize the Fed's dual mandate as:
+
+- **Stable prices:** 2% per year (PCE inflation in the slide).
+- **Maximum employment:** no single fixed number (employment is largely determined by non-monetary factors), so the Fed uses many indicators.
+
+Important bridge to the models:
+
+- the slides mention the unemployment rate (often relative to a "natural rate")
+- and the output gap (output relative to potential output)
+
+These are the objects that will later become model-defined "gaps" (for example the output gap).
+
+### Norway (slides)
+
+The slide deck also quotes the Norges Bank mandate and emphasizes **flexible inflation targeting**:
+
+- operational target: annual consumer price inflation close to 2% over time
+- forward-looking and flexible: can contribute to high and stable output and employment
+- also mentions counteracting the build-up of financial imbalances
+
+Exam-useful language: "inflation targeting can be flexible" means the central bank can care about real activity and financial stability *while still using inflation as the nominal anchor*.
+
+## Instruments: What Can The Central Bank Move Directly?
+
+Lecture 1 keeps the instrument discussion concrete:
+
+- In the US, the conventional instrument is the **Federal Funds Rate target** (an overnight interbank rate in the slides).
+- Decisions on the FFR are accompanied by changes in the interest rate paid on reserves held at the Fed (slides).
+- The inflation target acts as a **nominal anchor** (the slides mention historical anchors: gold, exchange rates, money growth targets).
+
+The slides also highlight that conventional rate policy hits a constraint at the zero lower bound (ZLB). That is why the lecture previews "new instruments":
+
+- forward guidance
+- quantitative easing
+- negative interest rates
+
+You do not need to master those tools yet. For Lecture 1, the key is: instruments are about what the central bank can directly set, and the rest of the economy responds through transmission and expectations.
+
+<figure class="transmission-figure">
+  <figcaption>The lecture-1 chain: from mandate to instrument to expectations</figcaption>
+  <div class="flow-grid">
+    <article>
+      <h3>Mandate</h3>
+      <p>Stabilize inflation and support real activity (slides: prices and employment).</p>
+    </article>
+    <article>
+      <h3>Instrument</h3>
+      <p>Choose a policy rate (slides: the FFR target).</p>
+    </article>
+    <article>
+      <h3>Rule/framework</h3>
+      <p>Describe how the instrument moves when inflation or activity deviates from desired levels.</p>
+    </article>
+    <article>
+      <h3>Expectations</h3>
+      <p>Firms and households react differently to systematic policy than to surprises.</p>
+    </article>
+  </div>
+</figure>
+
+## Symbols, Parameters, And Objects Used In Lecture 1
+
+Lecture 1 uses a simple rule-based notation that is intentionally reusable later. Keep these objects straight:
+
+| Symbol | Meaning (what it is) | Exam-safe way to describe it |
+|---|---|---|
+| $R_t$ | Policy (nominal) interest rate in the Taylor rule | "The instrument: the central bank's policy rate." |
+| $r_t^{LR}$ or $r^*$ | Long-run real natural rate used in the Taylor rule slides | "A long-run real-rate benchmark; the slides treat it as constant in the basic Taylor rule." |
+| $\pi_t$ | Inflation | "Inflation (in the slides: change in the log price level)." |
+| $\pi^*$ | Inflation target | "The nominal anchor: the desired inflation rate (slides: 2%)." |
+| $y_t$ | Output | "Economic activity (often proxied by GDP in applications)." |
+| $y_t^p$ | Potential output | "A potential/flexible benchmark used to define an output-gap term." |
+| $y_t - y_t^p$ | Output gap term used in the Taylor rule | "Real activity relative to a benchmark (do not confuse with a statistical trend unless the context is empirical)." |
+| $\varepsilon_t^M$ | Monetary policy shock | "The unsystematic/surprise component of policy not implied by the usual rule." |
+
+<QuizCard
+  client:load
+  id="checkpoint:objective-instrument-rule"
+  lectureSlug="lecture-01"
+  question="Which option best describes a monetary-policy rule?"
+  hints={[
+    'A rule tells you how the instrument moves, not what the final social goal is.',
+    'Think about a mapping from inflation or output conditions to the policy rate.',
+  ]}
+  options={[
+    {
+      label: 'It states that low and stable inflation is desirable for the economy.',
+      correct: false,
+      explanation: 'That is an objective of policy, not a rule for implementing policy.',
+    },
+    {
+      label: 'It describes how the central bank adjusts its instrument when inflation or output deviates from target.',
+      correct: true,
+      explanation: 'Correct. A rule is the systematic mapping from conditions (gaps) to the instrument choice.',
+    },
+    {
+      label: 'It is any unexpected interest-rate movement decided in response to a surprise event.',
+      correct: false,
+      explanation: 'That is an unsystematic policy shock, not the systematic rule itself.',
+    },
+  ]}
+/>
+
+## Step-By-Step Derivation: Rewriting The Taylor Rule Into "Level + Gaps"
+
+The slide deck presents the Taylor rule and then rewrites it to make its logic easier to interpret.
+This is simple algebra, but it is high-yield for the exam because it teaches you to separate:
+
+- the neutral/steady-state level of the nominal rate
+- the systematic responses to inflation and activity gaps
+
+### Step 1 (Original Taylor form in the slides)
+
+$$
+R_t = r_t^{LR} + \pi_t + 0.5(\pi_t - \pi^*) + 0.5(y_t - y_t^p)
+$$
+
+Math move: write the rule in "inflation level + gap adjustments" form.
+
+Economic meaning: the policy rate is higher when inflation is higher and when activity is above its benchmark.
+
+### Step 2 (Add and subtract the inflation target)
+
+The slides insert $\pi_t - \pi^* + \pi^*$:
+
+$$
+R_t = r_t^{LR} + (\pi_t - \pi^*) + \pi^* + 0.5(\pi_t - \pi^*) + 0.5(y_t - y_t^p)
+$$
+
+Math move: adding and subtracting $\pi^*$ does not change the expression; it just reorganizes it.
+
+Economic meaning: this makes the inflation target explicit as the "anchor" term.
+
+### Step 3 (Collect the inflation-gap terms)
+
+$$
+R_t = r_t^{LR} + \pi^* + 1.5(\pi_t - \pi^*) + 0.5(y_t - y_t^p)
+$$
+
+Math move: $(\pi_t - \pi^*) + 0.5(\pi_t - \pi^*) = 1.5(\pi_t - \pi^*)$.
+
+Economic meaning: the rule says: start from a baseline nominal level $r_t^{LR} + \pi^*$ and then react aggressively to the inflation gap.
+That aggressiveness is connected to the Taylor principle.
+
+### The Taylor principle (as stated in the slides)
+
+Lecture 1 highlights this rule-of-thumb principle:
+
+- the policy rate should increase **more than one-for-one** with a persistent increase in inflation
+
+Reason in one sentence (exam-safe): if inflation rises persistently by 1 percentage point and the nominal rate rises by more than 1 point, the **real** rate rises, which cools demand and pushes inflation back down.
+
+<QuizCard
+  client:load
+  id="checkpoint:taylor-principle"
+  lectureSlug="lecture-01"
+  question="What does the Taylor principle try to ensure in economic terms?"
+  hints={[
+    'Lecture 1: raise the nominal rate more than one-for-one in response to persistent inflation increases.',
+    'Think: real interest rate.',
+  ]}
+  options={[
+    {
+      label: 'The nominal rate rises less than inflation so the real rate falls when inflation rises.',
+      correct: false,
+      explanation: 'That would move the real rate in the wrong direction when inflation pressure rises persistently.',
+    },
+    {
+      label: 'The nominal rate rises more than inflation so the real rate rises when inflation rises persistently.',
+      correct: true,
+      explanation: 'Correct. This is the intuition behind the Taylor principle and its later determinacy role.',
+    },
+    {
+      label: 'Inflation will be stable even if the policy rate never reacts to inflation.',
+      correct: false,
+      explanation: 'The lecture later stresses that rules must anchor expectations; no-response rules can create indeterminacy.',
+    },
+  ]}
+/>
+
+## Systematic Versus Unsystematic Monetary Policy (Complementary Lecture)
+
+The complementary lecture formalizes a distinction that the rest of the course relies on:
+
+- **Systematic policy** is the predictable response implied by the rule/framework.
+- **Unsystematic policy** is the unexpected deviation from the rule, often written as a shock $\varepsilon_t^M$.
+
+The complementary slides write the Taylor rule with a shock term:
+
+$$
+R_t = r_t^{LR} + \pi^* + 1.5(\pi_t - \pi^*) + 0.5(y_t - y_t^p) + \varepsilon_t^M
+$$
+
+Why this matters:
+
+1. Expectations are forward-looking, so the systematic part of policy shapes behavior even before the instrument moves.
+2. The shock part is useful for empirical work and model validation, but the complementary lecture stresses it typically explains a minor fraction of output fluctuations.
+
+### Evidence block (what to remember)
+
+The complementary lecture references Clarida, Gali and Gertler's estimated rules and a pre/post-1979 comparison.
+The exam-relevant takeaway is not the estimation method. It is the interpretive point:
+
+- systematic policy behavior can change across periods (and that can change macro stability)
+- but there are caveats, including the "good luck" hypothesis and the fact that the Great Moderation ended with the 2008 crisis
+
+## Common Mistakes / Pitfalls
+
+- Mixing up objectives (inflation/employment outcomes) with the instrument (a policy rate) and the rule (the mapping from conditions to that rate).
+- Treating "maximum employment" as a fixed numeric target rather than a concept measured with multiple indicators (slides).
+- Forgetting that "output gap" can mean different things in different contexts (model gap vs empirical measure).
+- Talking about "monetary policy shocks" as if they are the main content of policy rather than the unsystematic deviation from a systematic framework.
+
+## Exam-Useful Takeaways
+
+- You should be able to define objectives, instruments, and rules cleanly and give one concrete example of each from Lecture 1.
+- You should be able to write the Taylor rule in its "level + gaps" form and explain what each term means in words.
+- You should be able to explain the Taylor principle as a statement about how policy moves the real interest rate when inflation rises persistently.
+- You should be able to distinguish systematic versus unsystematic policy and explain what a monetary policy shock $\varepsilon_t^M$ represents.

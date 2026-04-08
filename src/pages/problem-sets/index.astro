@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { seminars } from '../../data/resources';
+import { materialHref } from '../../lib/materials';
+---
+
+<BaseLayout title="Problem Sets | Economic Policy Study Site">
+  <section class="page-intro">
+    <p class="eyebrow">Practice with support</p>
+    <h1>Problem Sets</h1>
+    <p>
+      Seminar sheets are where passive familiarity gets converted into usable exam reasoning. Use them after a
+      lecture block, not before.
+    </p>
+  </section>
+
+  <section class="resource-grid section">
+    <article class="card resource-card">
+      <p class="eyebrow">Interactive practice</p>
+      <h2>Seminar 1 guided workbench</h2>
+      <p>
+        Step-by-step hints and solution path for a core NK shock-transmission question from the Seminar 1 material.
+      </p>
+      <a href="/problem-sets/seminar-1/" class="primary-link">Open workbench</a>
+    </article>
+
+    <article class="card resource-card">
+      <p class="eyebrow">Interactive practice</p>
+      <h2>Seminar 2 guided workbench</h2>
+      <p>Guided solutions for cost-push shocks, commitment, forward guidance, and Phillips-curve slope reasoning.</p>
+      <a href="/problem-sets/seminar-2/" class="primary-link">Open workbench</a>
+    </article>
+
+    {seminars.map((seminar) => (
+      <article class="card resource-card">
+        <p class="eyebrow">{seminar.id.replace('-', ' ')}</p>
+        <h2>{seminar.title}</h2>
+        <p>{seminar.focus}</p>
+        <ul>
+          {seminar.files.map((file) => (
+            <li>
+              <a href={materialHref(file)} target="_blank" rel="noreferrer">
+                {file}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

@@ -1,0 +1,72 @@
+---
+type Props = {
+  caption?: string;
+};
+
+const {
+  caption = 'Equation dependency map: the 3-equation New Keynesian core is a feedback loop',
+} = Astro.props;
+---
+
+<figure class="equation-map">
+  <figcaption>{caption}</figcaption>
+  <svg viewBox="0 0 920 320" role="img" aria-label="Equation dependency diagram for the three-equation New Keynesian model">
+    <defs>
+      <marker id="eqmap-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+      </marker>
+    </defs>
+
+    <g class="eqmap-node">
+      <rect x="40" y="38" width="280" height="110" rx="18" />
+      <text x="70" y="70">
+        <tspan class="eqmap-title" x="70" dy="0">NKPC (inflation)</tspan>
+        <tspan x="70" dy="26">pi_t depends on:</tspan>
+        <tspan x="70" dy="22">E_t[pi(t+1)] and y~_t</tspan>
+      </text>
+    </g>
+
+    <g class="eqmap-node">
+      <rect x="600" y="38" width="280" height="110" rx="18" />
+      <text x="630" y="70">
+        <tspan class="eqmap-title" x="630" dy="0">DIS (demand)</tspan>
+        <tspan x="630" dy="26">y~_t depends on:</tspan>
+        <tspan x="630" dy="22">E_t[y~(t+1)], E_t[pi(t+1)]</tspan>
+        <tspan x="630" dy="22">and the real-rate gap</tspan>
+      </text>
+    </g>
+
+    <g class="eqmap-node">
+      <rect x="320" y="190" width="280" height="110" rx="18" />
+      <text x="350" y="222">
+        <tspan class="eqmap-title" x="350" dy="0">Policy rule (instrument)</tspan>
+        <tspan x="350" dy="26">i_t depends on:</tspan>
+        <tspan x="350" dy="22">pi_t and y~_t (+ v_t)</tspan>
+      </text>
+    </g>
+
+    <g class="eqmap-node eqmap-node-small">
+      <rect x="40" y="198" width="220" height="76" rx="16" />
+      <text x="62" y="230">
+        <tspan class="eqmap-title" x="62" dy="0">Natural rate</tspan>
+        <tspan x="62" dy="22">r^n_t (model object)</tspan>
+      </text>
+    </g>
+
+    <path class="eqmap-arrow" d="M 600 94 C 520 94 410 94 320 94" marker-end="url(#eqmap-arrow)" />
+    <path class="eqmap-arrow" d="M 180 148 C 180 224 340 230 460 190" marker-end="url(#eqmap-arrow)" />
+    <path class="eqmap-arrow" d="M 740 148 C 760 208 700 242 600 245" marker-end="url(#eqmap-arrow)" />
+    <path class="eqmap-arrow" d="M 600 230 C 740 232 780 196 740 148" marker-end="url(#eqmap-arrow)" />
+    <path class="eqmap-arrow" d="M 260 236 C 390 236 520 210 600 152" marker-end="url(#eqmap-arrow)" />
+
+    <text class="eqmap-label" x="352" y="86">y~_t feeds inflation</text>
+    <text class="eqmap-label" x="586" y="178">pi_t and y~_t anchor i_t</text>
+    <text class="eqmap-label" x="526" y="300">i_t shifts demand</text>
+    <text class="eqmap-label" x="72" y="294">r^n_t shifts demand</text>
+  </svg>
+
+  <p class="equation-map-note">
+    Use this map while you read: most derivations in this lecture are just systematic substitutions that turn this loop
+    into a solvable two-variable system.
+  </p>
+</figure>

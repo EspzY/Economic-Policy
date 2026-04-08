@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Economic Policy Study Site',
+  description = 'Structured lecture-by-lecture study support for GRA6631 Economic Policy.',
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/roadmap', label: 'Roadmap' },
+  { href: '/how-to-use', label: 'How to Use' },
+  { href: '/lectures', label: 'Lectures' },
+  { href: '/quizzes', label: 'Quizzes' },
+  { href: '/problem-sets', label: 'Problem Sets' },
+  { href: '/past-exams', label: 'Past Exams' },
+  { href: '/formula-review', label: 'Formula Review' },
+  { href: '/exam-strategy', label: 'Exam Strategy' },
+  { href: '/progress', label: 'Progress' },
+];
+
+function isActive(href: string) {
+  if (href === '/') {
+    return pathname === '/';
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="bg-halo bg-halo-one"></div>
+    <div class="bg-halo bg-halo-two"></div>
+    <header class="site-header">
+      <a href="/" class="brand">
+        <span class="brand-kicker">GRA6631</span>
+        <span class="brand-title">Economic Policy Study Site</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        {
+          navItems.map((item) => (
+            <a href={item.href} class:list={['nav-link', { active: isActive(item.href) }]}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <p>Built around the local course material. Source PDFs remain preserved in the repository root.</p>
+      <p>Decisions, constraints, and execution history are tracked in <code>AGENTS.md</code>.</p>
+    </footer>
+  </body>
+</html>

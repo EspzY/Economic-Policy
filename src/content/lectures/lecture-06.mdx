@@ -1,0 +1,280 @@
+---
+title: Lecture 6
+number: 6
+topic: Time Inconsistency and Central Bank Independence
+summary: Build the time-inconsistency logic step by step and connect it to inflation bias, commitment gains, and institutional design.
+status: authored
+estimatedStudyHours: 5
+sourceFiles:
+  - Lecture 5/GRA6631_2026_TimeInconsistency_independencev2.pdf
+  - Lecture 5/drechsel_political_pressure_shocks.pdf
+  - Lecture 5/Thomas Drechsel on the Effects of Political Pressure and Identifying Monetary Policy Shocks _ Mercatus Center.pdf
+learningObjectives:
+  - Derive the inflation-bias result under discretionary policy with output ambitions above the natural level.
+  - Explain why commitment removes inflation bias in the benchmark setup.
+  - Understand central-bank independence as an institutional response to time inconsistency.
+examFocus:
+  - Show the discretionary optimization algebra and the rational-expectations equilibrium implication.
+  - Distinguish ex ante optimal policy from ex post incentives to deviate.
+  - Connect formal time-inconsistency logic to policy institutions and empirical evidence.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+
+## Big Picture (Why This Lecture Matters)
+
+Lecture 5 showed that commitment can improve outcomes because expectations are part of the transmission mechanism.
+Lecture 6 answers the natural next question:
+
+> If commitment is better, why can’t policymakers just announce the best policy and then do it?
+
+The lecture’s answer is **time inconsistency**: an action that is optimal to promise ex ante may not be optimal to carry out ex post.
+Private expectations anticipate that temptation, and equilibrium outcomes can be worse even when policymakers have good intentions.
+
+This lecture is exam-high-yield because it trains you to:
+
+- separate **temptation** (one-period incentive to deviate) from **equilibrium** (what happens when expectations adjust)
+- do a clean substitution/FOC derivation
+- interpret independence as an institutional commitment device rather than a slogan
+
+## Symbols, Parameters, And Assumptions
+
+The time-inconsistency block in the slides uses a compact Romer/Barro-Gordon style representation.
+
+| Object | Meaning | Note |
+|---|---|---|
+| $\pi$ | inflation | policy variable in the simplified problem |
+| $\pi^*$ | desired/target inflation | the benchmark the policymaker would like under commitment |
+| $\pi^e$ | expected inflation | set by the private sector before policy is chosen under discretion |
+| $y$ | output | realized after policy/expectations |
+| $y^n$ | natural output | output when there is no surprise inflation |
+| $y^*$ | desired output level | the political/ambition benchmark; the key assumption is $y^* > y^n$ |
+| $a>0$ | output stabilization weight | how much the policymaker dislikes output deviations |
+| $b>0$ | slope of expectations-augmented supply | how much surprise inflation moves output in the short run |
+
+## Core Mechanism (Intuition Before Algebra)
+
+The model has two ingredients:
+
+1. **A short-run temptation:** if $y^* > y^n$, policymakers would like output above the natural level. In the short run, surprise inflation can move output (the supply relation).
+2. **Rational expectations discipline:** if policymakers repeatedly have that temptation, private agents will anticipate it, raising expected inflation. That destroys the systematic output gain.
+
+So the time-inconsistency result is not "policymakers are irrational." It is: incentives plus expectations produce an equilibrium with **inflation bias** and no sustained output gain.
+
+<figure class="transmission-figure">
+  <figcaption>Time inconsistency timeline (what moves first?)</figcaption>
+  <div class="flow-grid">
+    <article>
+      <h3>1. Promise</h3>
+      <p>Policymaker announces an intended policy (e.g., inflation at π*).</p>
+    </article>
+    <article>
+      <h3>2. Expectations</h3>
+      <p>Private agents set π^e based on what they believe will actually happen.</p>
+    </article>
+    <article>
+      <h3>3. Temptation</h3>
+      <p>Given π^e, policymaker wants to inflate a bit to push y toward y* when y* &gt; y^n.</p>
+    </article>
+    <article>
+      <h3>4. Equilibrium</h3>
+      <p>Expectations adjust so surprises vanish: output returns to y^n, but inflation is biased upward.</p>
+    </article>
+  </div>
+</figure>
+
+## Step-By-Step Derivation: Discretionary Policy And Inflation Bias
+
+### Step 1 (Policy objective in the slides)
+
+The lecture uses:
+
+$$
+L = \frac{1}{2}\left[(\pi-\pi^*)^2 + a(y-y^*)^2\right], \quad a>0.
+$$
+
+Math move: write a quadratic loss in inflation deviations and output deviations.
+
+Economic meaning: the policymaker dislikes inflation away from target and dislikes output away from a desired level $y^*$.
+The key time-inconsistency assumption is $y^* > y^n$ (ambition above the natural level).
+
+### Step 2 (Supply relation and substitution)
+
+The expectations-augmented supply relation is:
+
+$$
+y - y^n = b(\pi-\pi^e), \quad b>0.
+$$
+
+Solve for $y$:
+
+$$
+y = y^n + b(\pi-\pi^e).
+$$
+
+Math move: rewrite output as natural output plus a surprise-inflation term.
+
+Economic meaning: only **surprise** inflation moves output; if $\pi=\pi^e$, output is at $y^n$.
+
+### Step 3 (Rewrite the loss purely in terms of π)
+
+Compute:
+
+$$
+y-y^* = (y^n-y^*) + b(\pi-\pi^e).
+$$
+
+Insert into the objective:
+
+$$
+L(\pi;\pi^e)
+= \frac{1}{2}\left[(\pi-\pi^*)^2 + a\left((y^n-y^*) + b(\pi-\pi^e)\right)^2\right].
+$$
+
+Math move: the discretionary problem is now "choose $\pi$ taking $\pi^e$ as given."
+
+Economic meaning: under discretion, the policymaker treats expectations as predetermined in the current period.
+
+### Step 4 (FOC under discretion)
+
+Differentiate with respect to $\pi$:
+
+$$
+\frac{\partial L}{\partial \pi}
+= (\pi-\pi^*) + ab\left((y^n-y^*) + b(\pi-\pi^e)\right) = 0.
+$$
+
+Expand and collect terms:
+
+$$
+(\pi-\pi^*) + ab(y^n-y^*) + ab^2(\pi-\pi^e) = 0
+$$
+
+$$
+(1+ab^2)\pi = \pi^* + ab^2\pi^e + ab(y^*-y^n).
+$$
+
+This matches the expression highlighted in the lecture slides.
+
+### Step 5 (Rational expectations equilibrium)
+
+Under rational expectations, $\pi^e=\pi$ in equilibrium. Substitute into the discretionary solution:
+
+$$
+(1+ab^2)\pi = \pi^* + ab^2\pi + ab(y^*-y^n)
+\Rightarrow
+\pi = \pi^* + ab(y^*-y^n).
+$$
+
+Economic meaning: the equilibrium inflation rate is above target when policymakers want output above natural level.
+That is the **inflation bias**.
+
+Now use the supply relation. Since $\pi=\pi^e$ in equilibrium:
+
+$$
+y-y^n = b(\pi-\pi^e)=0 \Rightarrow y=y^n.
+$$
+
+Economic meaning: the private sector is not systematically fooled. The output gain disappears in equilibrium.
+
+## Commitment Benchmark (Why Credibility Removes Inflation Bias)
+
+Under credible commitment, the benchmark outcome in this simplified setup is:
+
+$$
+\pi^C = \pi^*, \quad y=y^n.
+$$
+
+Economic meaning: if policy can credibly anchor expectations at the target, there is no equilibrium incentive problem that generates persistent inflation above target.
+
+## Central-Bank Independence As An Institutional Commitment Device
+
+The lecture frames independence as a mechanism that can push discretionary outcomes closer to commitment outcomes by reducing short-term political pressure.
+Institutional channels noted in the slides include:
+
+- legal mandates
+- appointment structures and tenure beyond political cycles
+- targeting frameworks that strengthen credibility
+
+Economic meaning: independence is a way to change incentives and credibility, not a way to remove shocks or delete trade-offs.
+
+## Evidence Block (How To Use It In Exam Answers)
+
+The slides reference both classic cross-country evidence (independence linked to better inflation outcomes) and newer evidence/papers on political pressure and credibility channels.
+On the exam, the safe way to use the evidence is:
+
+1. state the theory mechanism (temptation + expectations → inflation bias)
+2. state what the evidence is consistent with (pressure/credibility affecting inflation outcomes)
+3. avoid turning the evidence into a list of citations without a mechanism
+
+## Common Mistakes / Pitfalls
+
+- Treating the problem as only "high inflation" rather than a credibility/expectations equilibrium problem.
+- Confusing the one-period temptation (given $\pi^e$) with the rational-expectations equilibrium outcome.
+- Forgetting that the inflation-bias result depends on the assumption $y^*>y^n$.
+- Treating independence as magic rather than as an institutional commitment device.
+
+For more active recall practice, use the **Quizzes** page and filter by Lecture 6.
+
+## Exam-Useful Takeaways (What You Should Be Able To Reproduce)
+
+- Write the objective and supply relation, and explain in words why $y^*>y^n$ creates temptation.
+- Derive the discretionary FOC and solve for equilibrium inflation under rational expectations.
+- Explain why output returns to $y^n$ in equilibrium even when inflation rises.
+- Explain how independence fits the commitment vs discretion logic (as an institutional credibility mechanism).
+
+<QuizCard
+  client:load
+  id="lecture6-inflation-bias"
+  lectureSlug="lecture-06"
+  question="What is the inflation-bias equilibrium result under discretion in the lecture's simplified setup?"
+  hints={[
+    'Use rational expectations: expected inflation equals realized inflation in equilibrium.',
+    'Check whether output ends above natural level in that equilibrium.',
+  ]}
+  options={[
+    {
+      label: 'Inflation equals target and output stays above natural level because policy can always exploit the Phillips curve.',
+      correct: false,
+      explanation: 'No. Once expectations adjust, the output gain vanishes.',
+    },
+    {
+      label: 'Inflation is above target by ab(y* - y^n), while output returns to natural level.',
+      correct: true,
+      explanation: 'Correct. This is the classic inflation-bias result.',
+    },
+    {
+      label: 'Inflation is below target because policymakers dislike output volatility.',
+      correct: false,
+      explanation: 'The upward output ambition drives the discretionary inflation bias in this setup.',
+    },
+  ]}
+/>
+
+<QuizCard
+  client:load
+  id="lecture6-independence-role"
+  lectureSlug="lecture-06"
+  question="How should central-bank independence be interpreted in this lecture's logic?"
+  hints={[
+    'Think of independence as an institutional credibility technology.',
+    'Relate it to reducing incentives for short-term policy deviations.',
+  ]}
+  options={[
+    {
+      label: 'As a way to remove all shocks from the economy so inflation targeting is trivial.',
+      correct: false,
+      explanation: 'Independence does not remove shocks; it changes policy credibility and incentives.',
+    },
+    {
+      label: 'As an institutional mechanism that helps discretionary policy mimic commitment outcomes more closely.',
+      correct: true,
+      explanation: 'Yes. That is the core policy-design rationale emphasized in the lecture.',
+    },
+    {
+      label: 'As proof that output stabilization should never enter policy objectives.',
+      correct: false,
+      explanation: 'The framework is about managing trade-offs credibly, not deleting output concerns from policy design.',
+    },
+  ]}
+/>

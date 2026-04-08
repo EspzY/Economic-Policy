@@ -1,0 +1,194 @@
+---
+import GuidedSolution from '../../components/learning/GuidedSolution';
+import SourceLinks from '../../components/SourceLinks.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const seminarFiles = [
+  'Problem sets/Seminar 2/GRA6631_TA2_Exercises.pdf',
+  'Problem sets/Seminar 2/GRA6631_Presentation.pdf',
+  'Problem sets/Seminar 2/Seminar_2_GRA6631_2025_solutions.pdf',
+];
+---
+
+<BaseLayout title="Seminar 2 Workbench | Economic Policy Study Site">
+  <section class="article-grid">
+    <article class="article-shell">
+      <div>
+        <p class="eyebrow">Problem-solving support</p>
+        <h1>Seminar 2 Workbench</h1>
+        <p class="card-subtitle">Cost-push shocks, commitment, forward guidance, and Phillips-curve slope</p>
+      </div>
+
+      <p>
+        Seminar 2 is built to train the exact style of reasoning that shows up on exam questions: interpret a shock,
+        state the trade-off, and connect the math to policy language. In the official sheet, Q1 and Q4 are based on
+        previous exams.
+      </p>
+
+      <div class="callout">
+        Scope note: This page is grounded in the course model notation used in the Seminar 2 solutions. If your
+        lecture notation differs, map each step conceptually rather than memorizing symbols.
+      </div>
+
+      <GuidedSolution
+        client:load
+        id="exercise:seminar2:cost-push"
+        title="Exercise 1: Cost-push shocks under discretion vs commitment"
+        prompt="Q1 asks (a) what a cost-push shock is, (b) what optimal policy looks like under discretion, and (c) how commitment changes the response. Write the answer first in words, then connect to the targeting-rule equations."
+        hints={[
+          'The key is the wedge between natural and efficient output: cost-push shocks create an inflation-output trade-off even for an optimal central bank.',
+          'Under discretion, the targeting rule is static in (π_t, x_t). Under commitment, there is history dependence (a lagged term).',
+          'The official solutions stress that commitment implies price-level targeting behavior in this setup.',
+        ]}
+        steps={[
+          {
+            title: 'Step 1: Definition (what is a cost-push shock?)',
+            detail:
+              'In the Seminar 2 solutions, a cost-push shock is any force moving inflation beyond expected inflation and the welfare-relevant output gap. It is the driver of the wedge between natural and efficient output, creating the inflation-output trade-off.',
+          },
+          {
+            title: 'Step 2: Give a concrete example',
+            detail:
+              'The solutions mention changes in market power/competition (markups) and input-cost shocks (for example higher energy prices) that raise marginal costs and push inflation up when prices are sticky.',
+          },
+          {
+            title: 'Step 3: Discretionary optimal policy (what it looks like)',
+            detail:
+              'Under discretion, policy trades off inflation stabilization against output-gap stabilization. The static targeting condition from the course is x_t = -(κ/α_x) π_t, implying a negative output gap when inflation is pushed up by a cost-push shock.',
+          },
+          {
+            title: 'Step 4: A key discretion implication (price level)',
+            detail:
+              'The solutions emphasize that under discretion the cost-push shock generates an inflation spike and a permanently higher price level (inflation returns to zero, but the price level does not revert).',
+          },
+          {
+            title: 'Step 5: Commitment adds history dependence',
+            detail:
+              'Under full state-contingent commitment, optimal policy links changes in the output gap to inflation through a history-dependent condition of the form x_{t+i} - x_{t+i-1} = -(κ/α_x) π_{t+i}. This is the mathematical signature of commitment in the NK cost-push problem.',
+          },
+          {
+            title: 'Step 6: Interpretation (price-level targeting behavior)',
+            detail:
+              'The solutions describe commitment policy as implying price-level targeting: the output gap stays negative while inflation remains above zero so that the price level can converge back toward its initial level, lowering the total welfare loss relative to discretion when the commitment is credible.',
+          },
+        ]}
+      />
+
+      <GuidedSolution
+        client:load
+        id="exercise:seminar2:forward-guidance"
+        title="Exercise 2: Delphic vs Odyssean forward guidance"
+        prompt="Q2 asks you to define Delphic versus Odyssean forward guidance and link the distinction to discretion versus commitment in monetary policy."
+        hints={[
+          'Delphic is forecast-like information; Odyssean is commitment to future policy actions under conditions.',
+          'Connect this to how expectations enter the NK model: commitments matter because private expectations respond today.',
+          'Your answer should be short but disciplined: one sentence definition each, then a link to commitment/discretion.',
+        ]}
+        steps={[
+          {
+            title: 'Step 1: Define Delphic guidance',
+            detail:
+              'Delphic forward guidance is forecast-style communication about the likely future state of the economy and how policy might react, without binding the central bank to a specific future action.',
+          },
+          {
+            title: 'Step 2: Define Odyssean guidance',
+            detail:
+              'Odyssean forward guidance is commitment-oriented: the central bank makes an explicit promise about future policy actions conditional on economic outcomes.',
+          },
+          {
+            title: 'Step 3: Link to discretion versus commitment',
+            detail:
+              'In the Seminar 2 solutions, Delphic guidance aligns with discretion because it preserves flexibility. Odyssean guidance aligns with commitment because it ties future policy to a path/condition, shaping expectations more forcefully.',
+          },
+          {
+            title: 'Step 4: Exam-ready interpretation sentence',
+            detail:
+              'Odyssean guidance works through the same channel as commitment: it changes today’s outcomes by changing expectations of future policy behavior.',
+          },
+        ]}
+      />
+
+      <GuidedSolution
+        client:load
+        id="exercise:seminar2:rank-statements"
+        title="Exercise 3: Rank central bank statements from Delphic to Odyssean"
+        prompt="Q3 asks you to place several central-bank statements on a Delphic-to-Odyssean line. Use the official solution figure as the source of truth if you want the exact ordering, but practice justifying your ranking in words."
+        hints={[
+          'More Odyssean statements are explicit about conditions and are harder to reinterpret later without breaking a promise.',
+          'Threshold or state-contingent language (eg “until unemployment < 7%”) is more commitment-like than vague “extended period” language.',
+          'Be careful: “committed to not raising until inflation is sustainably in target” is conditional, but still a commitment claim.',
+        ]}
+        steps={[
+          {
+            title: 'Step 1: Write the ranking criterion',
+            detail:
+              'Rank statements by how much they constrain future policy. “Extended period” language is usually softer; explicit thresholds and state-contingent promises are stronger.',
+          },
+          {
+            title: 'Step 2: Interpret the ECB “extended period” statement',
+            detail:
+              'A vague “extended period” expectation is typically more Delphic because it can be reinterpreted as an outlook update rather than a binding promise.',
+          },
+          {
+            title: 'Step 3: Interpret explicit thresholds',
+            detail:
+              'The MPC unemployment-threshold statement is strongly Odyssean: it gives a clear, verifiable condition for future policy behavior.',
+          },
+          {
+            title: 'Step 4: Interpret conditional inflation language',
+            detail:
+              'Statements tying liftoff to inflation being sustainably within a target range are commitment-like because they create a stated condition for policy, but there is still ambiguity about what “sustainably” means.',
+          },
+          {
+            title: 'Step 5: Handle the Norwegian-language statement',
+            detail:
+              'The sheet includes a Norwegian statement (“the policy rate is kept unchanged until there are clear signs that conditions normalize”). This is conditional and therefore more Odyssean than pure forecasts, but its vagueness makes it weaker than a numeric threshold.',
+          },
+          {
+            title: 'Step 6: Close with an exam-style answer',
+            detail:
+              'In one paragraph, justify your ordering by pointing to two features: (i) whether the statement is conditional, and (ii) how precisely the condition is defined and verifiable.',
+          },
+        ]}
+      />
+
+      <GuidedSolution
+        client:load
+        id="exercise:seminar2:phillips-slope"
+        title="Exercise 4: The slope of the Phillips curve"
+        prompt="Q4 asks (a) how the Phillips-curve slope affects optimal policy under discretion, and (b) what happens to the Phillips curve when prices become more flexible."
+        hints={[
+          'A flatter Phillips curve (lower κ) means inflation moves less for a given output gap; the trade-off structure changes and losses can rise with more rigidities.',
+          'More flexible prices imply a higher probability of price adjustment, which raises κ (steepens the Phillips curve).',
+          'Tie your answer back to Lecture 4’s loss trade-off figure and the NKPC intuition.',
+        ]}
+        steps={[
+          {
+            title: 'Step 1: What κ represents',
+            detail:
+              'The slope parameter κ measures how sensitive inflation is to the output gap in the NK Phillips curve. More nominal rigidity typically means a smaller κ (a flatter curve).',
+          },
+          {
+            title: 'Step 2: How κ affects discretion policy',
+            detail:
+              'In the solutions, policy depends on κ because κ governs the inflation-output trade-off. A flatter curve changes how much output-gap movement is needed for a given inflation response, and the lecture figure implies total loss is higher with more rigidities (flatter curve).',
+          },
+          {
+            title: 'Step 3: What happens when prices are more flexible',
+            detail:
+              'If prices become more flexible, firms adjust prices more often. The solutions link this to κ rising (the Phillips curve steepens), meaning inflation responds more strongly to demand/output-gap movements.',
+          },
+          {
+            title: 'Step 4: Exam-ready sentence',
+            detail:
+              'More flexible prices -> steeper Phillips curve (higher κ) -> inflation is more sensitive to the output gap; greater rigidity -> flatter curve -> different policy trade-offs and typically higher losses in the slide’s illustration.',
+          },
+        ]}
+      />
+    </article>
+
+    <div>
+      <SourceLinks files={seminarFiles} title="Seminar 2 Sources" />
+    </div>
+  </section>
+</BaseLayout>

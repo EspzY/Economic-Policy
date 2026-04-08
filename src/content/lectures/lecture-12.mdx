@@ -1,0 +1,282 @@
+---
+title: Lecture 12
+number: 12
+topic: Sustainability and the Environment
+summary: Build an exam-ready map from sustainability definitions to growth-with-resources, externalities, climate flow-stock dynamics, and resource economics.
+status: authored
+estimatedStudyHours: 7
+sourceFiles:
+  - Lecture 12/Lecture 12.pdf
+  - Lecture 12/Handwrittennotes2503.pdf
+  - Lecture 12/Hardin-TragedyCommons-1968.pdf
+  - Lecture 12/our-common-future.pdf
+  - Lecture 12/stern-2008-the-economics-of-climate-change.pdf
+  - Lecture 12/weitzman2009.pdf
+  - Lecture 12/weitzman2009-1.pdf
+learningObjectives:
+  - State the Brundtland definition of sustainable development and explain its economic meaning.
+  - Derive the growth-rate accounting in the Solow model and interpret "resources/land drag" from the extended model in the slides.
+  - Explain the Coase theorem and its relationship to welfare theorems in externality problems.
+  - Explain why climate change is a flow-stock externality with uncertainty and potential irreversibility.
+  - Distinguish renewable-resource from non-renewable-resource economics and derive the Hotelling rule shown in the lecture.
+examFocus:
+  - Translate "sustainability" into constraints and trade-offs (growth, depletion, externalities, and policy instruments).
+  - Use flow-stock logic to explain why timing, uncertainty, and discounting matter in climate policy.
+  - Be able to write and interpret the Hotelling condition $\dot p/p = r$ for non-renewable resources.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+import FlowStockLens from '../../components/learning/FlowStockLens.astro';
+
+## Overview
+
+Lecture 12 is the course's "big picture" policy finale. The slide deck covers:
+
+- definition of sustainable development (Brundtland)
+- growth with (and without) resource constraints
+- externalities, the Coase theorem, and basic welfare-theorem language
+- climate change as a global flow-stock externality with uncertainty and ethical/discounting issues
+- renewable and non-renewable resource economics (including the Hotelling rule)
+- a brief link to international policy (Paris agreement) and UN sustainable development goals
+
+This module is written to be exam-ready: each block ends with a "what you can say in words" interpretation.
+
+## Part A: What "sustainability" means here
+
+The slides quote the Brundtland report definition:
+
+> Sustainable development is development that meets the needs of the present without compromising the ability of future generations to meet their own needs.
+
+Economic translation:
+
+- intertemporal constraints matter (stocks, not only flows)
+- policies are evaluated on long horizons (future welfare, not only current output)
+- distribution across generations is part of the problem (fairness and discounting)
+
+## Part B: Growth, resources, and the "drag" from constraints
+
+### B1. Baseline Solow structure (from the slides)
+
+The lecture starts from the Solow model:
+
+$$
+Y(t) = F(K(t), A(t)L(t))
+$$
+
+with population and productivity growth:
+
+$$
+\dot L = nL, \quad \dot A = gA
+$$
+
+and capital accumulation:
+
+$$
+\dot K = sY - \delta K
+$$
+
+The key slide takeaway: in steady state, output per capita growth is pinned down by productivity growth $g$.
+
+### B2. Extend production with resources and land
+
+The deck then extends the production function to include a resource input $R$ and land/terrain $T$:
+
+$$
+Y = K^{\alpha} R^{\beta} T^{\gamma} (AL)^{1-\alpha-\beta-\gamma}
+$$
+
+The log-derivative accounting identity is:
+
+$$
+\frac{\dot Y}{Y}=
+\alpha\frac{\dot K}{K}+\beta\frac{\dot R}{R}+\gamma\frac{\dot T}{T}
+(1-\alpha-\beta-\gamma)\left(\frac{\dot A}{A}+\frac{\dot L}{L}\right)
+$$
+
+The slide considers constraint cases like:
+
+- non-renewable resource depletion: $\dot R/R=-b$
+- fixed land: $\dot T/T=0$
+
+In a balanced-growth style steady state where $K$ and $Y$ grow at the same rate, the lecture solves a growth rate of:
+
+$$
+g_Y = \frac{-\beta b + (1-\alpha-\beta-\gamma)(g+n)}{1-\alpha}
+$$
+
+Interpretation: resource depletion and fixed factors reduce growth relative to the baseline, and the magnitude of the
+drag increases with factor shares and with population growth.
+
+## Part C: Externalities, Coase, and welfare-theorem language
+
+The slides place environmental policy inside standard market-failure logic:
+
+- externality: social costs differ from private costs
+- policy tools: taxes, subsidies, quotas, and property-right design (Coase)
+- problems differ by whether they are global/local and stock/flow, and by distributional consequences
+
+### C1. Coase theorem (as stated on the slide)
+
+The slide statement is:
+
+- when externalities exist, parties can sometimes bargain to internalize them and reach efficiency
+
+Exam nuance: the theorem is a *conditional* claim (property rights, low transaction costs, and the ability to bargain).
+
+### C2. Welfare theorems (as on the slide)
+
+- 1st welfare theorem: competitive markets reach a Pareto efficient allocation (under strong assumptions)
+- 2nd welfare theorem: with appropriate redistribution, any Pareto efficient allocation can be supported by markets
+
+This is why distributional issues and efficiency issues are separated (conceptually) but interact in practice.
+
+## Part D: Climate change as a flow-stock externality
+
+The slide bullets emphasize:
+
+- global origins and global impacts
+- long horizons and flow-stock processes
+- uncertainty and potential irreversibility
+
+<FlowStockLens />
+
+### D1. Uncertainty and catastrophic risk
+
+The lecture's uncertainty slide notes:
+
+- current concentration around 430 ppm
+- uncertainty about effects
+- very large temperature increases are catastrophic
+
+The included readings make the same theme explicit:
+
+- Stern frames GHG emissions as a global externality and emphasizes risk and uncertainty.
+- Weitzman focuses on low-probability, high-impact outcomes ("fat tails") and how this can change the role of discounting.
+
+### D2. Discounting and fairness
+
+The slide calls out the basic issue:
+
+- discounting reduces the weight on future costs and benefits
+- fairness across generations is therefore unavoidable in climate analysis
+
+Exam framing: explain discounting as a normative choice (not only a technical parameter) when costs and benefits are intergenerational.
+
+### D3. Paris agreement bullets in the slides
+
+The deck mentions:
+
+- adopted by many countries in 2015 with temperature goals around 2C (with 1.5C as preferred)
+- recurring cycles of nationally determined contributions (NDCs)
+- practical constraints like finance, technology, and capacity
+
+## Part E: Public goods and the commons (why Hardin is relevant)
+
+The slides include the standard classification by rivalry and excludability:
+
+- private goods (rival, excludable)
+- club goods (non-rival, excludable)
+- common goods (rival, non-excludable)
+- public goods (non-rival, non-excludable)
+
+Hardin's "Tragedy of the Commons" reading is the canonical illustration of why common goods can be overused when
+individual incentives do not internalize the social cost.
+
+## Part F: Resource economics (renewable vs non-renewable)
+
+The lecture separates:
+
+- renewable-resource extraction with property-right problems
+- non-renewable-resource depletion where scarcity rent matters over time
+
+### F1. Hotelling rule for non-renewable resources (as shown on the slide)
+
+The slide writes the key condition:
+
+$$
+\frac{\dot p}{p} = r
+$$
+
+One way to see the logic is the standard present-value optimization:
+
+- choose an extraction path $x(t)$
+- total stock constraint: $\int_0^\infty x(t)\,dt = S_0$
+- maximize present value: $\int_0^\infty p(t)x(t)e^{-rt}\,dt$
+
+The first-order condition implies $p(t)e^{-rt}$ is constant over time, which is equivalent to $\dot p/p=r$.
+
+Interpretation:
+
+- resource price rises at the interest rate (scarcity rent increases over time)
+- the timing of extraction is about arbitrage between selling today and selling later
+
+## Common pitfalls
+
+- Saying "sustainability" as a slogan without stating the intertemporal constraint.
+- Treating climate change like a local flow externality (it is global and stock-based in the slides).
+- Using Coase as a universal solution without mentioning transaction costs and institutions.
+- Mixing renewable and non-renewable logic (the policy problems differ).
+- Treating discounting as purely technical when the main issue is intergenerational fairness.
+
+## Control questions
+
+1. What is the Brundtland definition and what is its economic meaning?
+2. Why does depletion ($\dot R/R<0$) reduce growth in the extended Solow accounting?
+3. Why is climate change fundamentally a flow-stock problem?
+4. What does $\dot p/p=r$ mean in words?
+
+<QuizCard
+  client:load
+  id="lecture12-flow-stock"
+  lectureSlug="lecture-12"
+  question="Why does the lecture treat climate change as a flow-stock externality rather than a simple one-period externality?"
+  hints={[
+    'Emissions accumulate into a stock; damages depend on the stock, not only the current flow.',
+    'Long lags and persistence change policy timing.',
+  ]}
+  options={[
+    {
+      label: 'Because emissions are global and accumulate, so today’s flow changes tomorrow’s stock and future damages.',
+      correct: true,
+      explanation: 'Correct. The slide deck stresses accumulation, lags, and long-run effects.',
+    },
+    {
+      label: 'Because externalities never involve stocks, only flows.',
+      correct: false,
+      explanation: 'Externalities can be flow-based or stock-based. Climate change is stock-based in the lecture.',
+    },
+    {
+      label: 'Because discounting eliminates the need to think about the future stock.',
+      correct: false,
+      explanation: 'Discounting changes weights but does not remove the stock accumulation mechanism.',
+    },
+  ]}
+/>
+
+<QuizCard
+  client:load
+  id="lecture12-hotelling"
+  lectureSlug="lecture-12"
+  question="What is the meaning of the Hotelling rule condition p-dot / p = r for a non-renewable resource?"
+  hints={[
+    'Think arbitrage between selling now and selling later.',
+    'In present-value terms, the resource price net of discounting is constant.',
+  ]}
+  options={[
+    {
+      label: 'Resource prices should grow at the interest rate in equilibrium, reflecting rising scarcity rent over time.',
+      correct: true,
+      explanation: 'Yes. That is the core interpretation of the rule shown on the slide.',
+    },
+    {
+      label: 'Resource prices must be constant over time to prevent arbitrage.',
+      correct: false,
+      explanation: 'Constant prices would generally create incentives to shift extraction timing when discounting is present.',
+    },
+    {
+      label: 'Resource prices should fall at the interest rate because stocks shrink.',
+      correct: false,
+      explanation: 'The slide’s rule is the opposite: price growth equals the interest rate under the benchmark logic.',
+    },
+  ]}
+/>

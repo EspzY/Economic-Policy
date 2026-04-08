@@ -1,0 +1,362 @@
+---
+title: Lecture 5
+number: 5
+topic: Optimal Monetary Policy II, Commitment, and History Dependence
+summary: Extend the optimal-policy block by comparing discretion, simple-rule commitment, and state-contingent commitment under cost-push shocks.
+status: authored
+estimatedStudyHours: 6
+sourceFiles:
+  - Lecture 4/GRA6631_2026_Lecture4.pdf
+  - Lecture 4/GRA6631_notes on commitment_Sveen.pdf
+  - Lecture 4/the interest rate under discretion.pdf
+  - Lecture 4/Complementary lecture slides _the output gap_.pdf
+learningObjectives:
+  - Derive why commitment to a simple targeting rule implies a stronger anti-inflation stance than discretion.
+  - Understand state-contingent commitment and the source of history dependence in optimal policy.
+  - Connect commitment analysis to credibility and time-inconsistency concerns.
+examFocus:
+  - Use the expression alpha_x^c = alpha_x (1 - beta rho_pi) and explain why it is below alpha_x.
+  - Derive and interpret the history-dependent targeting relation x_t - x_{t-1} = -(kappa/alpha_x) pi_t.
+  - Explain why commitment changes outcomes through expectations, not just through one-period optimization.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+
+## Big Picture (Why This Lecture Matters)
+
+Lecture 4 introduced a genuine stabilization trade-off (cost-push shocks). Lecture 5 is about what happens once you let
+policy influence the economy through **promises** and **expectations**.
+
+In the New Keynesian framework, commitment is not an abstract moral virtue. It is a technical statement:
+the central bank can credibly choose a *policy plan* (or a rule) that shapes private expectations today.
+That typically improves outcomes relative to discretion, where the policymaker re-optimizes period by period.
+
+The slides treat two layers of commitment:
+
+1. commitment to a **simple targeting-rule family** (choose the best coefficient within a restricted class)
+2. **full state-contingent commitment** (choose complete sequences, state by state)
+
+Lecture 5 is also the bridge to Lecture 6: if commitment improves outcomes, you must ask why it might be difficult to sustain (time inconsistency) and what institutions can help.
+
+## Symbols, Parameters, And Objects
+
+Lecture 5 continues the Lecture 4 notation.
+
+| Object | Meaning | Where it appears |
+|---|---|---|
+| $\pi_t$ | inflation | NKPC and the loss |
+| $x_t \equiv y_t - y_t^e$ | welfare-relevant output gap | the loss and NKPC |
+| $u_t^{\pi}$ | cost-push wedge in NKPC | source of the trade-off |
+| $\alpha_x$ | weight on $x_t^2$ in the loss | measures output-stabilization concern |
+| $\alpha_x^c$ | coefficient chosen under simple-rule commitment | determines how aggressive policy is against inflation |
+| $\kappa$ | NKPC slope | links $x_t$ to inflation pressure |
+| $\beta$ | discount factor | weights the future |
+| $\rho_{\pi}$ | persistence of the cost-push process | key for commitment gains |
+| $\lambda_t$ / $\Lambda_t$ | Lagrange multiplier(s) on the NKPC constraint | generates history dependence under full commitment |
+
+## Reference Point: Discretion (Lecture 4)
+
+Under discretion, the Lecture 4 targeting condition is static:
+
+$$
+x_t = -\frac{\kappa}{\alpha_x}\pi_t.
+$$
+
+Economic meaning: the policymaker trades off inflation and the welfare gap **within the period**, taking expectations as given.
+There is no "memory" term (no $x_{t-1}$) in the condition.
+
+## Commitment I: Commitment To A Simple Targeting-Rule Family
+
+The slides ask: suppose the central bank can commit, but only to a rule of the same functional form as discretion:
+
+$$
+x_t = -\frac{\kappa}{\alpha_x^c}\pi_t.
+$$
+
+The policymaker now chooses $\alpha_x^c$ to minimize the discounted loss.
+The headline result in the slides is:
+
+$$
+\alpha_x^c = \alpha_x(1-\beta\rho_{\pi}) < \alpha_x.
+$$
+
+Interpretation in one sentence: with commitment, policy behaves as if it places a *lower effective weight* on output-gap stabilization in the targeting rule, because credibility improves the inflation-output trade-off via expectations.
+
+### Step-by-step derivation of $\alpha_x^c = \alpha_x(1-\beta\rho_{\pi})$ (Slides)
+
+The slides provide the equilibrium responses under this simple-rule commitment class:
+
+$$
+\pi_t = \alpha_x^c\Psi^c u_t^{\pi}, \quad x_t = -\kappa\Psi^c u_t^{\pi},
+\quad
+\Psi^c = \frac{1}{\kappa^2 + \alpha_x^c(1-\beta\rho_{\pi})}.
+$$
+
+**Step 1 (Write per-period loss under the rule)**
+
+Start from the (Lecture 4) per-period loss:
+
+$$
+\ell_t = \frac{1}{2}\left(\pi_t^2 + \alpha_x x_t^2\right).
+$$
+
+Insert the response formulas (both $\pi_t$ and $x_t$ are proportional to $u_t^{\pi}$):
+
+$$
+\ell_t
+= \frac{1}{2}(\Psi^c)^2\left((\alpha_x^c)^2 + \alpha_x\kappa^2\right)\left(u_t^{\pi}\right)^2.
+$$
+
+Math move: factor out $(\Psi^c u_t^{\pi})^2$.
+
+Economic meaning: under a linear rule, the shock $u_t^{\pi}$ is the state, and policy chooses a coefficient that determines how much inflation and the welfare gap move per unit of the shock.
+
+**Step 2 (Reduce the choice of $\alpha_x^c$ to a coefficient minimization problem)**
+
+Up to a constant scaling, minimizing discounted loss over $\alpha_x^c$ is equivalent to minimizing:
+
+$$
+F(\alpha_x^c) \equiv
+\frac{(\alpha_x^c)^2 + \alpha_x\kappa^2}{\left(\kappa^2 + \alpha_x^c(1-\beta\rho_{\pi})\right)^2}.
+$$
+
+This is exactly the object shown in the slide’s derivative steps.
+
+**Step 3 (Differentiate and solve)**
+
+Let $A \equiv (1-\beta\rho_{\pi})$ and $D(\alpha) \equiv \kappa^2 + \alpha A$.
+Then:
+
+$$
+F(\alpha) = \frac{\alpha^2 + \alpha_x\kappa^2}{D(\alpha)^2}.
+$$
+
+Differentiate:
+
+$$
+F'(\alpha) = 0
+\;\Longleftrightarrow\;
+2\alpha D(\alpha) - 2(\alpha^2 + \alpha_x\kappa^2)A = 0.
+$$
+
+Divide by $2$ and substitute $D(\alpha)=\kappa^2+\alpha A$:
+
+$$
+\alpha(\kappa^2+\alpha A) = (\alpha^2 + \alpha_x\kappa^2)A.
+$$
+
+Cancel the $\alpha^2 A$ terms on both sides:
+
+$$
+\alpha\kappa^2 = \alpha_x\kappa^2 A.
+$$
+
+Since $\kappa^2>0$, conclude:
+
+$$
+\alpha_x^c = \alpha_x(1-\beta\rho_{\pi}).
+$$
+
+Economic meaning: persistence ($\rho_{\pi}$) and patience ($\beta$) raise the value of being credible. When $\beta\rho_{\pi}$ is high, commitment makes it optimal to act more aggressively against inflationary wedges.
+
+<QuizCard
+  client:load
+  id="lecture5-simple-commitment"
+  lectureSlug="lecture-05"
+  question="What is the key result of commitment to a simple targeting rule in this lecture?"
+  hints={[
+    'Look at the relation between alpha_x^c and alpha_x.',
+    'The gain comes from expectations and trade-off improvement, not from removing the loss on output gaps.',
+  ]}
+  options={[
+    {
+      label: 'The central bank should set alpha_x^c above alpha_x to place less weight on inflation.',
+      correct: false,
+      explanation: 'The derived result is the opposite: alpha_x^c is below alpha_x in this setup.',
+    },
+    {
+      label: 'The optimum implies alpha_x^c = alpha_x (1 - beta rho_pi), which is below alpha_x.',
+      correct: true,
+      explanation: 'Correct. This captures the stricter inflation-response stance under commitment.',
+    },
+    {
+      label: 'Commitment removes cost-push shocks from the NKPC.',
+      correct: false,
+      explanation: 'No. Cost-push shocks remain; commitment changes how policy and expectations react to them.',
+    },
+  ]}
+/>
+
+## Commitment II: Full State-Contingent Commitment (History Dependence)
+
+The second block removes the simple-rule restriction and lets the central bank choose full state-contingent sequences
+for future inflation and output gaps.
+
+The commitment note (Sveen) writes the commitment Lagrangian (schematically) as a discounted sum of:
+
+- the quadratic loss in $(\pi_t,x_t)$
+- plus multipliers on the NKPC constraints in each future period/state
+
+The key is that with forward-looking constraints, the multiplier becomes a state variable: past promises affect today’s FOCs.
+
+### Step-by-step derivation of the history-dependent targeting relation (Slides + Sveen note)
+
+The slide deck’s commitment-II first-order conditions can be summarized as two relationships.
+
+**Step 1 (FOC with respect to $x_t$ gives a multiplier-output link)**
+
+From the FOC in the notes/slides, you obtain:
+
+$$
+\lambda_t = \frac{\alpha_x}{\kappa}x_t.
+$$
+
+Math move: the multiplier scales the marginal cost of relaxing the NKPC constraint; with a quadratic loss, it is proportional to $x_t$.
+
+Economic meaning: if policy is pushing $x_t$ far from efficient output, the shadow value of the Phillips-curve constraint becomes large.
+
+**Step 2 (FOC with respect to $\pi_t$ creates multiplier dynamics)**
+
+Because inflation appears in the NKPC both today and (discounted) tomorrow, the FOC links adjacent multipliers:
+
+$$
+\lambda_t = \lambda_{t-1} - \pi_t,
+\qquad
+\lambda_{-1}=0.
+$$
+
+Math move: the lagged multiplier appears because commitment treats the entire planned path consistently across time.
+
+Economic meaning: if inflation is above target today, the promised plan "builds up" a state variable that forces future policy to lean the other way.
+This is the origin of history dependence.
+
+**Step 3 (Combine to obtain the history-dependent targeting rule)**
+
+Substitute $\lambda_t = (\alpha_x/\kappa)x_t$ into the multiplier-dynamics equation:
+
+$$
+\frac{\alpha_x}{\kappa}x_t = \frac{\alpha_x}{\kappa}x_{t-1} - \pi_t
+\Rightarrow
+x_t - x_{t-1} = -\frac{\kappa}{\alpha_x}\pi_t.
+$$
+
+This is the core history-dependence condition highlighted in the lecture.
+
+### Interpretation: why this looks like “memory” (and why it helps)
+
+Compare with discretion:
+
+- discretion: $x_t$ is tied to $\pi_t$ *within the period*
+- commitment: the change in $x_t$ is tied to $\pi_t$, so yesterday matters
+
+This "memory" is not decoration. It is the mechanism through which commitment changes expectations and improves the trade-off.
+
+<QuizCard
+  client:load
+  id="lecture5-history-rule"
+  lectureSlug="lecture-05"
+  question="What does the state-contingent commitment condition x_t - x_{t-1} = -(kappa/alpha_x) pi_t imply?"
+  hints={[
+    'Compare this with the discretionary condition that only uses current-period variables.',
+    'Look for memory/history in policy trade-offs.',
+  ]}
+  options={[
+    {
+      label: 'Policy under commitment is history-dependent because current targets depend on previously chosen paths.',
+      correct: true,
+      explanation: 'Yes. The lagged term is the mathematical signature of commitment-based history dependence.',
+    },
+    {
+      label: 'Commitment and discretion are equivalent once shocks are persistent.',
+      correct: false,
+      explanation: 'Persistence affects magnitudes, but the targeting-condition structure still differs.',
+    },
+    {
+      label: 'The condition means inflation has no role in optimal policy under commitment.',
+      correct: false,
+      explanation: 'Inflation is central in the condition; it drives how the welfare-relevant gap must adjust over time.',
+    },
+  ]}
+/>
+
+## Implementation Perspective (Why Institutions Start To Matter)
+
+The interest-rate note for discretion already emphasizes a gap between:
+
+- describing an optimal allocation in terms of $(\pi_t,x_t)$
+- and writing an implementable instrument rule that uniquely generates it
+
+Under commitment, the implementation problem remains, and the history dependence adds further realism constraints.
+This is why policy credibility and institutions naturally become central in Lecture 6.
+
+For more active recall practice, use the **Quizzes** page and filter by Lecture 5.
+
+## Common Mistakes / Pitfalls
+
+- Saying commitment means "lower inflation today" without discussing expectations and the promised future path.
+- Ignoring the role of shock persistence ($\rho_{\pi}$) in the gain from commitment.
+- Confusing "commitment to a simple rule family" with "full state-contingent commitment."
+- Forgetting that history dependence comes from the intertemporal first-order conditions (the multiplier dynamics), not from ad hoc inertia.
+
+## Exam-Useful Takeaways (What You Should Be Able To Reproduce)
+
+- Explain in words why commitment improves outcomes: expectations management changes the trade-off, not just today’s FOC.
+- Reproduce the simple-rule commitment result $\alpha_x^c = \alpha_x(1-\beta\rho_{\pi})$ and explain why it is below $\alpha_x$.
+- Derive the history-dependent targeting rule $x_t - x_{t-1} = -(\kappa/\alpha_x)\pi_t$ from the commitment FOCs and interpret it.
+- Explain how this lecture connects mechanically to time inconsistency and independence in Lecture 6.
+
+<QuizCard
+  client:load
+  id="lecture5-simple-commitment"
+  lectureSlug="lecture-05"
+  question="What is the key result of commitment to a simple targeting rule in this lecture?"
+  hints={[
+    'Look at the relation between alpha_x^c and alpha_x.',
+    'The gain comes from expectations and trade-off improvement, not from removing the loss on output gaps.',
+  ]}
+  options={[
+    {
+      label: 'The central bank should set alpha_x^c above alpha_x to place less weight on inflation.',
+      correct: false,
+      explanation: 'The derived result is the opposite: alpha_x^c is below alpha_x in this setup.',
+    },
+    {
+      label: 'The optimum implies alpha_x^c = alpha_x (1 - beta rho_pi), which is below alpha_x.',
+      correct: true,
+      explanation: 'Correct. This captures the stricter inflation-response stance under commitment.',
+    },
+    {
+      label: 'Commitment removes cost-push shocks from the NKPC.',
+      correct: false,
+      explanation: 'No. Cost-push shocks remain; commitment changes how policy and expectations react to them.',
+    },
+  ]}
+/>
+
+<QuizCard
+  client:load
+  id="lecture5-history-rule"
+  lectureSlug="lecture-05"
+  question="What does the state-contingent commitment condition x_t - x_{t-1} = -(kappa/alpha_x) pi_t imply?"
+  hints={[
+    'Compare this with the discretionary condition that only uses current-period variables.',
+    'Look for memory/history in policy trade-offs.',
+  ]}
+  options={[
+    {
+      label: 'Policy under commitment is history-dependent because current targets depend on previously chosen paths.',
+      correct: true,
+      explanation: 'Yes. The lagged term is the mathematical signature of commitment-based history dependence.',
+    },
+    {
+      label: 'Commitment and discretion are equivalent once shocks are persistent.',
+      correct: false,
+      explanation: 'Persistence affects magnitudes, but the targeting-condition structure still differs.',
+    },
+    {
+      label: 'The condition means inflation has no role in optimal policy under commitment.',
+      correct: false,
+      explanation: 'Inflation is central in the condition; it drives how the welfare-relevant gap must adjust over time.',
+    },
+  ]}
+/>

@@ -1,0 +1,261 @@
+---
+title: Lecture 10
+number: 10
+topic: Debt and Debt Crises
+summary: Extend the debt block into political incentives, sustainable debt ratios, and default-risk crisis dynamics with multiple equilibria.
+status: authored
+estimatedStudyHours: 6
+sourceFiles:
+  - Lecture 10/Lecture 10.pdf
+  - Lecture 10/Handwrittennotes1103.pdf
+  - Lecture 10/w18855.pdf
+  - Lecture 10/w2867.pdf
+learningObjectives:
+  - Explain strategic debt accumulation as a political-economy motive for debt issuance.
+  - Derive the sustainable primary-balance condition when the debt-to-GDP ratio is constant.
+  - Derive the default-risk pricing condition and the default-probability mapping used in the lecture.
+  - Explain why sovereign-debt crises can feature multiple equilibria and self-fulfilling dynamics.
+examFocus:
+  - Use the condition $(G-T)/Y = (g-r)\lambda$ to reason about when persistent deficits can be consistent with a stable debt ratio.
+  - 'In the crisis block, keep symbols straight: inflation is $\pi$ while default probability is also written $\pi$ in the slides (we write $\pi^{def}$).'
+  - 'Explain the feedback loop: higher perceived default risk raises required returns, which can raise default risk further.'
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+import DebtCrisisLens from '../../components/learning/DebtCrisisLens.astro';
+
+## Overview
+
+Lecture 10 continues the fiscal block by moving from "debt arithmetic" to "debt dynamics under incentives and risk".
+The slide deck is structured around:
+
+1. political-economy motives for debt
+2. sustainable debt ratios (debt relative to income)
+3. a sovereign-debt-crisis model where default risk and interest rates interact
+
+## Part A: Quick recap (from Lecture 9)
+
+Lecture 9 built the government budget constraint and the no-Ponzi restriction. Lecture 10 uses that as the baseline
+and adds two extra layers:
+
+- politics: why governments may want debt (strategic constraints on future policy)
+- markets: why required interest rates can jump as default risk changes
+
+## Part B: Political economy of government debt
+
+The lecture defines political economy as "economic tools applied to politics" and highlights that political processes
+can generate inefficient outcomes.
+
+The key mechanism named in the slides is **strategic debt accumulation**:
+
+- a government can finance spending with debt to limit the choices of later governments
+- debt becomes a commitment device that reallocates future fiscal space, not just a financing method
+
+Exam-safe wording: strategic debt is about *constraining future policy*, not about "forgetting to balance the budget".
+
+## Part C: Sustainable debt ratios
+
+This part derives a simple sustainability rule for **nominal debt** relative to **nominal GDP**.
+
+### C1. Nominal debt flow equation
+
+The slide uses:
+
+- $B_t$ = nominal debt
+- $P_t$ = price level
+- $G_t$ = real spending, $T_t$ = real taxes
+- $i_t$ = nominal interest rate
+
+Nominal debt evolution:
+
+$$
+\dot B_t = P_t(G_t - T_t) + i_t B_t
+$$
+
+### C2. Stable debt-to-GDP ratio condition
+
+Let nominal GDP be $Y_t^N = P_t Y_t$. Its growth rate is:
+
+$$
+\frac{\dot Y_t^N}{Y_t^N} = \pi_t + g_t
+$$
+
+where $\pi_t$ is inflation and $g_t$ is real growth.
+
+Define the debt ratio:
+
+$$
+\lambda \equiv \frac{B_t}{Y_t^N}
+$$
+
+If $\lambda$ is constant, debt and nominal GDP grow at the same rate:
+
+$$
+\frac{\dot B_t}{B_t} = \frac{\dot Y_t^N}{Y_t^N} = \pi_t + g_t
+$$
+
+Plugging $\dot B_t = (\pi_t + g_t)B_t$ into the debt-flow equation and dividing by $Y_t^N$ gives the slide's deficit rule:
+
+$$
+\frac{P_t(G_t - T_t)}{Y_t^N} = (\pi_t + g_t - i_t)\frac{B_t}{Y_t^N}
+$$
+
+Using the Fisher approximation $i_t \approx r_t + \pi_t$ yields:
+
+$$
+\frac{P_t(G_t - T_t)}{Y_t^N} = (g_t - r_t)\lambda
+$$
+
+Interpretation emphasized in the lecture:
+
+- if $g>r$, you can run a primary deficit ($G>T$) and still keep debt ratio stable
+- if $r>g$, stabilizing the ratio requires primary surpluses
+
+The slide then adds two endogeneity warnings:
+
+- reducing $G-T$ can reduce $g$ (austerity-growth feedback; the slide mentions Greece)
+- high $B/Y$ can increase $r$ (risk premia / credibility effects)
+
+## Part D: Debt crises with default risk
+
+This section builds a default-risk pricing loop that can generate multiple equilibria.
+
+Important notation warning: in this block the slides use $\pi$ for **default probability** (not inflation). Here we
+write $\pi^{def}$.
+
+### D1. Investor pricing condition
+
+Let:
+
+- $R$ be the gross interest factor on government debt ($R=1+r$)
+- $R'$ be the risk-free gross interest factor
+- $\pi^{def}$ be probability of default (assume zero payoff in default in the slide's simplest logic)
+
+The slide's investor condition is:
+
+$$
+(1-\pi^{def})R = R'
+$$
+
+So higher default probability requires a higher promised return $R$.
+
+### D2. Default probability as a function of required repayment
+
+Let $T$ be uncertain tax income. Default occurs when taxes are insufficient to repay:
+
+$$
+T < R D
+$$
+
+So:
+
+$$
+\pi^{def} = \Pr(T < RD) = F(RD)
+$$
+
+where $F(\cdot)$ is the CDF of $T$.
+
+### D3. Equilibrium and multiple equilibria
+
+Equilibrium requires both:
+
+- pricing: $(1-\pi^{def})R=R'$
+- repayment risk: $\pi^{def}=F(RD)$
+
+Graphically, this can produce:
+
+- a low-risk equilibrium (stable)
+- a higher-risk equilibrium (unstable)
+- a collapse equilibrium where markets do not buy debt (the slide describes $R=\infty$, $\pi^{def}=1$)
+
+<DebtCrisisLens />
+
+### D4. Slide implications you should be able to explain
+
+The deck lists four exam-relevant implications:
+
+1. multiple equilibria and self-fulfilling beliefs: higher $\pi^{def}$ implies higher $R$, and higher $R$ increases $\pi^{def}$
+2. small differences in fundamentals can generate large outcome differences; some parameter regions can have no interior equilibrium
+3. defaults can be "unexpected": intermediate default probabilities can be hard to sustain when uncertainty is low
+4. fundamentals still matter: higher $D$, higher $R'$, and weaker fiscal capacity (the distribution $F$) raise default likelihood; the slide argues for prudent debt ratios
+
+## Enrichment reading (optional, but useful)
+
+The folder includes two NBER working papers used as background:
+
+- `w18855.pdf` (Tomz & Wright): a survey of empirical research on sovereign debt and default
+- `w2867.pdf` (Eichengreen & Portes): historical perspective on debt episodes and crisis resolution (1930s vs 1980s)
+
+If you read them for exam prep, focus on the mapping between:
+
+- default events and fundamentals (output/tax capacity, debt levels, external shocks)
+- market access and the speed of crisis resolution
+
+## Common pitfalls
+
+- Mixing up inflation $\pi$ with default probability $\pi^{def}$.
+- Treating sustainability as a one-period balanced-budget requirement.
+- Using $r-g$ arguments without mentioning that $r$ and $g$ can react to fiscal policy and debt levels.
+- Describing debt crises as purely "fundamental" or purely "self-fulfilling" (the lecture is explicit that both matter).
+
+## Control questions
+
+1. Starting from $\dot B_t = P_t(G_t - T_t) + i_tB_t$, derive $(G-T)/Y = (g-r)\lambda$ under a constant debt ratio.
+2. Why can raising interest rates increase the probability of default in the lecture's crisis model?
+3. What does "strategic debt accumulation" mean in one sentence?
+
+<QuizCard
+  client:load
+  id="lecture10-sustainable-deficit"
+  lectureSlug="lecture-10"
+  question="In the lecture's sustainability rule, when can a government run a primary deficit (G > T) while keeping debt-to-GDP stable?"
+  hints={[
+    'Use (G - T)/Y = (g - r) λ.',
+    'Focus on the sign of (g - r).',
+  ]}
+  options={[
+    {
+      label: 'When g > r, because growth can offset the debt burden at a given debt ratio.',
+      correct: true,
+      explanation: 'Correct. If growth exceeds the real interest rate, the lecture notes that G > T can be consistent with a stable ratio.',
+    },
+    {
+      label: 'Always, because debt-to-GDP is independent of the primary balance.',
+      correct: false,
+      explanation: 'No. The primary balance enters directly; stability depends on g, r, and λ.',
+    },
+    {
+      label: 'Only when inflation is high, regardless of real growth and real rates.',
+      correct: false,
+      explanation: 'Inflation affects nominal quantities, but the slide’s key condition reduces to (g - r) once i ≈ r + π is used.',
+    },
+  ]}
+/>
+
+<QuizCard
+  client:load
+  id="lecture10-multiple-equilibria"
+  lectureSlug="lecture-10"
+  question="Why can the lecture's sovereign-debt crisis model generate self-fulfilling default dynamics?"
+  hints={[
+    'Pricing makes R rise when default probability rises.',
+    'Higher R increases required repayment RD, which can raise default probability through F(RD).',
+  ]}
+  options={[
+    {
+      label: 'Because higher perceived default risk raises required returns, which can raise default risk further via repayment capacity.',
+      correct: true,
+      explanation: 'Yes. That feedback loop is the core multiple-equilibria mechanism in the slides.',
+    },
+    {
+      label: 'Because default is always impossible when taxes are uncertain.',
+      correct: false,
+      explanation: 'Uncertainty about taxes is what creates default probability in the first place.',
+    },
+    {
+      label: 'Because the risk-free rate R′ is always zero in the model.',
+      correct: false,
+      explanation: 'No. The model uses a risk-free factor R′ and compares risky debt pricing to it.',
+    },
+  ]}
+/>

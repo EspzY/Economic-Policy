@@ -1,0 +1,81 @@
+---
+import GuidedSolution from '../../components/learning/GuidedSolution';
+import SourceLinks from '../../components/SourceLinks.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const seminarFiles = [
+  'Problem sets/Seminar 1/GRA6631_TA1_Exercises.pdf',
+  'Problem sets/Seminar 1/GRA6631_NaturalRate.pdf',
+  'Problem sets/Seminar 1/Seminar_1_GRA6631_2025_Solutions.pdf',
+];
+---
+
+<BaseLayout title="Seminar 1 Workbench | Economic Policy Study Site">
+  <section class="article-grid">
+    <article class="article-shell">
+      <div>
+        <p class="eyebrow">Problem-solving support</p>
+        <h1>Seminar 1 Workbench</h1>
+        <p class="card-subtitle">Baseline New Keynesian model shock reasoning</p>
+      </div>
+
+      <p>
+        This workbench uses the Seminar 1 sheet equations directly. The first guided exercise focuses on the
+        qualitative impact of a temporary positive technology shock in the baseline NK model.
+      </p>
+
+      <div class="callout">
+        Scope note: this solution path is tied to the model structure used in course material. If your lecture
+        notation differs slightly, map each step conceptually rather than memorizing symbols.
+      </div>
+
+      <GuidedSolution
+        client:load
+        id="exercise:seminar1:technology-shock"
+        title="Exercise 1: Temporary positive technology shock"
+        prompt="Suppose the economy starts in steady state and is hit by a temporary positive technology shock. Describe the impact response of output, potential output, inflation, and the natural real interest rate."
+        hints={[
+          'Start by separating actual output from potential output. Both can move in the same direction while the output gap behaves differently.',
+          'Use the marginal-cost channel: higher productivity reduces unit labor cost pressure for given wages.',
+          'For the natural real rate, use the course expression and check the sign on the technology-shock term.',
+        ]}
+        steps={[
+          {
+            title: 'Step 1: Map the shock into production conditions',
+            detail:
+              'A positive technology shock raises productivity. In the NK setup, this pushes flexible-price (potential) output up on impact.',
+          },
+          {
+            title: 'Step 2: Determine potential output',
+            detail:
+              'Potential output rises because the economy can produce more with given inputs when productivity is higher. This is the direct supply-side effect.',
+          },
+          {
+            title: 'Step 3: Reason about inflation via marginal cost',
+            detail:
+              'The seminar equations link inflation to marginal-cost pressure. A positive productivity shock tends to reduce real marginal cost pressure, which pushes inflation downward on impact in the baseline case.',
+          },
+          {
+            title: 'Step 4: Reason about actual output',
+            detail:
+              'Actual output typically rises on impact, but the size depends on policy response and demand-side terms. The robust direction in this setup is an increase in activity relative to the pre-shock steady state.',
+          },
+          {
+            title: 'Step 5: Use the natural-rate expression for sign discipline',
+            detail:
+              'In the course model family, the natural real rate includes a technology-shock term with negative loading when persistence is below one. Under that parameterization, a temporary positive technology shock lowers the natural real rate on impact.',
+          },
+          {
+            title: 'Step 6: Final qualitative summary',
+            detail:
+              'Impact directions (baseline): output up, potential output up, inflation down, natural real rate down. Always mention that magnitudes and exact paths depend on persistence and policy closure.',
+          },
+        ]}
+      />
+    </article>
+
+    <div>
+      <SourceLinks files={seminarFiles} title="Seminar 1 Sources" />
+    </div>
+  </section>
+</BaseLayout>

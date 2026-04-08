@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import LectureCard from '../../components/LectureCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lectures = (await getCollection('lectures')).sort((left, right) => left.data.number - right.data.number);
+---
+
+<BaseLayout title="Lectures | Economic Policy Study Site">
+  <section class="page-intro">
+    <p class="eyebrow">Lecture-by-lecture</p>
+    <h1>Lecture Modules</h1>
+    <p>
+      Each module links back to the real course PDFs and is being expanded into a canonical study page with
+      intuition, theory, derivations, exam focus, and active recall.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="callout">
+      Source verification note: lectures 5 to 7 contain a small numbering/topic mismatch between the lecture plan
+      and some folder contents. The module titles currently follow the inspected PDF titles rather than guessing.
+    </div>
+  </section>
+
+  <section class="lecture-grid section">
+    {lectures.map((lecture) => <LectureCard lecture={lecture} />)}
+  </section>
+</BaseLayout>
+

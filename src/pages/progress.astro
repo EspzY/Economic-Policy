@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ProgressDashboard from '../components/progress/ProgressDashboard';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lectures = (await getCollection('lectures')).sort((left, right) => left.data.number - right.data.number);
+const lectureSummaries = lectures.map((lecture) => ({
+  slug: lecture.id,
+  title: lecture.data.title,
+  topic: lecture.data.topic,
+}));
+---
+
+<BaseLayout title="Progress Dashboard | Economic Policy Study Site">
+  <section class="page-intro">
+    <p class="eyebrow">Local effort tracker</p>
+    <h1>Progress Dashboard</h1>
+    <p>
+      This dashboard stores progress locally in your browser. Use it to keep momentum visible and to spot what part
+      of the syllabus still needs work.
+    </p>
+  </section>
+
+  <ProgressDashboard client:load lectures={lectureSummaries} />
+</BaseLayout>

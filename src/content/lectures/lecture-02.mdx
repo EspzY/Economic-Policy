@@ -1,0 +1,402 @@
+---
+title: Lecture 2
+number: 2
+topic: The Three-Equation New Keynesian Model and the Transmission of Shocks
+summary: Build a usable map of the baseline New Keynesian model and learn what each equation contributes to policy analysis.
+status: authored
+estimatedStudyHours: 5
+sourceFiles:
+  - Lecture 2/GRA6631_2026_Lecture2.pdf
+  - Lecture 2/GRA6631_Complementary_Lecture2.pdf
+  - Lecture 2/Derivation notes Markups and nkpc derivation.pdf
+  - Lecture 2/Derivation notes_ Finding natural real interest rate.pdf
+  - Lecture 2/Derivation notes_ Proportionality between mc gap and output gap.pdf
+  - Problem sets/Seminar 1/GRA6631_TA1_Exercises.pdf
+learningObjectives:
+  - Explain each equation in the three-equation NK model in words and identify the economic mechanism behind each term.
+  - Define output, natural output, the output gap, the real rate, and the natural real rate (and avoid mixing model objects with empirical proxies).
+  - Derive the gap-form NKPC and DIS equations from the micro blocks at the level used in the lecture slides and notes.
+  - Use the model to reason qualitatively about monetary, discount-factor, and technology shocks.
+examFocus:
+  - Be able to explain every term in the reduced-form equations in words.
+  - Know how the richer household-and-firm setup collapses to the three-equation representation.
+  - Practice shock reasoning rather than memorizing isolated conclusions.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+import TransmissionFlow from '../../components/learning/TransmissionFlow.astro';
+
+## Big Picture (Why This Lecture Matters)
+
+Lecture 2 is where the monetary-policy block becomes operational. The slide deck frames the key contrast that motivates the entire NK approach:
+
+- flexible-price (neoclassical) models: prices adjust immediately; monetary policy is (mostly) neutral for real output
+- New Keynesian models: a neoclassical core plus sticky prices; monetary policy can have real effects in the short run
+
+If you learn only the equations but not the logic, later lectures will feel like memorization. If you learn the logic, later lectures feel like variations on one template.
+
+### Connection to later lectures
+
+- Lecture 3 uses the same system to discuss determinacy/uniqueness and divine coincidence.
+- Lecture 4 introduces a cost-push wedge, which reintroduces a real trade-off.
+- Lectures 5 to 7 rely on expectations discipline (commitment, forward guidance, Phillips curve evidence).
+
+## The Three-Equation NK Core (And What Each Equation Does)
+
+The lecture slides reduce a richer micro-founded model to the three equations you will use in most exam problems:
+
+$$
+\pi_t = \beta E_t \pi_{t+1} + \kappa \tilde{y}_t
+$$
+
+$$
+\tilde{y}_t = E_t \tilde{y}_{t+1} - \frac{1}{\sigma}\left(i_t - E_t\pi_{t+1} - r_t^n\right)
+$$
+
+$$
+i_t = \rho + \phi_\pi \pi_t + \phi_y \tilde{y}_t + v_t
+$$
+
+Now translate the logic before you do algebra:
+
+- **NKPC:** inflation is forward-looking and moves with real pressure (in this baseline, summarized by the output gap via marginal cost).
+- **DIS:** the output gap reacts to the **real-rate gap**: $r_t - r_t^n$ (actual real rate relative to the natural real rate).
+- **Policy rule:** policy reacts systematically to inflation and the gap, plus an unsystematic monetary policy shock $v_t$.
+
+<TransmissionFlow />
+
+## Symbols, Parameters, And Model Objects (Do Not Skip)
+
+Lecture 2 defines the vocabulary you will reuse everywhere. The biggest learning payoff in this lecture is getting these objects straight.
+
+| Symbol | Meaning in this course | Common student mistake |
+|---|---|---|
+| $y_t$ | output (GDP) | treating it as "demand" without checking definitions |
+| $y_t^n$ | natural (flexible-price) output | treating it as a statistical trend; here it is a model object |
+| $\tilde{y}_t \equiv y_t - y_t^n$ | output gap | confusing it with output growth |
+| $\pi_t \equiv p_t - p_{t-1}$ | inflation | assuming lagged inflation appears in baseline NKPC (it does not) |
+| $i_t$ | nominal policy rate | mixing nominal and real rates |
+| $r_t \equiv i_t - E_t\pi_{t+1}$ | real interest rate | forgetting the expectations term |
+| $r_t^n$ | natural real rate (real rate under flexible prices) | treating it as directly observed |
+| $\beta$ | discount factor | forgetting it also weights expected inflation in NKPC |
+| $\sigma$ | intertemporal substitution parameter | forgetting the DIS sensitivity is scaled by $1/\sigma$ |
+| $\phi$ | labor-supply curvature parameter in the slides | mixing it up with $\phi_\pi$ and $\phi_y$ |
+| $\theta$ | Calvo price stickiness | forgetting average price duration is $1/(1-\theta)$ |
+| $z_t$ | discount-factor (demand) shock | confusing it with the policy shock |
+| $v_t$ | monetary policy shock | calling all policy movements "shocks" |
+| $a_t$ | technology (supply) shock | forgetting it moves $y_t^n$ directly in this baseline |
+| $\mu$ | markup-related wedge (slides: $mc=-\mu$ under flexible prices) | missing why higher markups reduce natural output |
+
+Checkpoint for yourself: if you cannot define $y_t^n$ and $r_t^n$ in one sentence each, the later "gap form" derivations will feel like magic.
+
+## Preliminaries: Steady State And Log-Linearization Language (Slides)
+
+Lecture 2 repeatedly uses "log-linearized" variables. The slides summarize the convention:
+
+- the model is log-linearized around a steady state with **zero inflation** (the inflation target is set to zero in the baseline model)
+- this is a model of the business cycle, so steady-state output growth is set to zero
+- upper-case variables belong to the non-linear model; lower-case variables are logs/linear deviations
+
+Example from the slides:
+
+$$
+\frac{W_t}{P_t} = C_t^{\sigma}N_t^{\phi}
+\quad \Rightarrow \quad
+w_t - p_t = \sigma c_t + \phi n_t
+$$
+
+Math move: take logs and linearize around steady state.
+
+Economic meaning: the real wage moves with consumption and labor (preferences), and this will feed into marginal cost.
+
+## Derivation A: Natural Output $y_t^n$ Under Flexible Prices (Slides)
+
+The slide deck derives natural output by combining the flexible-price (natural) wage equation with the flexible-price marginal-cost condition.
+
+### Step 1 (Use flexible-price marginal cost)
+
+Under flexible prices, the slides state marginal cost is pinned down by the desired markup:
+
+$$
+mc_t^n = mc = -\mu
+$$
+
+and marginal cost is defined as:
+
+$$
+mc_t = w_t - p_t - a_t
+$$
+
+So under flexible prices:
+
+$$
+w_t^n - p_t^n = -\mu + a_t
+$$
+
+### Step 2 (Insert into labor supply and rewrite in terms of natural output)
+
+Use the household labor supply condition (slides):
+
+$$
+w_t^n - p_t^n = \sigma c_t^n + \phi n_t^n
+$$
+
+and use market clearing and production under flexible prices:
+
+$$
+y_t^n = c_t^n,\qquad y_t^n = a_t + n_t^n \Rightarrow n_t^n = y_t^n - a_t
+$$
+
+Insert:
+
+$$
+-\mu + a_t = \sigma y_t^n + \phi(y_t^n - a_t)
+$$
+
+### Step 3 (Solve for $y_t^n$)
+
+Collect terms:
+
+$$
+(\sigma+\phi)y_t^n = -\mu + (1+\phi)a_t
+$$
+
+so:
+
+$$
+y_t^n = -\frac{\mu}{\sigma+\phi} + \frac{1+\phi}{\sigma+\phi}a_t
+$$
+
+Economic meaning (slides): natural output is lower when the markup wedge is larger (inefficiency), and in this baseline it moves only with technology shocks.
+
+## Derivation B: Natural Real Rate $r_t^n$ (Slides)
+
+The slides derive $r_t^n$ by combining the Euler equation with the natural consumption path.
+
+### Step 1 (Euler equation, then define the real rate)
+
+The Euler equation in the slides is:
+
+$$
+c_t = E_t c_{t+1} - \frac{1}{\sigma}(i_t - E_t\pi_{t+1} - \rho) + \frac{1}{\sigma}(1-\rho_z)z_t
+$$
+
+Define the real interest rate $r_t \equiv i_t - E_t\pi_{t+1}$ and rewrite:
+
+$$
+c_t = E_t c_{t+1} - \frac{1}{\sigma}(r_t - \rho) + \frac{1}{\sigma}(1-\rho_z)z_t
+$$
+
+### Step 2 (Write the flexible-price version and solve for $r_t^n$)
+
+Under flexible prices, $c_t^n = y_t^n$. Replace $c_t$ by $c_t^n$ and $r_t$ by $r_t^n$:
+
+$$
+c_t^n = E_t c_{t+1}^n - \frac{1}{\sigma}(r_t^n - \rho) + \frac{1}{\sigma}(1-\rho_z)z_t
+$$
+
+Solve for $r_t^n$:
+
+$$
+r_t^n = \rho + \sigma(E_t c_{t+1}^n - c_t^n) + (1-\rho_z)z_t
+$$
+
+### Step 3 (Use the technology AR(1) and the natural output expression)
+
+From Derivation A, $c_t^n = y_t^n$ and $y_t^n$ is affine in $a_t$.
+Using the slide assumption $E_t a_{t+1} = \rho_a a_t$ gives:
+
+$$
+E_t c_{t+1}^n - c_t^n = \frac{1+\phi}{\sigma+\phi}(\rho_a - 1)a_t
+$$
+
+Insert into the $r_t^n$ expression:
+
+$$
+r_t^n = \rho - \sigma\frac{1+\phi}{\sigma+\phi}(1-\rho_a)a_t + (1-\rho_z)z_t
+$$
+
+Economic meaning: discount-factor shocks move the natural rate directly, while technology affects it through expected growth in natural consumption (persistence matters).
+
+## Derivation C: From Marginal Cost To The Output Gap (Slides)
+
+The slide deck shows the proportionality that makes the NKPC usable in gap form:
+
+$$
+mc_t - mc = (\sigma+\phi)\tilde{y}_t
+$$
+
+The key steps in the slides are:
+
+$$
+mc_t - mc
+= \sigma c_t + \phi n_t - a_t - \sigma c_t^n - \phi n_t^n + a_t
+$$
+
+Use $y_t=c_t$, $y_t=a_t+n_t$, and the flexible-price counterparts to obtain:
+
+$$
+mc_t - mc
+= \sigma y_t + \phi(y_t - a_t) - \sigma y_t^n - \phi(y_t^n - a_t)
+= (\sigma+\phi)(y_t - y_t^n)
+= (\sigma+\phi)\tilde{y}_t
+$$
+
+Economic meaning: in this baseline, real marginal-cost pressure is proportional to the output gap because wages are flexible and sticky prices are the key distortion. The slides warn that this proportionality need not hold in richer models.
+
+## Derivation D: NKPC In Gap Form (Slides + NKPC Notes)
+
+The lecture notes derive the NKPC under Calvo pricing as:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \lambda(mc_t - mc)
+$$
+
+with:
+
+$$
+\lambda = \frac{(1-\theta)(1-\beta\theta)}{\theta}
+$$
+
+Insert Derivation C to obtain:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \lambda(\sigma+\phi)\tilde{y}_t
+$$
+
+Define $\kappa \equiv \lambda(\sigma+\phi)$, giving:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa\tilde{y}_t
+$$
+
+## Derivation E: DIS As A Real-Rate-Gap Equation (Slides)
+
+The DIS equation is the Euler equation written in gap language. The exam-safe interpretation is:
+
+- if $r_t > r_t^n$, demand is depressed and the output gap tends to fall
+- if $r_t < r_t^n$, demand is stimulated and the output gap tends to rise
+
+## Shock Transmission: A Reliable Reasoning Routine (Seminar 1)
+
+Most exam questions are not "solve the full model." They are: *reason correctly from a shock to inflation and the output gap.*
+Lecture 2 is training one disciplined template for that reasoning.
+
+### Step 1 (Classify what the shock moves)
+
+Before you touch the NKPC or DIS equation, ask: in *this* lecture's setup, does the shock move:
+
+- **natural output** $y_t^n$ (a flexible-price benchmark)?
+- the **natural real rate** $r_t^n$?
+- the **policy rule** (a monetary-policy shock $v_t$)?
+- or the **Phillips curve** itself (a cost-push wedge)?
+
+In Lecture 2's baseline, the clean picture is:
+
+- technology $a_t$ moves $y_t^n$ (and therefore tends to move $r_t^n$ through expected growth),
+- discount/demand $z_t$ moves $r_t^n$ directly in the slides' formula,
+- monetary-policy shocks move the rule (the $v_t$ term).
+
+### Step 2 (Translate into a real-rate gap)
+
+The DIS equation is written in terms of the **real-rate gap**:
+
+$$
+r_t - r_t^n
+=
+\left(i_t - E_t\pi_{t+1}\right) - r_t^n.
+$$
+
+So your next question is not "what happens to $i_t$?" It is:
+
+> Does the shock push the **actual real rate** above or below the **natural** real rate?
+
+That is the object that tells you whether policy is tight or loose *relative to the benchmark that matters in the NK model*.
+
+<QuizCard
+  client:load
+  id="checkpoint:real-rate-gap"
+  lectureSlug="lecture-02"
+  question="In the DIS equation, which object is the key driver of the output gap (holding expectations fixed) in the baseline model?"
+  hints={[
+    'DIS is the Euler equation written in gap form.',
+    'The term that matters is the real rate relative to its natural counterpart.',
+  ]}
+  options={[
+    {
+      label: 'The nominal policy rate i_t by itself.',
+      correct: false,
+      explanation: 'Not by itself. DIS cares about the real rate and compares it to the natural real rate.',
+    },
+    {
+      label: 'The real-rate gap r_t - r_t^n (where r_t = i_t - E_t pi_{t+1}).',
+      correct: true,
+      explanation: 'Correct. If r_t rises relative to r_t^n, demand is depressed and the output gap tends to fall.',
+    },
+    {
+      label: 'Current inflation pi_t by itself.',
+      correct: false,
+      explanation: 'Inflation matters indirectly (through expected inflation in the real rate and through the Phillips curve), but the DIS channel is the real-rate gap.',
+    },
+  ]}
+/>
+
+### Step 3 (Use DIS to infer the output gap direction)
+
+From DIS:
+
+$$
+\tilde{y}_t = E_t\tilde{y}_{t+1} - \frac{1}{\sigma}(r_t - r_t^n),
+$$
+
+so, holding $E_t\tilde{y}_{t+1}$ fixed, a higher real-rate gap pushes $\tilde{y}_t$ down today.
+
+Economic meaning: if policy (or the shock) makes the real rate high relative to the natural benchmark, households want to postpone spending, so demand pressure falls.
+
+### Step 4 (Feed the gap into the NKPC to infer inflation pressure)
+
+From NKPC:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa\tilde{y}_t,
+$$
+
+so if $\tilde{y}_t$ rises, inflation pressure rises (other things equal).
+
+Economic meaning: a positive output gap is a reduced-form way of saying "real marginal cost is high," so sticky-price firms adjust prices upward more.
+
+### Step 5 (Close the loop with the policy rule)
+
+Finally, remember the system is interactive: once you infer a direction for $\pi_t$ and $\tilde{y}_t$, the policy rule feeds back.
+That feedback is exactly why later lectures (Lecture 3) talk about determinacy and the Taylor principle.
+
+## How To Use The Derivation Notes (Efficiently)
+
+Do not try to memorize long derivations as blocks. Use the derivation notes in Lecture 2 as a toolbox to answer specific exam-relevant questions:
+
+- **What is the benchmark?** ("natural" always means *flexible-price* in these lectures.)
+- **What substitution makes the 3-equation system possible?** (turn marginal cost into an output gap using the proportionality.)
+- **Which steps rely on strong assumptions?** (for example: why the clean proportionality may fail in richer models.)
+
+Minimum you should be able to reproduce without looking:
+
+- define $y_t^n$ and $r_t^n$ in words (flexible-price benchmarks),
+- show the key algebra that yields $mc_t - mc \propto \tilde{y}_t$,
+- explain in words why DIS is a real-rate-gap equation.
+
+For more practice, use the **Quizzes** page and filter by Lecture 2.
+
+## Common Mistakes / Pitfalls
+
+- Treating $y_t^n$ as a statistical trend rather than a model-defined flexible-price allocation.
+- Forgetting that the real rate is $r_t = i_t - E_t\pi_{t+1}$, so expected inflation is part of the transmission channel.
+- Saying "a shock raises the policy rate" without checking whether it also raises expected inflation, so the **real** rate may move differently.
+- Treating NKPC as backward-looking (in this baseline it is forward-looking; later lectures may add wedges or inertia).
+- Doing shock analysis in the wrong order: jumping to NKPC conclusions before checking what happens to $r_t - r_t^n$.
+
+## Exam-Useful Takeaways (What You Should Be Able To Do)
+
+- Write the 3-equation NK system (NKPC, DIS, Taylor rule) and define every object in words.
+- Explain why the DIS equation is about the real-rate gap and why $r_t^n$ is a benchmark, not a directly observed variable.
+- Derive (at the slide/notes level) how the NKPC can be expressed in terms of the output gap via marginal cost.
+- Use the five-step "shock reasoning routine" consistently for technology, discount/demand, and monetary policy shocks.

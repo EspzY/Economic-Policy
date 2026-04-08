@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pastExams } from '../../data/resources';
+import { materialHref } from '../../lib/materials';
+---
+
+<BaseLayout title="Past Exams | Economic Policy Study Site">
+  <section class="page-intro">
+    <p class="eyebrow">Exam archive</p>
+    <h1>Past Exams</h1>
+    <p>
+      Past exams should be used in layers: first to identify recurring topic families, then under time pressure,
+      then again after feedback to repair weak spots.
+    </p>
+  </section>
+
+  <section class="split-grid section">
+    <article class="card">
+      <h2>What the recent exams test</h2>
+      <p>
+        The sampled 2024 paper includes forward guidance, MPC distribution, optimal monetary policy, the slope of
+        the Phillips curve, and Ricardian equivalence. That mix is a good reminder that the final exam rewards both
+        formal reasoning and broad policy understanding.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>How to use the archive</h2>
+      <ul class="bullet-list">
+        <li>Do one exam open-notes first to learn the terrain.</li>
+        <li>Do later attempts timed and in full length.</li>
+        <li>Compare your structure to the official solutions where they exist.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="resource-grid section">
+    {pastExams.map((exam) => (
+      <article class="card resource-card">
+        <p class="eyebrow">{exam.year}</p>
+        <h2>Final exam {exam.year}</h2>
+        <ul>
+          <li>
+            <a href={materialHref(exam.exam)} target="_blank" rel="noreferrer">
+              Open exam PDF
+            </a>
+          </li>
+          {exam.solution ? (
+            <li>
+              <a href={materialHref(exam.solution)} target="_blank" rel="noreferrer">
+                Open solution PDF
+              </a>
+            </li>
+          ) : (
+            <li>No official solution currently available in the local material set.</li>
+          )}
+        </ul>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+

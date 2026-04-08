@@ -1,0 +1,22 @@
+---
+const { lecture } = Astro.props;
+const href = `/lectures/${lecture.id}/`;
+---
+
+<article class="card lecture-card">
+  <div class="lecture-card-topline">
+    <span class="eyebrow">Lecture {lecture.data.number}</span>
+    <span class:list={['status-badge', lecture.data.status]}>{lecture.data.status}</span>
+  </div>
+
+  <h3>{lecture.data.title}</h3>
+  <p class="card-subtitle">{lecture.data.topic}</p>
+  <p>{lecture.data.summary}</p>
+
+  <div class="chip-row">
+    <span class="chip">{lecture.data.estimatedStudyHours}h guided study</span>
+    <span class="chip">{lecture.data.sourceFiles.length} source files</span>
+  </div>
+
+  <a href={href} class="card-link">Open module</a>
+</article>

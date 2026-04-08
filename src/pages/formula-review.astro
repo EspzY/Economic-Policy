@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formulaThemes } from '../data/resources';
+---
+
+<BaseLayout title="Formula Review | Economic Policy Study Site">
+  <section class="page-intro">
+    <p class="eyebrow">Living summary page</p>
+    <h1>Formula and Concept Review</h1>
+    <p>
+      This page is the future landing zone for the condensed review sheet. For now it maps the formula families
+      that need to be mastered across the course.
+    </p>
+  </section>
+
+  <section class="resource-grid section">
+    {formulaThemes.map((theme) => (
+      <article class="card resource-card">
+        <h2>{theme.title}</h2>
+        <p>{theme.note}</p>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+

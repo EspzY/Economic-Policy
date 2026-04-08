@@ -1,0 +1,674 @@
+---
+title: Lecture 3
+number: 3
+topic: Divine Coincidence, Recursive Substitution, and Model Solution Discipline
+summary: Turn the 3-equation NK model into a solvable object, then use that solution discipline to understand divine coincidence, determinacy, and implementable rules.
+status: authored
+estimatedStudyHours: 5
+sourceFiles:
+  - Lecture 3/GRA6631_2026_Lecture3.pdf
+  - Lecture 3/Derivation notes_ the system in matrix form.pdf
+  - Lecture 3/recursive_substitution.pdf
+learningObjectives:
+  - Derive the forward-looking closed-form expressions for inflation and the output gap via recursive substitution.
+  - Combine NKPC + DIS + a Taylor-type rule into the 2x2 matrix system and explain what its coefficients mean.
+  - Explain divine coincidence and the implementability problem (why i_t = r^n_t is not enough).
+examFocus:
+  - Explain when inflation and output-gap stabilization coincide in the baseline model.
+  - Use the Taylor-principle condition correctly when discussing uniqueness.
+  - Distinguish recursive-substitution logic from discretionary optimization in later lectures.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+import TaylorPrincipleExplorer from '../../components/interactive/TaylorPrincipleExplorer';
+import NkEquationMap from '../../components/learning/NkEquationMap.astro';
+
+## Big Picture (Why This Lecture Matters)
+
+Lecture 2 gave you the *ingredients* of the baseline New Keynesian (NK) model. Lecture 3 turns those ingredients into a
+*solvable system* and then uses that solution discipline to teach a key benchmark: **divine coincidence**.
+
+If you really learn Lecture 3 (not just the headlines), you gain three exam-safe skills:
+
+1. You can show *algebraically* why the NKPC is forward-looking (recursive substitution + transversality).
+2. You can explain when an interest-rate rule delivers a **unique** equilibrium and when it permits **sunspot** equilibria.
+3. You can explain what “strict inflation targeting is optimal” means *and* why implementability is not automatic.
+
+### How it connects to the rest of the course
+
+- Lecture 3 is the clean baseline where “targets line up.”
+- Lecture 4 breaks the clean result by adding a wedge (cost-push shocks), which reintroduces a real trade-off.
+- Later lectures reuse the same determinacy/expectations logic when discussing commitment, discretion, and institutions.
+
+## Symbols And Parameters (Read This Before The Algebra)
+
+The course uses model-defined objects that are easy to confuse with empirical counterparts. The output gap here is a
+**model wedge**, not a trend deviation from data.
+
+### Endogenous variables (solved inside the system)
+
+**Inflation $\pi_t$**: defined as $\pi_t \equiv p_t - p_{t-1}$ in the slides.
+
+**Output gap $\tilde{y}_t$**: $\tilde{y}_t \equiv y_t - y_t^n$.
+Economic meaning: “how far output is from the flexible-price benchmark” (the welfare-relevant tightness measure).
+
+**Nominal policy rate $i_t$**: the instrument in the Taylor-type rule.
+
+### Exogenous processes / shocks
+
+**Natural real rate $r_t^n$**: the real rate consistent with flexible prices (a model concept; used to define “neutral” policy).
+
+**Policy shock $v_t$**: disturbance in the interest-rate rule.
+
+**Technology $a_t$ and demand/discount $z_t$**: shocks used in the slide’s expression for $r_t^n$.
+
+### Key parameters
+
+**$\beta \in (0,1)$**: discount factor; also the weight on expected future inflation in NKPC.
+
+**$\sigma>0$**: governs how sensitive demand is to the real-rate gap in DIS.
+
+**$\kappa>0$**: NKPC slope; how strongly the output gap moves inflation.
+
+**$\phi_\pi,\phi_y$**: policy-rule feedback strengths on inflation and output gap.
+
+<QuizCard
+  client:load
+  id="lecture3-symbols-output-gap"
+  lectureSlug="lecture-03"
+  question="In this course’s notation, what is the output gap y~_t?"
+  hints={[
+    'It is defined relative to a model benchmark, not a statistical trend.',
+    'Look at y~_t ≡ y_t - y^n_t in the slides.',
+  ]}
+  options={[
+    {
+      label: 'The deviation of output from a moving-average trend estimated from data.',
+      correct: false,
+      explanation: 'No. Here it is a model concept: output relative to natural (flexible-price) output.',
+    },
+    {
+      label: 'The deviation of output from natural output: y~_t = y_t - y^n_t.',
+      correct: true,
+      explanation: 'Correct. This is the welfare-relevant gap in the baseline NK setup.',
+    },
+    {
+      label: 'The deviation of inflation from target.',
+      correct: false,
+      explanation: 'That would be an inflation gap, not an output gap.',
+    },
+  ]}
+/>
+
+## The Baseline 3-Equation NK Model (And What Each Equation “Does”)
+
+The slide deck writes the baseline block as:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa \tilde{y}_t
+$$
+
+$$
+\tilde{y}_t = E_t \tilde{y}_{t+1} - \frac{1}{\sigma}\left(i_t - E_t\pi_{t+1} - r_t^n\right)
+$$
+
+$$
+i_t = \rho + \phi_{\pi}\pi_t + \phi_y \tilde{y}_t + v_t
+$$
+
+Translate each line into words before you touch algebra:
+
+- **NKPC:** inflation depends on expected future inflation and real pressure (the output gap).
+- **DIS:** demand depends on expected future demand and on the real rate relative to the natural real rate.
+- **Rule:** the policy rate reacts to inflation and the gap (or it can fail to, which matters for determinacy).
+
+<NkEquationMap />
+
+## Derivation 1: Recursive Substitution For The NKPC (No Skipped Steps)
+
+The lecture’s key claim is: **the baseline NKPC is purely forward-looking** (no direct role for lagged inflation).
+The provided `recursive_substitution.pdf` shows the algebra. Below is the same derivation, but with explicit explanation at each move.
+
+### Step 0 (Starting point)
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa \tilde{y}_t
+$$
+
+Math move: write the NKPC at time $t$.
+
+Economic meaning: inflation today is partly expectations-driven ($E_t\pi_{t+1}$) and partly driven by real pressure ($\tilde{y}_t$).
+
+### Step 1 (Write the NKPC one period ahead)
+
+At $t+1$ the same NKPC holds:
+
+$$
+\pi_{t+1} = \beta E_{t+1}\pi_{t+2} + \kappa \tilde{y}_{t+1}
+$$
+
+Math move: shift the same equation forward in time.
+
+Economic meaning: tomorrow’s inflation will depend on tomorrow’s expectations and tomorrow’s output gap.
+
+### Step 2 (Take expectations at time t)
+
+Apply $E_t[\cdot]$ to the $t+1$ equation:
+
+$$
+E_t\pi_{t+1} = \beta E_t\pi_{t+2} + \kappa E_t\tilde{y}_{t+1}
+$$
+
+Math move: use iterated expectations: $E_t(E_{t+1}[\pi_{t+2}]) = E_t[\pi_{t+2}]$.
+
+Economic meaning: what matters for today’s inflation is what agents expect today about future inflation and future gaps.
+
+### Step 3 (Substitute back into the original NKPC)
+
+Insert Step 2 into Step 0:
+
+$$
+\pi_t = \beta(\beta E_t\pi_{t+2} + \kappa E_t\tilde{y}_{t+1}) + \kappa \tilde{y}_t
+$$
+
+so:
+
+$$
+\pi_t = \beta^2 E_t\pi_{t+2} + \kappa \tilde{y}_t + \kappa\beta E_t\tilde{y}_{t+1}
+$$
+
+Math move: substitution plus collecting terms.
+
+Economic meaning: inflation today loads on expected future gaps because firms price today based on expected future conditions.
+
+### Step 4 (Iterate forward T times)
+
+Continuing the same substitution logic yields the finite-horizon expression shown in the note:
+
+$$
+\pi_t
+= \beta^{T+1}E_t\pi_{t+T+1}
+  \kappa \sum_{k=0}^{T}\beta^k E_t\tilde{y}_{t+k}
+$$
+
+Math move: repeated substitution pushes the expectation term further into the future while accumulating output-gap terms.
+
+Economic meaning: because expectations enter, inflation today depends on an entire expected *path* of future gaps, not only on today’s gap.
+
+### Step 5 (Impose the transversality condition)
+
+The lecture explicitly states the transversality condition:
+
+$$
+\lim_{T\to \infty}\beta^{T+1}E_t\pi_{t+T+1} = 0
+$$
+
+which gives the closed-form solution:
+
+$$
+\pi_t = \kappa \sum_{k=0}^{\infty}\beta^k E_t\tilde{y}_{t+k}
+$$
+
+Math move: in the limit, the far-future term disappears, leaving a convergent infinite sum.
+
+Economic meaning: in the baseline NKPC, inflation today is a discounted sum of expected future gaps. That is why expectations management is a first-order policy channel in this model.
+
+<QuizCard
+  client:load
+  id="lecture3-recursive-substitution"
+  lectureSlug="lecture-03"
+  question="What does recursive substitution of the NKPC show under the transversality condition?"
+  hints={[
+    'The result links current inflation to expected future variables.',
+    'Ask yourself: does lagged inflation appear anywhere in the closed form?',
+  ]}
+  options={[
+    {
+      label: 'Current inflation is mainly a function of lagged inflation and does not depend on expected future output gaps.',
+      correct: false,
+      explanation: 'That would be a backward-looking Phillips curve, not the baseline NKPC used here.',
+    },
+    {
+      label: 'Current inflation equals a discounted sum of expected future output gaps.',
+      correct: true,
+      explanation: 'Correct. This is the key forward-looking result emphasized in Lecture 3.',
+    },
+    {
+      label: 'Current inflation depends only on the monetary policy shock v_t.',
+      correct: false,
+      explanation: 'v_t can affect inflation through the system, but the NKPC still links inflation to real pressure via the output gap path.',
+    },
+  ]}
+/>
+
+## Derivation 2: Recursive Substitution For The DIS Equation
+
+The same idea applies to the DIS equation: keep substituting the $t+1$ version into the $t$ version until the future term vanishes.
+The course note shows the final result:
+
+$$
+\tilde{y}_t = -E_t\sum_{k=0}^{\infty}\frac{1}{\sigma}\left(r_{t+k}-r_{t+k}^n\right)
+$$
+
+Here is the step-by-step logic behind it.
+
+### Step 0 (Starting point)
+
+It is convenient to write DIS in real-rate form using the Fisher equation $r_t = i_t - E_t\pi_{t+1}$:
+
+$$
+\tilde{y}_t = E_t\tilde{y}_{t+1} - \frac{1}{\sigma}(r_t - r_t^n)
+$$
+
+Math move: rewrite DIS as “today’s gap equals expected tomorrow’s gap minus the (scaled) real-rate gap.”
+
+Economic meaning: demand is high when the real rate is below the natural real rate.
+
+### Step 1 (Solve one period forward and take expectations)
+
+At $t+1$:
+
+$$
+\tilde{y}_{t+1} = E_{t+1}\tilde{y}_{t+2} - \frac{1}{\sigma}(r_{t+1} - r_{t+1}^n)
+$$
+
+Taking $E_t[\cdot]$:
+
+$$
+E_t\tilde{y}_{t+1} = E_t\tilde{y}_{t+2} - \frac{1}{\sigma}E_t(r_{t+1} - r_{t+1}^n)
+$$
+
+Math move: same expectations step as for the NKPC.
+
+Economic meaning: households plan intertemporally, so today’s demand reacts to the expected path of real rates, not only today’s rate.
+
+### Step 2 (Substitute back and iterate)
+
+Substituting Step 1 into Step 0 pushes the expectation term forward and accumulates real-rate-gap terms.
+After $T$ substitutions the note shows:
+
+$$
+\tilde{y}_t
+= E_t\tilde{y}_{t+T+1}
+-\frac{1}{\sigma}\sum_{k=0}^{T} E_t(r_{t+k}-r_{t+k}^n)
+$$
+
+### Step 3 (Transversality for the gap term)
+
+Impose:
+
+$$
+\lim_{T\to \infty}E_t\tilde{y}_{t+T+1} = 0
+$$
+
+yielding:
+
+$$
+\tilde{y}_t = -\frac{1}{\sigma}\sum_{k=0}^{\infty} E_t(r_{t+k}-r_{t+k}^n)
+$$
+
+Economic meaning: the output gap is high when the real rate is expected to be below its natural benchmark for a sustained period.
+
+## Derivation 3: From Three Equations To The 2x2 Matrix System
+
+The slides move quickly from the 3-equation block to a compact 2x2 forward-looking system. This section fills in the missing algebra.
+
+### Goal
+
+We want a system in the two endogenous variables $(\tilde{y}_t,\pi_t)$ written in terms of expectations $(E_t\tilde{y}_{t+1},E_t\pi_{t+1})$
+and the exogenous composite $(r_t^n - \rho - v_t)$.
+
+### Step A: Substitute the Taylor rule into DIS (eliminate i_t)
+
+Start with DIS:
+
+$$
+\tilde{y}_t = E_t \tilde{y}_{t+1} - \frac{1}{\sigma}\left(i_t - E_t\pi_{t+1} - r_t^n\right)
+$$
+
+Insert the interest-rate rule $i_t = \rho + \phi_\pi \pi_t + \phi_y \tilde{y}_t + v_t$:
+
+$$
+\tilde{y}_t
+= E_t\tilde{y}_{t+1}
+- \frac{1}{\sigma}\left(\rho + \phi_\pi \pi_t + \phi_y \tilde{y}_t + v_t - E_t\pi_{t+1} - r_t^n\right)
+$$
+
+Multiply by $\sigma$ and collect the $\tilde{y}_t$ terms on the left:
+
+$$
+(\sigma+\phi_y)\tilde{y}_t
+= \sigma E_t\tilde{y}_{t+1} + E_t\pi_{t+1} + (r_t^n-\rho-v_t) - \phi_\pi \pi_t
+$$
+
+Math move: substitution + collecting terms.
+
+Economic meaning: demand today depends on expected future demand, expected inflation, fundamentals (via $r_t^n$), and how the policy rule reacts to inflation (the $-\phi_\pi\pi_t$ term).
+
+### Step B: Use the NKPC to eliminate the current π_t from the DIS line
+
+From NKPC:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa\tilde{y}_t
+$$
+
+Substitute this into the right-hand side term $-\phi_\pi \pi_t$:
+
+$$
+(\sigma+\phi_y)\tilde{y}_t
+= \sigma E_t\tilde{y}_{t+1} + E_t\pi_{t+1} + (r_t^n-\rho-v_t) - \phi_\pi(\beta E_t\pi_{t+1} + \kappa\tilde{y}_t)
+$$
+
+Bring the $-\phi_\pi\kappa\tilde{y}_t$ term to the left:
+
+$$
+(\sigma+\phi_y+\phi_\pi\kappa)\tilde{y}_t
+= \sigma E_t\tilde{y}_{t+1} + (1-\beta\phi_\pi)E_t\pi_{t+1} + (r_t^n-\rho-v_t)
+$$
+
+Divide by the common denominator:
+
+$$
+\tilde{y}_t
+= \frac{\sigma}{\sigma+\phi_y+\phi_\pi\kappa}E_t\tilde{y}_{t+1}
+ + \frac{1-\beta\phi_\pi}{\sigma+\phi_y+\phi_\pi\kappa}E_t\pi_{t+1}
+ + \frac{1}{\sigma+\phi_y+\phi_\pi\kappa}(r_t^n-\rho-v_t)
+$$
+
+Math move: eliminate $\pi_t$ using NKPC, then solve for $\tilde{y}_t$.
+
+Economic meaning: the denominator $\sigma+\phi_y+\phi_\pi\kappa$ is “stabilization strength.” Stronger feedback makes it harder for expectations to create large movements today.
+
+### Step C: Plug the solved y~_t back into NKPC to get the π_t line
+
+Start again from NKPC:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa\tilde{y}_t
+$$
+
+Insert the $\tilde{y}_t$ expression:
+
+$$
+\pi_t
+= \frac{\sigma\kappa}{\sigma+\phi_y+\phi_\pi\kappa}E_t\tilde{y}_{t+1}
+ + \left[\beta + \frac{\kappa(1-\beta\phi_\pi)}{\sigma+\phi_y+\phi_\pi\kappa}\right]E_t\pi_{t+1}
+ + \frac{\kappa}{\sigma+\phi_y+\phi_\pi\kappa}(r_t^n-\rho-v_t)
+$$
+
+The slides simplify the square-bracket term to:
+
+$$
+\frac{\kappa + \beta(\sigma+\phi_y)}{\sigma+\phi_y+\phi_\pi\kappa}
+$$
+
+because:
+
+$$
+\beta(\sigma+\phi_y+\phi_\pi\kappa) + \kappa(1-\beta\phi_\pi) = \beta(\sigma+\phi_y)+\kappa
+$$
+
+So the final inflation line is:
+
+$$
+\pi_t
+= \frac{\sigma\kappa}{\sigma+\phi_y+\phi_\pi\kappa}E_t\tilde{y}_{t+1}
+ + \frac{\kappa + \beta(\sigma+\phi_y)}{\sigma+\phi_y+\phi_\pi\kappa}E_t\pi_{t+1}
+ + \frac{\kappa}{\sigma+\phi_y+\phi_\pi\kappa}(r_t^n-\rho-v_t)
+$$
+
+### Step D: Write it in matrix form (exactly as in the slides)
+
+Define:
+
+$$
+\Omega \equiv \frac{1}{\sigma+\phi_y+\phi_\pi\kappa}
+$$
+
+Then:
+
+$$
+\begin{bmatrix}
+\tilde{y}_t \\
+\pi_t
+\end{bmatrix}
+=
+\Omega
+\begin{bmatrix}
+\sigma & 1-\beta\phi_\pi \\
+\sigma\kappa & \kappa + \beta(\sigma+\phi_y)
+\end{bmatrix}
+\begin{bmatrix}
+E_t\tilde{y}_{t+1} \\
+E_t\pi_{t+1}
+\end{bmatrix}
+ + \Omega
+\begin{bmatrix}
+1 \\
+\kappa
+\end{bmatrix}
+(r_t^n-\rho-v_t)
+$$
+
+### Uniqueness and the Taylor principle (as stated in the slides)
+
+The lecture’s uniqueness claim is:
+
+- Eigenvalue discipline: the absolute value of both eigenvalues of the forward-looking matrix must be below one (Blanchard-Kahn condition in the slides).
+
+And the lecture provides the common sufficient condition (assuming $\phi_\pi,\phi_y \ge 0$):
+
+$$
+\kappa(\phi_\pi - 1) + (1-\beta)\phi_y > 0
+$$
+
+<TaylorPrincipleExplorer client:load />
+
+<QuizCard
+  client:load
+  id="lecture3-taylor-principle"
+  lectureSlug="lecture-03"
+  question="Why does Lecture 3 emphasize a strong inflation response (the Taylor principle)?"
+  hints={[
+    'The lecture is not mainly about “better stabilization” here. It is about uniqueness.',
+    'Think: expectations can be self-fulfilling if policy does not react strongly enough.',
+  ]}
+  options={[
+    {
+      label: 'Because it guarantees the lowest possible inflation volatility in every model.',
+      correct: false,
+      explanation: 'Not in every model. The point here is equilibrium uniqueness / determinacy in this setup.',
+    },
+    {
+      label: 'Because it helps rule out indeterminacy (sunspot equilibria) by anchoring expectations and ensuring a unique bounded equilibrium.',
+      correct: true,
+      explanation: 'Correct. Lecture 3 repeatedly ties the Taylor principle to determinacy and sunspot avoidance.',
+    },
+    {
+      label: 'Because it makes the output gap irrelevant by assumption.',
+      correct: false,
+      explanation: 'No. The output gap still matters; the point is how policy feedback shapes expectations and uniqueness.',
+    },
+  ]}
+/>
+
+## Divine Coincidence (The Clean Baseline Benchmark)
+
+The slide deck’s divine-coincidence statement is:
+
+> If monetary policy perfectly stabilizes inflation, the output gap is also stabilized. This argument goes in both directions.
+
+Here is the clean logic in the baseline NKPC without an explicit cost-push shock term.
+
+### Direction 1: strict inflation targeting implies a zero output gap
+
+If strict inflation targeting achieves $\pi_t = 0$ for all $t$, then in particular $E_t\pi_{t+1}=0$. Plug into NKPC:
+
+$$
+0 = \beta\cdot 0 + \kappa\tilde{y}_t \quad \Rightarrow \quad \tilde{y}_t = 0
+$$
+
+### Direction 2: a zero output gap implies inflation stability
+
+If $\tilde{y}_t=0$ for all $t$, NKPC becomes:
+
+$$
+\pi_t = \beta E_t\pi_{t+1}
+$$
+
+Iterating forward and using the transversality condition gives $\pi_t=0$.
+(This is exactly the same “recursive substitution + transversality” move you practiced above.)
+
+### What the slides conclude from this
+
+The deck states that a policy of strict inflation targeting achieves:
+
+$$
+\pi_t = 0,\qquad y_t = y_t^n
+$$
+
+and, using DIS, implies the “tracking” condition:
+
+$$
+i_t = r_t^n
+$$
+
+<figure class="transmission-figure">
+  <figcaption>Divine coincidence logic: targets line up in the baseline model</figcaption>
+  <div class="flow-grid">
+    <article>
+      <h3>Choose</h3>
+      <p>Strict inflation targeting: π_t = 0.</p>
+    </article>
+    <article>
+      <h3>NKPC implies</h3>
+      <p>Output gap closes: y~_t = 0 (no wedge term in baseline NKPC).</p>
+    </article>
+    <article>
+      <h3>DIS implies</h3>
+      <p>Policy tracks the natural rate: i_t = r^n_t.</p>
+    </article>
+    <article>
+      <h3>Interpretation</h3>
+      <p>Sticky-price distortion becomes irrelevant when inflation is stabilized.</p>
+    </article>
+  </div>
+</figure>
+
+## Implementation: Why “i_t = r^n_t” Is Not Enough
+
+Lecture 3 is explicit: the desired allocation is not the same as an implementable rule. The slide deck lists two problems with the rule:
+
+$$
+i_t = r_t^n
+$$
+
+### Practical problem: r^n_t is unobserved
+
+$r_t^n$ is a model object, not a directly observed series.
+
+### Technical problem: indeterminacy (sunspot equilibria)
+
+The slides give a compact mechanism: if the interest rate does not respond to inflation or the output gap, expectations can drift and become self-fulfilling.
+Here is the derivation the deck shows.
+
+1. Start from the Fisher equation (slides):
+
+   $$
+   r_t = i_t - E_t\pi_{t+1}
+   $$
+
+2. Under the rule $i_t = r_t^n$, the real-rate gap becomes:
+
+   $$
+   r_t - r_t^n = -E_t\pi_{t+1}
+   $$
+
+3. Plug into DIS:
+
+   $$
+   \tilde{y}_t = E_t\tilde{y}_{t+1} - \frac{1}{\sigma}(r_t - r_t^n)
+   $$
+
+   yielding:
+
+   $$
+   \tilde{y}_t = E_t\tilde{y}_{t+1} + \frac{1}{\sigma}E_t\pi_{t+1}
+   $$
+
+4. Together with NKPC, you now have two forward-looking variables $(\tilde{y}_t,\pi_t)$, but policy is not providing the stabilizing feedback that selects a unique equilibrium.
+
+<figure class="transmission-figure">
+  <figcaption>Sunspot mechanism (the slide-deck intuition)</figcaption>
+  <div class="flow-grid">
+    <article>
+      <h3>Belief shift</h3>
+      <p>Agents expect higher future inflation for extrinsic reasons.</p>
+    </article>
+    <article>
+      <h3>Real rate falls</h3>
+      <p>Higher expected inflation lowers the real rate (r_t = i_t - E_t pi(t+1)) when i_t does not react.</p>
+    </article>
+    <article>
+      <h3>Demand rises</h3>
+      <p>Lower real rate raises y~_t through DIS.</p>
+    </article>
+    <article>
+      <h3>Inflation rises</h3>
+      <p>Higher y~_t raises pi_t through NKPC, validating the belief.</p>
+    </article>
+  </div>
+</figure>
+
+### The lecture’s fix: add “threat” terms (Rule 2)
+
+The slides propose:
+
+$$
+i_t = r_t^n + \phi_\pi \pi_t + \phi_y \tilde{y}_t
+$$
+
+The equilibrium outcome can still be $i_t = r_t^n$ in the desired equilibrium, but the extra terms matter because they make deviations expensive:
+they anchor expectations by threatening a strong reaction if inflation/gap tries to drift away.
+
+### A simpler practical approximation (Rule 3)
+
+The slides then emphasize an observable-only rule:
+
+$$
+i_t = \rho + \phi_\pi\pi_t
+$$
+
+with a high $\phi_\pi$ as a way to approximate the optimal allocation while remaining implementable.
+
+## Optimal Policy With Permanent Supply Shocks (What The Slides Emphasize)
+
+Lecture 3 evaluates policy by comparing the real rate to the natural real rate $r_t^n$. The slides give the natural-rate expression:
+
+$$
+r_t^n = \rho - \sigma\frac{1+\phi}{\sigma+\phi}(1-\rho_a)a_t + (1-\rho_z)z_t
+$$
+
+If technology shocks are permanent, $\rho_a=1$, so $(1-\rho_a)=0$ and the technology term drops out.
+That is why the lecture concludes: under strict inflation targeting, monetary policy does not need to respond to permanent supply shocks in this setup (because $r_t^n$ does not move from that source).
+
+For active recall practice on these ideas (recursive substitution, determinacy, divine coincidence, and implementability), use the **Quizzes** page and filter by Lecture 3.
+
+## Common Mistakes / Pitfalls
+
+- Mixing up natural output $y_t^n$ with “potential output” from a statistical filter. In this lecture it is a model concept.
+- Saying “the model is forward-looking” without being able to show the recursive-substitution steps and the transversality condition.
+- Thinking the Taylor principle is a slogan rather than a determinacy condition tied to eigenvalues/sunspots.
+- Forgetting that divine coincidence relies on the baseline NKPC without an explicit cost-push wedge; later lectures change that equation.
+- Conflating “optimal allocation” with an “implementable rule.” Lecture 3 spends multiple slides on why that gap matters.
+
+## Exam-Useful Takeaways (What You Should Be Able To Reproduce)
+
+- Write the 3-equation NK system and define every symbol: $\pi_t$, $\tilde{y}_t$, $i_t$, $r_t^n$, $\beta$, $\sigma$, $\kappa$, $\phi_\pi$, $\phi_y$, $v_t$.
+- Do the NKPC recursive-substitution derivation to obtain $\pi_t = \kappa \sum_{k=0}^{\infty}\beta^k E_t\tilde{y}_{t+k}$ and explain the transversality condition.
+- Do the DIS recursive-substitution derivation to obtain $\tilde{y}_t = -(1/\sigma)\sum_{k=0}^{\infty}E_t(r_{t+k}-r_{t+k}^n)$.
+- Show how to combine DIS + Taylor rule + NKPC into the 2x2 forward-looking matrix system and interpret the denominator $\sigma+\phi_y+\phi_\pi\kappa$.
+- State and interpret the determinacy condition $\kappa(\phi_\pi - 1) + (1-\beta)\phi_y > 0$ (and connect it to “real rate rises when inflation rises”).
+- Explain divine coincidence (and show both directions: inflation stabilization implies gap stabilization, and the reverse).
+- Explain why $i_t = r_t^n$ is not enough: unobservability + indeterminacy/sunspots, with the Fisher-equation mechanism.

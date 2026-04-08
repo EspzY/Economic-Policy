@@ -1,0 +1,239 @@
+---
+title: Lecture 9
+number: 9
+topic: Government Debt
+summary: Start the fiscal block with debt arithmetic, intertemporal budget constraints, Ricardian-equivalence logic, and tax-smoothing intuition.
+status: authored
+estimatedStudyHours: 6
+sourceFiles:
+  - Lecture 9/Lecture 9.pdf
+  - Lecture 9/Handwrittennotes0403.pdf
+learningObjectives:
+  - Derive the government intertemporal budget constraint from the flow debt equation.
+  - Distinguish real and nominal deficit measures and explain inflation effects on measured deficits.
+  - Explain Ricardian equivalence and identify why it usually fails in realistic settings.
+  - Derive the tax-smoothing condition and interpret it as stable tax rates relative to GDP.
+examFocus:
+  - State and interpret the no-Ponzi condition and the present-value primary-surplus requirement.
+  - Show the Ricardian substitution step from government to household intertemporal budget constraints.
+  - Explain why convex tax distortions imply smoothing tax rates over time.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+import DebtArithmeticLens from '../../components/learning/DebtArithmeticLens.astro';
+
+## Overview
+
+Lecture 9 starts the fiscal-policy section by moving from static deficits to intertemporal debt arithmetic.
+The source lecture is organized around:
+
+1. government flow and present-value budget constraints
+2. debt sustainability and no-Ponzi restrictions
+3. Ricardian equivalence versus conventional demand effects
+4. tax smoothing
+
+## Part A: Fiscal versus monetary policy in stabilization
+
+The opening slides frame a practical policy hierarchy:
+
+- monetary policy is often preferred for routine stabilization
+- fiscal policy regains importance when shocks are large/persistent or monetary policy is constrained (for example near the lower bound)
+- fiscal policy always remains relevant for public goods, distribution, and externality correction
+
+Exam interpretation: do not present fiscal and monetary policy as perfect substitutes in all states of the world.
+
+## Part B: Government debt arithmetic
+
+### B1. Flow debt equation
+
+Using real debt $D_t$, real spending $G_t$, real taxes $T_t$, and real interest rate $r_t$, the lecture's core flow equation is:
+
+$$
+\dot D_t = G_t - T_t + r_t D_t
+$$
+
+Meaning:
+
+- primary deficit ($G_t - T_t$) adds to debt
+- interest servicing ($r_t D_t$) adds to debt
+- primary surpluses reduce debt
+
+### B2. Intertemporal budget constraint
+
+Define accumulated discounting from date 0 to $t$:
+
+$$
+R(t)=\int_0^t r(\tau)\,d\tau
+$$
+
+Multiplying the flow equation by $e^{-R(t)}$ and integrating forward gives a present-value relation.
+With the no-Ponzi/transversality condition:
+
+$$
+\lim_{s\to\infty} e^{-R(s)}D_s \le 0
+$$
+
+the government budget constraint becomes:
+
+$$
+\int_0^\infty e^{-R(t)}\big(T_t-G_t\big)\,dt \ge D_0
+$$
+
+In words: initial debt must be backed by sufficient present-value primary surpluses.
+
+### B3. Sustainability reading
+
+The lecture notes emphasize:
+
+- debt can stay positive and stable if fiscal plans satisfy the PV condition
+- debt can grow over time and still be sustainable if growth is not too fast relative to discounting
+- sustainability is an intertemporal condition, not a one-period balanced-budget condition
+
+<DebtArithmeticLens />
+
+## Part C: Measurement issues (real versus nominal deficits)
+
+The lecture separates nominal debt $B_t$ and real debt $D_t$ via $B_t=P_tD_t$.
+Differentiating:
+
+$$
+\frac{\dot B_t}{P_t} = \dot D_t + \pi_t D_t
+$$
+
+where $\pi_t$ is inflation.
+
+Implications emphasized in the slides:
+
+- higher inflation can raise conventional nominal deficit measures even after simple deflation
+- asset sales can lower measured deficits today without changing the government's true intertemporal position
+- unfunded liabilities may not show up as current deficits but still imply future fiscal adjustment
+
+## Part D: Why debt may matter or not matter for demand
+
+### D1. Conventional short-run view
+
+The lecture summarizes the standard demand argument:
+
+- tax cuts or higher spending raise short-run demand/output
+- over longer horizons, crowding-out channels may appear (interest rates, external balance, investment effects)
+
+### D2. Ricardian-equivalence benchmark
+
+The alternative benchmark says financing with debt versus taxes can be neutral under strong assumptions.
+Algebraically, combine:
+
+1. household intertemporal budget constraint
+2. government intertemporal budget constraint
+
+to eliminate taxes and show household lifetime resources depend on government purchases, not on debt/tax timing per se.
+
+### D3. Why the lecture says conventional effects often dominate
+
+The slide explicitly lists realism breaks:
+
+- finite horizons / overlapping generations
+- credit constraints
+- distributional effects of taxes and transfers
+- bounded rationality / non-fully-rational planning
+
+Exam-safe statement: Ricardian equivalence is a useful benchmark, not a default empirical truth.
+
+## Part E: Tax smoothing
+
+The lecture sets up a convex tax-distortion cost framework:
+
+$$
+\min_{\{T_t\}} \sum_{t=0}^{\infty}\frac{1}{(1+r)^t}Y_t f\!\left(\frac{T_t}{Y_t}\right)
+$$
+
+subject to the intertemporal government budget constraint.
+
+With convex costs, marginal distortion should be equalized over time (the MB=MC logic in the slides):
+
+$$
+f'\!\left(\frac{T_t}{Y_t}\right)=f'\!\left(\frac{T_{t+1}}{Y_{t+1}}\right)
+$$
+
+which implies:
+
+$$
+\frac{T_t}{Y_t}=\frac{T_{t+1}}{Y_{t+1}}
+$$
+
+Interpretation:
+
+- smooth tax rates as a share of GDP across time
+- let debt absorb temporary spending shocks
+- avoid large swings in distortionary taxation
+
+Under uncertainty and quadratic forms, the lecture further interprets this as a condition on expected future tax shares.
+
+## Common pitfalls
+
+- Treating debt sustainability as "debt must fall every period."
+- Forgetting to state the no-Ponzi/transversality condition when writing PV constraints.
+- Confusing nominal and real deficit movements when inflation changes.
+- Presenting Ricardian equivalence without listing the assumptions required.
+- Saying tax smoothing means "constant tax level" instead of "stable tax rate relative to GDP."
+
+## Control questions
+
+1. What does the condition $\int_0^\infty e^{-R(t)}(T_t-G_t)dt \ge D_0$ mean in plain language?
+2. Why can measured deficits worsen when inflation rises even if real fiscal stance is unchanged?
+3. Why does convex tax distortion imply smoothing taxes over time?
+
+<QuizCard
+  client:load
+  id="lecture9-no-ponzi"
+  lectureSlug="lecture-09"
+  question="What is the key economic role of the no-Ponzi condition in government debt analysis?"
+  hints={[
+    'It rules out a financing strategy based only on rolling debt forever without backing surpluses.',
+    'Think about what makes the intertemporal budget constraint economically meaningful.',
+  ]}
+  options={[
+    {
+      label: 'It forces the government to run a balanced budget every period.',
+      correct: false,
+      explanation: 'No. The condition is intertemporal, not a period-by-period balance requirement.',
+    },
+    {
+      label: 'It prevents infinite debt roll-over from replacing genuine present-value fiscal backing.',
+      correct: true,
+      explanation: 'Correct. It closes the model by ruling out Ponzi financing paths.',
+    },
+    {
+      label: 'It says debt must always be zero in equilibrium.',
+      correct: false,
+      explanation: 'Positive debt is possible; what matters is whether fiscal plans satisfy the PV condition.',
+    },
+  ]}
+/>
+
+<QuizCard
+  client:load
+  id="lecture9-tax-smoothing"
+  lectureSlug="lecture-09"
+  question="What does the tax-smoothing result imply in this lecture?"
+  hints={[
+    'The object is T_t / Y_t, not T_t alone.',
+    'Convex collection distortions make large swings expensive.',
+  ]}
+  options={[
+    {
+      label: 'Optimal policy keeps tax levels fixed in currency units over time.',
+      correct: false,
+      explanation: 'The condition is about tax shares relative to GDP, not fixed nominal/real levels.',
+    },
+    {
+      label: 'Optimal policy smooths tax rates relative to GDP and uses debt to absorb temporary shocks.',
+      correct: true,
+      explanation: 'Yes. Equalizing marginal distortion over time gives tax-rate smoothing.',
+    },
+    {
+      label: 'Optimal policy always repays all debt immediately to avoid interest costs.',
+      correct: false,
+      explanation: 'Immediate full repayment is generally not implied by the smoothing framework.',
+    },
+  ]}
+/>

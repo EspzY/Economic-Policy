@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import CompletionToggle from '../../components/progress/CompletionToggle';
+import SourceLinks from '../../components/SourceLinks.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const lectures = await getCollection('lectures');
+  return lectures.map((lecture) => ({
+    params: { slug: lecture.id },
+    props: { lecture },
+  }));
+}
+
+const { lecture } = Astro.props;
+const { Content } = await render(lecture);
+---
+
+<BaseLayout title={`${lecture.data.title} | Economic Policy Study Site`} description={lecture.data.summary}>
+  <section class="article-grid">
+    <article class="article-shell">
+      <div>
+        <p class="eyebrow">Lecture {lecture.data.number}</p>
+        <h1>{lecture.data.title}</h1>
+        <p class="card-subtitle">{lecture.data.topic}</p>
+      </div>
+
+      <div class="article-meta">
+        <span class:list={['status-badge', lecture.data.status]}>{lecture.data.status}</span>
+        <span class="chip">{lecture.data.estimatedStudyHours}h guided study</span>
+      </div>
+
+      <p>{lecture.data.summary}</p>
+
+      <CompletionToggle client:load slug={lecture.id} />
+
+      <section>
+        <div class="section-heading">
+          <p class="eyebrow">Learning goals</p>
+          <h2>What you should be able to do</h2>
+        </div>
+        <ul class="bullet-list">
+          {lecture.data.learningObjectives.map((objective) => <li>{objective}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <p class="eyebrow">Exam focus</p>
+          <h2>What matters most for assessment</h2>
+        </div>
+        <ul class="bullet-list">
+          {lecture.data.examFocus.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      {lecture.data.status === 'scaffolded' && (
+        <div class="callout">
+          This lecture page is scaffolded and source-linked, but it has not yet been expanded into the full
+          step-by-step teaching version. It is included now so the overall course structure is usable from the start.
+        </div>
+      )}
+
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+
+    <div>
+      <SourceLinks files={lecture.data.sourceFiles} />
+    </div>
+  </section>
+</BaseLayout>

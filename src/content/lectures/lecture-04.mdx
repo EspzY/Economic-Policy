@@ -1,0 +1,274 @@
+---
+title: Lecture 4
+number: 4
+topic: Optimal Monetary Policy with Cost-Push Shocks (Discretion Block)
+summary: Move from divine coincidence to real policy trade-offs by introducing cost-push shocks and deriving the discretionary targeting rule.
+status: authored
+estimatedStudyHours: 6
+sourceFiles:
+  - Lecture 4/GRA6631_2026_Lecture4.pdf
+  - Lecture 4/Complementary lecture slides _the output gap_.pdf
+  - Lecture 4/GRA6631_notes on commitment_Sveen.pdf
+  - Lecture 4/the interest rate under discretion.pdf
+learningObjectives:
+  - Distinguish output, natural output, and efficient output in the lecture's policy setup.
+  - Derive the discretionary targeting rule from the loss function and NKPC constraint.
+  - Explain why cost-push shocks generate an inflation-output stabilization trade-off.
+examFocus:
+  - Write and interpret the targeting rule x_t = -(kappa/alpha_x) * inflation.
+  - Explain strict inflation targeting conditions and why they are special cases.
+  - Connect the model output-gap concept to practical central-bank output-gap measurement issues.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+
+## Big Picture (Why This Lecture Matters)
+
+Lecture 3 gave you a clean baseline benchmark: **divine coincidence**. In that baseline, stabilizing inflation also stabilizes the output gap.
+Lecture 4 is where that clean story breaks in a very controlled way.
+
+The lecture introduces a **cost-push wedge** in the Phillips curve, which creates a real stabilization trade-off: you generally cannot set inflation and the welfare-relevant output gap to zero at the same time.
+This trade-off is the core reason later lectures distinguish **discretion vs commitment**, and why "optimal policy" cannot be summarized as "always set inflation to zero."
+
+### Connection to later lectures
+
+- Lecture 5 and beyond revisit the same trade-off under commitment and history dependence.
+- Lecture 6 uses the same logic to discuss credibility and time inconsistency.
+- In exam problems, this lecture is often where you show you can derive and interpret a targeting rule rather than only quote it.
+
+## Symbols, Parameters, And Gaps (Do Not Mix These Up)
+
+Lecture 4 uses two different "gap" concepts. Getting them wrong is the easiest way to lose points.
+
+| Object | Meaning in Lecture 4 | Why it matters |
+|---|---|---|
+| $y_t$ | actual output (sticky prices) | the realized allocation |
+| $y_t^n$ | natural output (flexible prices, still monopolistic competition) | the benchmark used in earlier NK output-gap notation |
+| $y_t^e$ | efficient output (first-best benchmark) | the welfare benchmark used in the loss function |
+| $x_t \equiv y_t - y_t^e$ | welfare-relevant output gap (relative to efficient output) | this is the $x_t$ that enters the objective |
+| $\tilde{y}_t \equiv y_t - y_t^n$ | NK output gap (relative to natural output) | useful for NKPC/DIS in earlier lectures |
+| $u_t^{\pi}$ | cost-push wedge in NKPC | breaks divine coincidence (creates trade-off) |
+| $\alpha_x$ | weight on $x_t^2$ in the loss function | controls how much output stabilization matters relative to inflation |
+| $\kappa$ | NKPC slope | governs how much inflation responds to real pressure |
+| $\beta$ | discount factor | weights the future in the objective and NKPC |
+| $\rho_{\pi}$ | persistence parameter for $u_t^{\pi}$ | affects how painful shocks are over time |
+
+One identity the lecture uses repeatedly is:
+
+$$
+\tilde{y}_t = y_t - y_t^n = x_t + (y_t^e - y_t^n).
+$$
+
+Economic meaning: the standard NK gap $\tilde{y}_t$ equals the welfare gap $x_t$ plus a wedge between efficient and natural output.
+That wedge is exactly what becomes the cost-push term.
+
+## Core Theory: Cost-Push Shocks Create A Stabilization Trade-Off
+
+Lecture 4 rewrites the NKPC in terms of the welfare gap and a cost-push shock:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa x_t + u_t^{\pi}.
+$$
+
+The lecture defines the wedge as:
+
+$$
+u_t^{\pi} = \kappa (y_t^e - y_t^n),
+\qquad
+u_t^{\pi} = \rho_{\pi}u_{t-1}^{\pi} + e_t^{\pi}.
+$$
+
+Economic meaning: $u_t^{\pi}$ collects forces that push inflation away from what "real pressure" $x_t$ alone would imply
+(for example: markup/competition shifts, bargaining shifts, oil/tax wedges, and other supply-side distortions in the slides' interpretation).
+
+Why this breaks divine coincidence (intuition): when $u_t^{\pi} \ne 0$, the Phillips curve has a wedge term that policy cannot remove instantly.
+So stabilizing inflation perfectly generally requires accepting a non-zero welfare gap (and vice versa).
+
+## Objective Used In The Slides
+
+The slides evaluate policy using a quadratic loss function:
+
+$$
+\min \frac{1}{2}E_t\sum_{i=0}^{\infty}\beta^i\left(\pi_{t+i}^2 + \alpha_x x_{t+i}^2\right).
+$$
+
+Interpretation: the policymaker dislikes inflation variability and dislikes welfare-gap variability.
+The parameter $\alpha_x$ is the knob that determines how costly it is to move $x_t$ in order to stabilize inflation.
+
+## Step-By-Step Derivation: Discretionary Targeting Rule
+
+Under **discretion**, the central bank re-optimizes period by period and takes expectations as given.
+In particular, the lecture packages the forward-looking pieces into:
+
+$$
+\pi_t = \kappa x_t + f_t, \quad f_t \equiv \beta E_t\pi_{t+1} + u_t^{\pi}.
+$$
+
+Math move: rewrite the NKPC so the only choice variable entering the constraint directly is $x_t$.
+
+Economic meaning: under discretion, the central bank treats the private sector's inflation expectations term as given in the one-period problem.
+The policy trade-off is then "choose $x_t$ to trade off inflation today against output-gap costs," given the wedge.
+
+Form the one-period Lagrangian:
+
+$$
+\mathcal{L}_t = \frac{1}{2}\left(\pi_t^2 + \alpha_x x_t^2\right) + \lambda_t(\pi_t - \kappa x_t - f_t).
+$$
+
+FOCs:
+
+$$
+\frac{\partial \mathcal{L}_t}{\partial \pi_t} = \pi_t + \lambda_t = 0
+$$
+
+$$
+\frac{\partial \mathcal{L}_t}{\partial x_t} = \alpha_x x_t - \kappa \lambda_t = 0.
+$$
+
+Substitute $\lambda_t=-\pi_t$ into the second FOC:
+
+$$
+\alpha_x x_t + \kappa \pi_t = 0
+\Rightarrow
+x_t = -\frac{\kappa}{\alpha_x}\pi_t.
+$$
+
+Math move: eliminate the multiplier to get a direct relationship between target variables.
+
+Economic meaning: under discretion, the optimal policy choice makes inflation and the welfare gap move with opposite signs.
+The slope $\kappa/\alpha_x$ tells you how steep that trade-off is in the optimal targeting rule.
+
+<QuizCard
+  client:load
+  id="lecture4-targeting-rule"
+  lectureSlug="lecture-04"
+  question="What does the discretionary targeting rule imply in the cost-push NK setup?"
+  hints={[
+    'The rule links inflation and the welfare-relevant output gap with opposite signs.',
+    'Check the role of kappa and alpha_x in the slope.',
+  ]}
+  options={[
+    {
+      label: 'Inflation and x_t should move with the same sign to minimize the quadratic loss.',
+      correct: false,
+      explanation: 'No. The optimality condition implies opposite signs between inflation and the welfare gap.',
+    },
+    {
+      label: 'The central bank chooses x_t so that x_t = -(kappa/alpha_x) * inflation.',
+      correct: true,
+      explanation: 'Correct. This is the targeting rule derived from the Lagrangian first-order conditions.',
+    },
+    {
+      label: 'The rule pins x_t at zero every period, regardless of shocks.',
+      correct: false,
+      explanation: 'That would correspond to no short-run trade-off, which is exactly what cost-push shocks break.',
+    },
+  ]}
+/>
+
+## Optimal Responses Under Cost-Push Shocks (Slides)
+
+The lecture provides the analytical solution under a cost-push shock process:
+
+$$
+\pi_t = \frac{\alpha_x}{\kappa^2+\alpha_x(1-\beta\rho_{\pi})}u_t^{\pi}
+= \alpha_x \Psi u_t^{\pi}
+$$
+
+$$
+x_t = -\kappa \Psi u_t^{\pi},
+\quad
+\Psi = \frac{1}{\kappa^2+\alpha_x(1-\beta\rho_{\pi})}.
+$$
+
+Interpretation (sign logic): for a positive cost-push shock $u_t^{\pi}>0$ with positive parameters, inflation rises and the welfare gap falls.
+That is the trade-off that was absent under divine coincidence.
+
+## Implementation Through The IS Side (What The Slides Emphasize)
+
+The lecture and supplementary note provide the implied equilibrium interest-rate expression:
+
+$$
+i_t = r_t^e + \Psi\left[\sigma\kappa(1-\rho_{\pi})+\alpha_x\rho_{\pi}\right]u_t^{\pi}.
+$$
+
+Exam-safe interpretation: even when you have an optimal allocation in terms of $(\pi_t,x_t)$, you still need an implementable instrument rule.
+This is why Lecture 4 re-emphasizes uniqueness/determinacy requirements (Lecture 3) and why later lectures focus on commitment rules.
+
+## When Is Strict Inflation Targeting Optimal?
+
+The slides state strict inflation targeting is optimal only in special cases:
+
+1. no cost-push shocks
+2. no concern for output-gap variability ($\alpha_x=0$)
+
+Outside those cases, flexible inflation targeting is the relevant logic: you accept some inflation movement to avoid excessively large welfare-gap movements.
+
+<QuizCard
+  client:load
+  id="lecture4-strict-inflation-targeting"
+  lectureSlug="lecture-04"
+  question="When is strict inflation targeting optimal according to the lecture?"
+  hints={[
+    'Look at the explicit two-case statement in the slides.',
+    'Think about whether cost-push shocks are present and whether alpha_x matters.',
+  ]}
+  options={[
+    {
+      label: 'Always, because inflation has unit weight in the loss function.',
+      correct: false,
+      explanation: 'Unit normalization does not imply strict targeting is always optimal when output-gap costs are present.',
+    },
+    {
+      label: 'Only when there are no cost-push shocks, or when alpha_x is zero.',
+      correct: true,
+      explanation: 'Yes. Those are the two special cases highlighted in the lecture.',
+    },
+    {
+      label: 'Only when output persistence is high and the Taylor principle holds.',
+      correct: false,
+      explanation: 'Those conditions matter for dynamics/uniqueness, but they are not the strict-targeting condition itself.',
+    },
+  ]}
+/>
+
+## Output Gap In Policy Practice (Complementary Slides)
+
+The complementary output-gap lecture emphasizes that model-based and statistical output gaps are different:
+
+- model gap: $y_t-y_t^n$
+- statistical gap: $y_t-y_t^*$ where $y_t^*$ is a trend output estimate
+
+This matters for policy interpretation and for exam answers: "the output gap" is not one unique empirical series.
+Measurement noise can contaminate real-time judgments, which is one reason actual policy is cautious.
+
+## Common Mistakes / Pitfalls
+
+- Mixing up $x_t$ (welfare gap relative to efficient output) with $\tilde{y}_t$ (gap relative to natural output).
+- Forgetting what discretion means here: expectations are taken as given in the period problem.
+- Claiming "optimal policy means zero inflation always" even when cost-push shocks are active.
+- Treating estimated statistical output gaps as if they were the model gap.
+
+## Mini Worked Reasoning (Exam-Style)
+
+Question: a positive cost-push shock hits. What signs do inflation and $x_t$ take under discretion?
+
+Using:
+
+$$
+\pi_t = \alpha_x \Psi u_t^{\pi}, \quad x_t=-\kappa\Psi u_t^{\pi}
+$$
+
+with positive parameters, $u_t^{\pi}>0$ implies $\pi_t>0$ and $x_t<0$.
+
+That is exactly the short-run policy tension created by the wedge term in the NKPC.
+
+For more active recall practice, use the **Quizzes** page and filter by Lecture 4.
+
+## Exam-Useful Takeaways (What You Should Be Able To Reproduce)
+
+- Define $y_t$, $y_t^n$, $y_t^e$, $x_t$, and $\tilde{y}_t$ and explain why mixing them up changes the meaning of "output stabilization."
+- Write the NKPC with a cost-push wedge and explain in words what $u_t^{\pi}$ represents.
+- Derive the discretionary targeting rule $x_t = -(\kappa/\alpha_x)\pi_t$ from the Lagrangian and interpret the slope economically.
+- Use the sign logic of the analytical responses to explain why cost-push shocks create an inflation-output trade-off.
+- State the strict-inflation-targeting special cases and explain why they are special.

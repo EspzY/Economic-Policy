@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { studyRoadmap } from '../data/resources';
+---
+
+<BaseLayout title="Course Roadmap | Economic Policy Study Site">
+  <section class="page-intro">
+    <p class="eyebrow">20-day structure</p>
+    <h1>Course Roadmap</h1>
+    <p>
+      The course is manageable in about 20 focused days if you keep the sequence disciplined: foundations
+      first, then optimal policy, then the later-course themes, then repeated exam practice.
+    </p>
+  </section>
+
+  <section class="roadmap-grid section">
+    {studyRoadmap.map((phase) => (
+      <article class="card resource-card">
+        <p class="eyebrow">{phase.label}</p>
+        <h2>{phase.title}</h2>
+        <p>{phase.focus}</p>
+        <ul>
+          {phase.outputs.map((output) => <li>{output}</li>)}
+        </ul>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+

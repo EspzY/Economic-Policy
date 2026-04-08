@@ -1,0 +1,292 @@
+---
+title: Lecture 11
+number: 11
+topic: Inequality
+summary: Link functional income shares and Scandinavian wage setting to personal inequality measurement tools such as Lorenz curves and the Gini coefficient.
+status: authored
+estimatedStudyHours: 6
+sourceFiles:
+  - Lecture 11/Lecture 11.pdf
+  - Lecture 11/Handwrittennotes1803.pdf
+  - Lecture 11/mpr_1-24.pdf
+  - Lecture 11/arb-2000-15.pdf
+learningObjectives:
+  - Distinguish personal income inequality from the functional distribution of income between labor and capital.
+  - Derive factor shares from marginal products under a constant-returns production function.
+  - Explain Scandinavian wage setting and how it maps into inflation under fixed exchange rates versus inflation targeting.
+  - Define Lorenz curves and derive the Gini coefficient as an inequality measure.
+  - Use inequality axioms to judge whether a measure is sensible (anonymity, scale, Pigou-Dalton).
+examFocus:
+  - State clearly whether you mean personal inequality or factor income shares before interpreting policy.
+  - Explain, in words, how wage-share restoration can affect inflation in the Scandinavian wage-setting framework.
+  - Interpret Lorenz curves and the Gini coefficient without confusing levels with changes or cross-country comparability.
+---
+
+import QuizCard from '../../components/interactive/QuizCard';
+import LorenzCurveLens from '../../components/learning/LorenzCurveLens.astro';
+
+## Overview
+
+Lecture 11 is about what "inequality" means in macro policy discussions and how to measure it.
+The lecture separates two uses:
+
+1. functional distribution: labor share versus capital share
+2. personal distribution: inequality between individuals/households
+
+It then links wage-setting institutions (Scandinavian model) to inflation dynamics and closes with measurement tools
+(Lorenz curves, Gini coefficient, and basic axioms).
+
+## Part A: Two inequality concepts (do not mix them)
+
+### A1. Functional distribution
+
+Functional distribution is about how national income is split between factors:
+
+- labor income (wages)
+- capital income (rents/profits/user cost of capital)
+
+### A2. Personal distribution
+
+Personal distribution is about the dispersion of income across people:
+
+- bottom versus top shares
+- Lorenz curve comparisons
+- scalar indices like the Gini coefficient
+
+Exam rule: always state which concept you are using before making claims about policy.
+
+## Part B: Functional distribution from marginal products
+
+The lecture uses the neoclassical theory of distribution:
+
+- each factor is paid its marginal product
+- this is a starting point, not the full institutional story
+
+### B1. Production function and factor prices
+
+Slides use:
+
+$$
+Y = A F(K,L)
+$$
+
+With price level $P$, wages and capital cost satisfy:
+
+$$
+W = P A \frac{\partial F(K,L)}{\partial L}
+$$
+
+$$
+R = P A \frac{\partial F(K,L)}{\partial K}
+$$
+
+### B2. Constant returns and factor shares
+
+Under constant returns to scale, Euler's theorem implies total income can be decomposed into factor payments.
+That is the mathematical basis for labor share and capital share calculations in the slides.
+
+Interpretation:
+
+- changes in $A$, $K/L$, and technology can shift marginal products
+- institutions and bargaining can shift observed wage shares away from the benchmark
+
+## Part C: Wage setting and the Scandinavian model of inflation
+
+This part of the lecture is about how wage formation in a small open economy can translate into inflation dynamics.
+The slides describe two sectors:
+
+- traded sector ($t$)
+- non-traded sector ($n$)
+
+Key objects are growth rates (dot notation in the slides). The block shown:
+
+$$
+\dot p^t = \dot e + \dot p^x
+$$
+
+$$
+\dot w = \dot p^t + \dot a^t
+$$
+
+$$
+\dot p^n = \dot w - \dot a^n
+$$
+
+and CPI inflation as a weighted average:
+
+$$
+\dot p = \alpha \dot p^n + (1-\alpha)\dot p^t
+$$
+
+### C1. Fixed exchange rates
+
+Under a fixed exchange-rate regime, the exchange-rate growth term is treated as given and the model implies:
+
+$$
+\dot p = \dot p^x + \alpha(\dot a^t - \dot a^n)
+$$
+
+The lecture calls this a Balassa-Samuelson type mechanism: higher productivity growth in traded sectors can raise
+overall inflation through relative price adjustment.
+
+### C2. Inflation targeting
+
+Under inflation targeting, the slides solve for the exchange-rate term consistent with the inflation target:
+
+$$
+\dot e = \dot p^{target} - \dot p^x - \alpha(\dot a^t - \dot a^n)
+$$
+
+The deck then adds "complications" bullets:
+
+- interest response by the central bank
+- production and unemployment effects
+
+### C3. Wage negotiations 2024 slide (policy interpretation)
+
+The lecture notes:
+
+- wage share has fallen a lot in the traded sector
+- restoring wage share can boost inflation via the non-traded sector
+- policy response may involve higher interest rates
+
+Exam style: connect wage setting to inflation transmission before discussing what the central bank might do.
+
+## Part D: Personal distribution and the role of policy
+
+The slide on personal income distribution emphasizes that observed personal inequality is shaped by:
+
+- market outcomes
+- taxes
+- transfers
+- government services
+
+So policy debates must specify whether they refer to pre-tax/pre-transfer or post-tax/post-transfer concepts.
+
+## Part E: Inequality axioms used in the lecture
+
+The inequality-index slide writes an index as a function of an income vector $(y_1,\dots,y_n)$ and lists criteria.
+The key ones are:
+
+- anonymity principle: the index should not depend on labels, only on the multiset of incomes
+- population principle: duplicating the population should not change the index
+- scale/relative income principle: scaling all incomes by a constant should not change relative inequality
+- Pigou-Dalton transfer principle: transferring income from richer to poorer (without reversing ranks) should reduce inequality
+
+These criteria help you judge if a proposed inequality measure is sensible.
+
+## Part F: Lorenz curves and scalar indices
+
+### F1. Lorenz curve definition (as in the slides)
+
+The Lorenz curve is constructed by:
+
+1. sorting the population from lowest to highest income
+2. plotting cumulative population share on the horizontal axis
+3. plotting cumulative income share on the vertical axis
+
+The 45-degree line represents perfect equality. Greater inequality means the Lorenz curve lies further below that line.
+
+<LorenzCurveLens />
+
+### F2. Lorenz consistency and crossing
+
+The slides note:
+
+- an inequality measure is Lorenz consistent if it ranks distributions consistently with Lorenz dominance
+- Lorenz curves can cross, so not all comparisons are unambiguous
+
+Exam-safe statement: if Lorenz curves cross, you must say which inequality measure you use and why.
+
+### F3. Gini coefficient (two equivalent interpretations)
+
+The slides describe the Gini coefficient as:
+
+- the ratio of the area between the equality line and the Lorenz curve to the total area under the equality line
+- equivalently, a normalization of the mean difference across all income pairs
+
+A standard representation consistent with that slide description is:
+
+$$
+G = \frac{1}{2n^2\mu}\sum_{i=1}^{n}\sum_{k=1}^{n}\lvert y_i - y_k\rvert
+$$
+
+where $\mu$ is average income.
+
+## Enrichment reading (optional, but relevant for context)
+
+The lecture lists readings that connect wage/inflation discussion to real policy documents:
+
+- `arb-2000-15.pdf` (Roisland & Torvik): fiscal policy under inflation targeting
+- `mpr_1-24.pdf` (Norges Bank): Monetary Policy Report 1/2024, with sections on prices and wages
+
+Use these to practice translating "model language" into "policy language" without losing discipline about channels.
+
+## Common pitfalls
+
+- Talking about "inequality" without stating personal versus functional meaning.
+- Treating the neoclassical distribution benchmark as an institutional fact rather than a baseline model result.
+- Forgetting that Scandinavian wage-setting logic depends on traded versus non-traded structure.
+- Treating Gini as a complete summary even when Lorenz curves cross.
+
+## Control questions
+
+1. What is the difference between functional and personal income distribution?
+2. In the Scandinavian model block, why does traded-sector wage setting affect non-traded inflation?
+3. What does the Gini coefficient measure in geometric terms on a Lorenz-curve diagram?
+
+<QuizCard
+  client:load
+  id="lecture11-functional-vs-personal"
+  lectureSlug="lecture-11"
+  question="Which statement correctly distinguishes functional distribution from personal inequality?"
+  hints={[
+    'Functional distribution is labor vs capital shares; personal inequality is dispersion across people.',
+    'Both matter for policy, but they answer different questions.',
+  ]}
+  options={[
+    {
+      label: 'Functional distribution is inequality between households, while personal inequality is labor share versus capital share.',
+      correct: false,
+      explanation: 'This is reversed.',
+    },
+    {
+      label: 'Functional distribution is the split between labor and capital income, while personal inequality is dispersion across individuals.',
+      correct: true,
+      explanation: 'Correct. That is the core distinction emphasized in the lecture outline.',
+    },
+    {
+      label: 'They are identical concepts once we measure income in real terms.',
+      correct: false,
+      explanation: 'No. They refer to different objects even with consistent measurement.',
+    },
+  ]}
+/>
+
+<QuizCard
+  client:load
+  id="lecture11-lorenz-gini"
+  lectureSlug="lecture-11"
+  question="What does a larger Gini coefficient imply in the Lorenz-curve interpretation?"
+  hints={[
+    'Think of the distance between the Lorenz curve and the 45-degree equality line.',
+    'Gini is a normalized area measure.',
+  ]}
+  options={[
+    {
+      label: 'The Lorenz curve is closer to the 45-degree line, meaning more equality.',
+      correct: false,
+      explanation: 'Closer to the equality line means less inequality, which corresponds to a smaller Gini.',
+    },
+    {
+      label: 'The Lorenz curve is further below the equality line, meaning greater inequality.',
+      correct: true,
+      explanation: 'Correct. More area between the curves implies a higher Gini.',
+    },
+    {
+      label: 'The average income μ must be higher.',
+      correct: false,
+      explanation: 'Gini is about dispersion, not about the level of average income.',
+    },
+  ]}
+/>
