@@ -302,8 +302,8 @@ Each lecture page should eventually include:
 
 1. Continue the lecture-by-lecture pedagogy upgrade systematically from Lecture 1 to Lecture 12 (do not jump around).
 2. Keep lecture pages to a few light checkpoints only; move the main active-recall workload into the central Quiz bank page.
-3. Upgrade Lecture 9 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
-4. Add a Lecture 9 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
+3. Upgrade Lecture 10 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
+4. Add a Lecture 10 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
 5. Keep changes in small, lecture-scoped commits and push regularly (code-only; course PDFs remain local inputs).
 
 ## Phase Progress
@@ -452,3 +452,12 @@ Each lecture page should eventually include:
   - Pitfalls + exam-useful takeaways, while keeping only two light embedded checkpoints.
 - `2026-04-08`: Added a Lecture 8 quiz set to `src/data/quiz-bank.ts`, reusing the embedded checkpoint IDs so progress is shared between lecture and quiz bank.
 - `2026-04-08`: Ran `npm run check` with `0 errors` after the Lecture 3/Lecture 8 updates.
+- `2026-04-08`: Rewrote Lecture 9 to the current "teaching-tool" standard:
+  - Big picture + symbols/objects section.
+  - Step-by-step derivation from the flow debt equation to the PV constraint (explicit integrating factor and no-Ponzi interpretation).
+  - Step-by-step measurement derivation from $B_t=P_tD_t$ to the inflation term in nominal debt growth.
+  - Cleaner Ricardian benchmark logic with explicit "substitution step" framing plus realism breaks.
+  - Step-by-step tax-smoothing derivation via the FOC $f'(T_t/Y_t)=\\lambda$ and the implication of constant tax shares.
+  - Removed control-question blocks; kept only two light embedded checkpoints and added exam takeaways.
+- `2026-04-08`: Added a Lecture 9 quiz set to `src/data/quiz-bank.ts`, reusing the embedded checkpoint IDs so progress is shared between lecture and quiz bank.
+- `2026-04-08`: Ran `npm run check` with `0 errors` after the Lecture 9 updates.

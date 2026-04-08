@@ -2184,4 +2184,309 @@ export const quizBank: QuizQuestion[] = [
       },
     ],
   },
+  {
+    id: 'quiz:lecture9-flow-debt-equation',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Debt arithmetic: flow equation',
+    topicTag: 'debt-arithmetic',
+    difficulty: 'easy',
+    kind: 'concept',
+    question:
+      'In the flow debt equation dD/dt = (G - T) + rD, what do the two terms (G - T) and rD represent?',
+    hints: [
+      '(G - T) is the primary deficit (or surplus if negative).',
+      'rD is interest servicing on outstanding debt.',
+    ],
+    options: [
+      {
+        label: '(G - T) is the primary deficit; rD is interest payments on existing debt.',
+        correct: true,
+        explanation:
+          'Correct. Primary deficits add to debt, and interest servicing adds to debt as well.',
+      },
+      {
+        label: '(G - T) is the inflation rate; rD is the output gap.',
+        correct: false,
+        explanation:
+          'No. The flow debt equation is fiscal accounting: spending/taxes and interest on debt.',
+      },
+      {
+        label: '(G - T) is monetary policy; rD is the Taylor principle.',
+        correct: false,
+        explanation:
+          'No. These are fiscal and debt dynamics objects, not monetary-policy rule objects.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture9-no-ponzi-meaning',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Intertemporal budget constraint',
+    topicTag: 'no-ponzi',
+    difficulty: 'easy',
+    kind: 'concept',
+    question:
+      'What does the no-Ponzi (transversality) condition rule out in Lecture 9?',
+    hints: [
+      'It rules out financing by rolling over debt forever without ever backing it by primary surpluses.',
+      'It is not a balanced-budget-every-period requirement.',
+    ],
+    options: [
+      {
+        label: 'A strategy where the government rolls over debt forever without sufficient present-value primary surpluses.',
+        correct: true,
+        explanation:
+          'Correct. The condition closes the model by preventing Ponzi-style debt roll-over from replacing fiscal backing.',
+      },
+      {
+        label: 'Any use of debt at all, even temporarily.',
+        correct: false,
+        explanation:
+          'No. Positive debt can be consistent with the PV constraint; what matters is intertemporal backing.',
+      },
+      {
+        label: 'Any deficit in any single period.',
+        correct: false,
+        explanation:
+          'No. The lecture emphasizes sustainability is intertemporal, not period-by-period balancing.',
+      },
+    ],
+  },
+  {
+    id: 'lecture9-no-ponzi',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Debt sustainability: no-Ponzi condition',
+    topicTag: 'no-ponzi',
+    difficulty: 'medium',
+    kind: 'exam',
+    question:
+      'What is the key economic role of the no-Ponzi condition in government debt analysis?',
+    hints: [
+      'It rules out a financing strategy based only on rolling debt forever without backing surpluses.',
+      'Think about what makes the intertemporal budget constraint economically meaningful.',
+    ],
+    options: [
+      {
+        label: 'It forces the government to run a balanced budget every period.',
+        correct: false,
+        explanation:
+          'No. The condition is intertemporal, not a period-by-period balance requirement.',
+      },
+      {
+        label: 'It prevents infinite debt roll-over from replacing genuine present-value fiscal backing.',
+        correct: true,
+        explanation:
+          'Correct. It closes the model by ruling out Ponzi financing paths.',
+      },
+      {
+        label: 'It says debt must always be zero in equilibrium.',
+        correct: false,
+        explanation:
+          'Positive debt is possible; what matters is whether fiscal plans satisfy the PV condition.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:truefalse-lecture9-balanced-budget',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Debt sustainability: common trap',
+    topicTag: 'no-ponzi',
+    difficulty: 'easy',
+    kind: 'truefalse',
+    question:
+      'True or false: the no-Ponzi condition implies the government must run a balanced budget in every period.',
+    hints: ['The lecture stresses sustainability is an intertemporal condition.'],
+    options: [
+      {
+        label: 'True',
+        correct: false,
+        explanation:
+          'False. No-Ponzi is not a period-by-period balanced-budget requirement; it is a restriction on discounted debt paths.',
+      },
+      {
+        label: 'False',
+        correct: true,
+        explanation:
+          'Correct. The condition rules out Ponzi finance but allows temporary deficits and positive debt if the PV constraint holds.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture9-nominal-real-identity',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Measurement: nominal vs real deficits',
+    topicTag: 'measurement',
+    difficulty: 'easy',
+    kind: 'math',
+    question:
+      'Lecture 9 uses B = P*D. After differentiating and dividing by P, which term captures the inflation effect on nominal debt growth?',
+    hints: [
+      'Differentiate: dB = dP*D + P*dD.',
+      'Inflation is pi = (dP/dt)/P.',
+    ],
+    options: [
+      {
+        label: 'pi * D',
+        correct: true,
+        explanation:
+          'Correct. The term pi_t D_t appears when you rewrite nominal changes in real terms and captures the inflation component.',
+      },
+      {
+        label: 'r * D',
+        correct: false,
+        explanation:
+          'rD is interest servicing in the real debt flow equation, not the inflation term from differentiating B = P*D.',
+      },
+      {
+        label: 'G - T',
+        correct: false,
+        explanation:
+          '(G - T) is the primary deficit, not the inflation-measurement term.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture9-ricardian-benchmark',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Ricardian equivalence benchmark',
+    topicTag: 'ricardian',
+    difficulty: 'medium',
+    kind: 'concept',
+    question:
+      'What is the core Ricardian-equivalence benchmark claim discussed in Lecture 9?',
+    hints: [
+      'It is a benchmark under strong assumptions.',
+      'It says debt vs taxes timing may be neutral for consumption if households internalize the PV constraint.',
+    ],
+    options: [
+      {
+        label: 'Debt-financed tax cuts always raise consumption because households ignore future taxes.',
+        correct: false,
+        explanation:
+          'No. That is the opposite of Ricardian equivalence. The benchmark says households account for future taxes.',
+      },
+      {
+        label: 'Under strong assumptions, debt vs taxes timing may not change consumption because households internalize future taxes implied by the government PV constraint.',
+        correct: true,
+        explanation:
+          'Correct. This is the benchmark logic: financing labels do not change lifetime resources when future taxes adjust in PV terms.',
+      },
+      {
+        label: 'Government purchases never affect household welfare because taxes are distortionless.',
+        correct: false,
+        explanation:
+          'No. Ricardian equivalence is about financing timing, not about government purchases being irrelevant.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture9-ricardian-failures',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Ricardian equivalence: why it fails',
+    topicTag: 'ricardian',
+    difficulty: 'easy',
+    kind: 'concept',
+    question:
+      'Lecture 9 lists several reasons Ricardian equivalence often fails. Which option matches the slide list best?',
+    hints: [
+      'One reason is finite horizons/OLG.',
+      'Another is borrowing/credit constraints.',
+    ],
+    options: [
+      {
+        label: 'Finite horizons/overlapping generations, credit constraints, distributional effects, and imperfect planning.',
+        correct: true,
+        explanation:
+          'Correct. These are the realism breaks highlighted in the lecture.',
+      },
+      {
+        label: 'Only because inflation exists; otherwise Ricardian equivalence always holds exactly.',
+        correct: false,
+        explanation:
+          'No. The lecture lists multiple behavioral and market-structure breaks, not only inflation.',
+      },
+      {
+        label: 'Because the government cannot borrow at all in any model.',
+        correct: false,
+        explanation:
+          'No. Governments can borrow; the benchmark is about whether financing timing changes consumption under strong assumptions.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture9-tax-smoothing-foc',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Tax smoothing: convex distortions',
+    topicTag: 'tax-smoothing',
+    difficulty: 'medium',
+    kind: 'math',
+    question:
+      'In the Lecture 9 tax-smoothing setup, what is the key first-order-condition implication of convex distortion costs?',
+    hints: [
+      "The lecture's result equalizes marginal distortion across time.",
+      'That pins down a stable tax share T_t/Y_t.',
+    ],
+    options: [
+      {
+        label: 'Keep the marginal distortion f\'(T_t/Y_t) equal across time, implying a smooth tax share.',
+        correct: true,
+        explanation:
+          'Correct. Convexity makes it optimal to avoid large swings in tax rates by equalizing marginal distortion across time.',
+      },
+      {
+        label: 'Keep the level of taxes T_t constant in currency units.',
+        correct: false,
+        explanation:
+          'No. The lecture’s result is about the tax share T_t/Y_t, not the level of T_t.',
+      },
+      {
+        label: 'Repay all debt immediately to avoid any interest payments.',
+        correct: false,
+        explanation:
+          'No. The smoothing logic uses debt to absorb shocks and then repays gradually to keep tax distortions smooth.',
+      },
+    ],
+  },
+  {
+    id: 'lecture9-tax-smoothing',
+    lectureSlug: 'lecture-09',
+    lectureNumber: 9,
+    lectureTopic: 'Tax smoothing: implication',
+    topicTag: 'tax-smoothing',
+    difficulty: 'easy',
+    kind: 'exam',
+    question: 'What does the tax-smoothing result imply in this lecture?',
+    hints: [
+      'The object is T_t / Y_t, not T_t alone.',
+      'Convex collection distortions make large swings expensive.',
+    ],
+    options: [
+      {
+        label: 'Optimal policy keeps tax levels fixed in currency units over time.',
+        correct: false,
+        explanation:
+          'The condition is about tax shares relative to GDP, not fixed nominal/real levels.',
+      },
+      {
+        label: 'Optimal policy smooths tax rates relative to GDP and uses debt to absorb temporary shocks.',
+        correct: true,
+        explanation:
+          'Yes. Equalizing marginal distortion over time gives tax-rate smoothing.',
+      },
+      {
+        label: 'Optimal policy always repays all debt immediately to avoid interest costs.',
+        correct: false,
+        explanation:
+          'Immediate full repayment is generally not implied by the smoothing framework.',
+      },
+    ],
+  },
 ];
