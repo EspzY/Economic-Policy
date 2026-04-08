@@ -1485,4 +1485,363 @@ export const quizBank: QuizQuestion[] = [
       },
     ],
   },
+  {
+    id: 'quiz:lecture7-forward-guidance-definition',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Forward guidance and expectations management',
+    topicTag: 'forward-guidance',
+    difficulty: 'easy',
+    kind: 'concept',
+    question: 'In the Lecture 7 slides, what is forward guidance?',
+    hints: [
+      'The slide defines it as a communication practice.',
+      'It is about the future path of monetary policy instruments.',
+    ],
+    options: [
+      {
+        label: 'Communicating information about the future path of monetary policy instruments.',
+        correct: true,
+        explanation:
+          'Correct. The slides define forward guidance as communication about the future path of monetary policy instruments.',
+      },
+      {
+        label: 'A one-time surprise increase in the policy rate with no communication.',
+        correct: false,
+        explanation:
+          'No. Forward guidance is specifically about communication about the future path, not about silent surprises.',
+      },
+      {
+        label: 'A fiscal policy plan that replaces the central bank at the lower bound.',
+        correct: false,
+        explanation:
+          'No. Fiscal policy may matter at the lower bound, but forward guidance is a monetary-policy communication tool in the slides.',
+      },
+    ],
+  },
+  {
+    id: 'lecture7-guidance-types',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Forward guidance: Delphic vs Odyssean',
+    topicTag: 'forward-guidance',
+    difficulty: 'easy',
+    kind: 'concept',
+    question: 'Which statement best distinguishes Delphic from Odyssean forward guidance?',
+    hints: [
+      'One is primarily information about expected conditions; the other is commitment to policy behavior.',
+      'Think forecast channel versus commitment channel.',
+    ],
+    options: [
+      {
+        label: 'Delphic is commitment to future policy, while Odyssean is just a forecast.',
+        correct: false,
+        explanation:
+          'This is reversed. Delphic is forecast-like communication; Odyssean carries commitment content.',
+      },
+      {
+        label: 'Delphic communicates likely outcomes without commitment, while Odyssean is commitment-oriented guidance.',
+        correct: true,
+        explanation:
+          'Correct. This is the distinction emphasized in the lecture.',
+      },
+      {
+        label: 'Both terms mean exactly the same thing in NK models.',
+        correct: false,
+        explanation:
+          'No. The distinction matters for credibility and expectation effects.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture7-time-vs-state-contingent',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Forward guidance: time vs state contingent',
+    topicTag: 'forward-guidance',
+    difficulty: 'easy',
+    kind: 'concept',
+    question: 'What is the difference between time-contingent and state-contingent forward guidance (as in the slides)?',
+    hints: [
+      'Time-contingent: guidance tied to a date.',
+      'State-contingent: guidance tied to a condition (like an unemployment threshold).',
+    ],
+    options: [
+      {
+        label: 'Time-contingent ties policy to a calendar horizon; state-contingent ties policy to an economic condition.',
+        correct: true,
+        explanation:
+          'Correct. The slides give date-based examples (time-contingent) and threshold-based examples (state-contingent).',
+      },
+      {
+        label: 'Time-contingent is always Delphic, while state-contingent is always Odyssean.',
+        correct: false,
+        explanation:
+          'Not necessarily. Time/state contingency is about what the guidance is conditioned on; Delphic/Odyssean is about commitment content.',
+      },
+      {
+        label: 'Time-contingent changes the Phillips curve, while state-contingent changes the IS curve.',
+        correct: false,
+        explanation:
+          'No. Both types work through expectations about future policy and therefore can affect both demand (IS) and inflation dynamics (NKPC).',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture7-fg-puzzle-output-sum',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Forward guidance puzzle: core algebra',
+    topicTag: 'fg-puzzle',
+    difficulty: 'medium',
+    kind: 'math',
+    question: 'In the forward-guidance puzzle note, what is the solved-forward expression for output y_t?',
+    hints: [
+      'It is an infinite sum over future real interest rates.',
+      'In the baseline equation, there is no discounting term inside the sum.',
+    ],
+    options: [
+      {
+        label: 'y_t = -(1/sigma) * sum_{s=t}^∞ E_t r_s.',
+        correct: true,
+        explanation:
+          'Correct. This is the key no-discounting infinite-sum expression highlighted in the note.',
+      },
+      {
+        label: 'y_t = -(sigma) * sum_{s=t}^∞ E_t r_s.',
+        correct: false,
+        explanation:
+          'Wrong scaling. The sensitivity is proportional to 1/sigma in the IS relation.',
+      },
+      {
+        label: 'y_t = beta * E_t y_{t+1}.',
+        correct: false,
+        explanation:
+          'That omits the real-rate term and is not the solved-forward expression used in the puzzle discussion.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture7-fg-puzzle-why-powerful',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Forward guidance puzzle: interpretation',
+    topicTag: 'fg-puzzle',
+    difficulty: 'medium',
+    kind: 'concept',
+    question: 'Why can news about a far-future real rate (like r_{t+99}) have a large effect in the baseline forward-guidance puzzle algebra?',
+    hints: [
+      'Look at the y_t equation: all future real rates enter the sum.',
+      'Then inflation depends on (discounted) cumulative output.',
+    ],
+    options: [
+      {
+        label: 'Because y_t depends on the whole expected path of real rates with no discounting, so distant rates affect many periods of expected output.',
+        correct: true,
+        explanation:
+          'Correct. No discounting in the IS infinite sum plus the cumulative nature of inflation dynamics gives large long-horizon effects.',
+      },
+      {
+        label: 'Because the NKPC is backward-looking, so distant future rates mechanically feed into lagged inflation.',
+        correct: false,
+        explanation:
+          'No. The puzzle comes from forward-looking expectations logic, not from lagged-inflation mechanics.',
+      },
+      {
+        label: 'Because the lower bound forces r_t to equal zero forever, so any promise must have infinite impact.',
+        correct: false,
+        explanation:
+          'No. The puzzle note’s core mechanism is the solved-forward equations and their long-horizon weights, not the claim that rates are stuck at zero forever.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture7-discounting-wedges',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Forward guidance puzzle: attenuation',
+    topicTag: 'fg-puzzle',
+    difficulty: 'medium',
+    kind: 'concept',
+    question: 'In the puzzle note’s “discounting” extension, what is the role of alpha_y and alpha_pi (both in (0,1))?',
+    hints: [
+      'They reduce the influence of far-future expectations on today’s outcomes.',
+      'In the solved-forward IS relation, alpha_y generates geometric weights.',
+    ],
+    options: [
+      {
+        label: 'They attenuate long-horizon effects by discounting future expected terms (making distant rates matter less).',
+        correct: true,
+        explanation:
+          'Correct. With alpha_y and alpha_pi below 1, distant-horizon policy news has smaller weights in the solved-forward expressions.',
+      },
+      {
+        label: 'They make monetary policy shocks disappear entirely.',
+        correct: false,
+        explanation:
+          'No. The extension changes the strength of expectation propagation; it does not remove shocks by assumption.',
+      },
+      {
+        label: 'They imply the central bank can ignore expectations because the model becomes static.',
+        correct: false,
+        explanation:
+          'No. Expectations remain central; the extension changes quantitative weights, not the qualitative channel.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture7-kappa-meaning',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Phillips curve slope: meaning',
+    topicTag: 'phillips-curve',
+    difficulty: 'easy',
+    kind: 'symbols',
+    question: 'In the modern NK Phillips curve used in Lecture 7, what is kappa (κ)?',
+    hints: ['The slide calls κ the slope of the Phillips curve.'],
+    options: [
+      {
+        label: 'The structural slope linking real pressure (output gap / unemployment gap) to inflation.',
+        correct: true,
+        explanation:
+          'Correct. κ tells you how much inflation responds causally to tightness/real activity in the NKPC.',
+      },
+      {
+        label: 'The central bank’s inflation target π*.',
+        correct: false,
+        explanation:
+          'No. π* is a target parameter. κ is a slope parameter in the Phillips curve.',
+      },
+      {
+        label: 'A measure of interest-rate smoothing in the Taylor rule.',
+        correct: false,
+        explanation:
+          'No. Interest-rate smoothing is often written ρ in estimated rules; κ is the Phillips-curve slope.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture7-identification-issues',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Phillips curve slope: identification',
+    topicTag: 'identification',
+    difficulty: 'easy',
+    kind: 'concept',
+    question: 'Which “tricky identification issues” does the Lecture 7 slide list when estimating the Phillips-curve slope?',
+    hints: ['The slide lists three unobserved drivers that can create omitted-variable bias.'],
+    options: [
+      {
+        label: 'Expected inflation, the natural rate of output/supply shocks, and cost-push shocks can be unobserved.',
+        correct: true,
+        explanation:
+          'Correct. The slide lists these three sources of omitted-variable bias when trying to estimate κ.',
+      },
+      {
+        label: 'Only measurement error in inflation, because unemployment is perfectly observed.',
+        correct: false,
+        explanation:
+          'No. The slide emphasizes multiple omitted-variable issues, including expected inflation and supply/cost-push forces.',
+      },
+      {
+        label: 'Only interest-rate smoothing, because monetary policy fully determines inflation.',
+        correct: false,
+        explanation:
+          'No. The identification issue is that the NKPC has multiple drivers; you cannot isolate κ without controls/strategy.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:truefalse-lecture7-stagflation',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Phillips curve slope: supply shocks',
+    topicTag: 'identification',
+    difficulty: 'easy',
+    kind: 'truefalse',
+    question: 'True or false: the slides note that supply shocks can create “stagflation” (a positive correlation between unemployment and inflation) and bias slope estimates.',
+    hints: ['The slide explicitly mentions stagflation and “wrong sign” slope bias.'],
+    options: [
+      {
+        label: 'True',
+        correct: true,
+        explanation:
+          'Correct. The slides say supply shocks can create stagflation and bias slope estimates toward zero or even the wrong sign.',
+      },
+      {
+        label: 'False',
+        correct: false,
+        explanation:
+          'False. The slides explicitly describe supply-shock simultaneity and stagflation as an identification problem.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture7-flattening-hypotheses',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Phillips curve flattening: hypotheses',
+    topicTag: 'flattening',
+    difficulty: 'medium',
+    kind: 'exam',
+    question: 'The Lecture 7 slides list four hypotheses for why the Phillips curve may “look flatter” in the data. Which option matches the slide list most closely?',
+    hints: [
+      'One hypothesis is that κ truly decreased (structural change).',
+      'Others keep κ stable but change policy, shocks, or slack measurement.',
+    ],
+    options: [
+      {
+        label: 'κ decreased; policy was conducted optimally; cost-push/supply shocks became more important; slack is mis-measured.',
+        correct: true,
+        explanation:
+          'Correct. These are the four hypotheses listed on the “Did it flatten?” slide.',
+      },
+      {
+        label: 'Only κ decreased; the other explanations are ruled out by theory.',
+        correct: false,
+        explanation:
+          'No. The slide explicitly presents multiple explanations consistent with observed flattening patterns.',
+      },
+      {
+        label: 'The Phillips curve is an accounting identity, so flattening is impossible.',
+        correct: false,
+        explanation:
+          'No. The Phillips curve is a structural relationship; its reduced-form correlation can change for multiple reasons.',
+      },
+    ],
+  },
+  {
+    id: 'lecture7-pc-identification',
+    lectureSlug: 'lecture-07',
+    lectureNumber: 7,
+    lectureTopic: 'Phillips curve slope: interpretation discipline',
+    topicTag: 'identification',
+    difficulty: 'easy',
+    kind: 'exam',
+    question: 'Why is it risky to infer structural Phillips-curve slope directly from inflation-unemployment scatterplots?',
+    hints: [
+      'The NKPC has expected inflation and cost-push terms, not only real-activity pressure.',
+      'Supply shocks and expectation shifts can move points without slope changes.',
+    ],
+    options: [
+      {
+        label: 'Because scatterplots include no data on inflation dynamics at all.',
+        correct: false,
+        explanation:
+          'They do include inflation data, but identification of causal slope is still problematic.',
+      },
+      {
+        label: 'Because omitted expectations and supply/cost-push forces can change correlation without revealing causal slope.',
+        correct: true,
+        explanation:
+          'Exactly. This is the central identification warning in the lecture.',
+      },
+      {
+        label: 'Because Phillips-curve slope is fixed by accounting identities and cannot vary or be estimated.',
+        correct: false,
+        explanation:
+          'The slope is a structural parameter that can be estimated, but only with careful identification.',
+      },
+    ],
+  },
 ];

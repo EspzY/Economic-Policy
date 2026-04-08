@@ -23,147 +23,56 @@ examFocus:
 import QuizCard from '../../components/interactive/QuizCard';
 import PhillipsCurveLens from '../../components/learning/PhillipsCurveLens.astro';
 
-## Overview
+## Big Picture (Why This Lecture Matters)
 
-Lecture 7 combines two advanced but connected ideas:
+Lecture 7 combines two topics that look different but share the same deep skill: **reasoning about expectations and identification**.
 
-1. forward guidance as an expectations-management tool at or near the lower bound
-2. the empirical and conceptual challenge of identifying the slope of the Phillips curve
+1. **Forward guidance**: how policy communication about *future* interest rates affects inflation and output *today*, especially when the policy rate is constrained by a lower bound.
+2. **Phillips-curve slope**: how to interpret inflation and unemployment/output-gap evidence without confusing a reduced-form correlation with the structural slope parameter.
 
-Both topics are about expectations, identification, and policy credibility, not just formula memorization.
+If you learn this lecture well, you become much harder to trick on the exam. Many exam questions are essentially:
 
-## Part A: Forward guidance in the lower-bound environment
+- "Explain a policy argument that relies on expectations" (forward guidance, credibility).
+- "Explain what evidence does and does not identify" (Phillips curve flattening, anchored expectations, supply shocks).
 
-### A1. Why unconventional communication matters
+## Symbols, Parameters, And Objects
 
-The forward-guidance slides start from a low-rate world where large negative demand shocks can push policy into a
-liquidity-trap-like region. In that environment, future policy promises can affect current outcomes through expectations.
+Lecture 7 uses familiar NK objects plus a few new ones that matter for the forward-guidance puzzle and for identification language.
 
-Canonical block shown in the lecture:
+| Symbol | Meaning in these slides | Where it shows up |
+|---|---|---|
+| $\pi_t$ | inflation ($\pi_t \equiv p_t-p_{t-1}$ in the course notation) | NKPC and forward guidance |
+| $x_t$ | welfare-relevant output gap (relative to efficient output) | NKPC and the loss |
+| $y_t$ | in the puzzle note: output-gap/real-activity variable (simplified notation) | forward-guidance puzzle algebra |
+| $i_t$ | nominal policy rate | lower-bound constraint + policy path |
+| $r_t$ | real rate: $r_t \equiv i_t - E_t\pi_{t+1}$ | the object forward guidance directly targets |
+| $r_t^n$ | natural real rate benchmark (flexible-price real rate) | liquidity-trap intuition |
+| $\beta$ | discount factor | forward-looking terms |
+| $\sigma$ | intertemporal substitution parameter | scales how much $r_t$ moves demand |
+| $\kappa$ | Phillips-curve slope parameter | structural slope of inflation to real pressure |
+| $u_t^{\pi}$ | cost-push wedge in NKPC | makes trade-offs real (Lecture 4 block) |
+| $\alpha_x$ | weight on output-gap stabilization in the loss | policy objective |
+| $\theta$ | Calvo stickiness parameter | links nominal rigidity to $\kappa$ in the slides |
+| $\alpha_\pi,\alpha_y$ | "discounting" wedges in the puzzle note (both in $(0,1)$) | attenuate long-horizon forward-guidance effects |
 
-$$
-\pi_t = \beta E_t\pi_{t+1} + \kappa x_t + u_t^{\pi}
-$$
+## Part A: Forward Guidance (What It Is And Why It Works)
 
-$$
-x_t = E_t x_{t+1} - \frac{1}{\sigma}(i_t - E_t\pi_{t+1} - r_t^n)
-$$
+### A1. Definition (slides)
 
-with a non-negativity/lower-bound constraint on policy rates.
+The forward-guidance slides define forward guidance as communication about the **future path of monetary policy instruments**.
+The key model sentence is: expectations about future policy matter massively for outcomes today (Woodford-style logic in the slides).
 
-### A2. Delphic versus Odyssean forward guidance
+### A2. Delphic vs Odyssean (slides)
 
-The slides define:
+The slides make a distinction you should be able to say in one sentence on the exam:
 
-- Delphic guidance: central-bank forecast communication, no commitment
-- Odyssean guidance: commitment-type communication meant to shape future policy expectations
+- **Delphic forward guidance**: forecast-style communication about likely outcomes; **no commitment**.
+- **Odyssean forward guidance**: commitment-oriented communication intended to shape future policy expectations.
 
-Policy language in exams:
+The slides also distinguish:
 
-- Delphic = information channel
-- Odyssean = commitment channel
-
-Time-contingent and state-contingent forms are both discussed in the lecture.
-
-### A3. Forward-guidance puzzle (complementary lecture)
-
-The complementary note rewrites the simplified model and solves forward:
-
-$$
-y_t = -\frac{1}{\sigma}\sum_{s=t}^{\infty} E_t r_s
-$$
-
-$$
-\pi_t = \kappa \sum_{s=t}^{\infty}\beta^{s-t}E_t y_s
-$$
-
-This implies very strong effects from news about distant future rates. A far-horizon rate cut can have very large
-current effects in the baseline model. That is the forward-guidance puzzle: theoretical power that looks unrealistically
-large in many practical settings.
-
-### A4. Direction of current research in the note
-
-The complementary lecture shows discounting-style extensions:
-
-$$
-\pi_t = \alpha_{\pi}\beta E_t\pi_{t+1} + \kappa y_t
-$$
-
-$$
-y_t = \alpha_y E_t y_{t+1} - \frac{1}{\sigma}(i_t - E_t\pi_{t+1})
-$$
-
-with $0<\alpha_{\pi},\alpha_y<1$, which attenuates distant-horizon effects.
-
-Economic mechanisms discussed:
-
-- finite horizons / mortality risk
-- cognitive inattention
-- credit constraints / incomplete markets
-
-## Part B: The slope of the Phillips curve
-
-### B1. Structural equation versus reduced-form correlation
-
-The lecture states the modern NKPC form:
-
-$$
-\pi_t = \beta E_t\pi_{t+1} + \kappa x_t + u_t^{\pi}
-$$
-
-or in unemployment-gap language:
-
-$$
-\pi_t = \beta E_t\pi_{t+1} - \kappa_u \tilde{u}_t + u_t^{\pi}
-$$
-
-The parameter of interest is the structural slope ($\kappa$ or $\kappa_u$), not raw scatterplot correlation.
-
-### B2. Identification challenges highlighted in the slides
-
-The lecture emphasizes three major omitted-variable/identification issues:
-
-1. expected inflation is hard to observe
-2. natural output or supply-side drivers are hard to observe
-3. cost-push shocks are often unobserved
-
-These can bias naive slope estimates toward zero or even misleading signs.
-
-### B3. Why “flattening” claims require care
-
-Episodes like “missing inflation” or “missing disinflation” can reflect:
-
-- expectation shifts
-- policy-regime changes
-- supply disturbances
-
-not only changes in structural slope.
-
-<PhillipsCurveLens />
-
-## Exam-level interpretation template
-
-When asked whether the Phillips curve flattened:
-
-1. distinguish reduced-form correlation from structural slope
-2. state identification problems explicitly
-3. explain at least one channel that can shift correlation without changing slope
-4. only then discuss whether slope change is still plausible
-
-This template matches the style of the Lecture 7 discussion and the corresponding exam-style question framing.
-
-## Common pitfalls
-
-- Calling all guidance “commitment” (confusing Delphic and Odyssean).
-- Ignoring the lower-bound context when motivating forward guidance.
-- Treating forward-guidance puzzle algebra as literal policy magnitude without model-friction caveats.
-- Reading scatterplots as direct estimates of structural $\kappa$.
-
-## Control questions
-
-1. Why can far-horizon policy news have large current effects in the baseline forward-guidance algebra?
-2. What is the difference between Delphic and Odyssean guidance in one sentence each?
-3. Why can a flatter inflation-unemployment correlation occur even if structural $\kappa$ is unchanged?
+- **time-contingent**: "low until date $T$"
+- **state-contingent**: "low until condition $C$ holds" (for example an unemployment threshold)
 
 <QuizCard
   client:load
@@ -193,6 +102,199 @@ This template matches the style of the Lecture 7 discussion and the correspondin
   ]}
 />
 
+### A3. Why the lower bound makes communication powerful (slides)
+
+In the slides’ "in our model" block, forward guidance is analyzed using the canonical NK structure *with a lower bound on the nominal rate*.
+One slide writes the system as (perfect-foresight version shown in the deck):
+
+$$
+\pi_t = \beta \pi_{t+1} + \kappa x_t + u_t^{\pi}
+$$
+
+$$
+x_t = x_{t+1} - \frac{1}{\sigma}(i_t - \pi_{t+1} - r_t^n)
+$$
+
+and the lower-bound constraint (in the lecture’s max form):
+
+$$
+i_t = \max\{r_t^n + \phi_\pi \pi_t + \phi_y x_t,\; 0\}.
+$$
+
+Economic meaning:
+
+- if the natural real rate $r_t^n$ becomes very negative (large demand shock), the desired policy rate may be negative, but the lower bound prevents it
+- then the economy can sit with a negative output gap and inflation below target
+- **forward guidance** works by shifting expectations of future inflation and future policy, which shifts both the IS relation (via the real rate) and the Phillips curve (via expected inflation)
+
+This is also why the slides highlight time inconsistency: promising "lower for longer" is useful, but credibility is required.
+
+## Step-By-Step Derivation: The Forward-Guidance Puzzle (Complementary Lecture)
+
+The complementary "forward guidance puzzle" note takes the NK structure and strips away extra terms to isolate the expectations channel.
+It sets aside technology, discount-factor shocks, and cost-push shocks and focuses on anticipated policy news.
+
+In the simplified system in the note:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa y_t
+$$
+
+$$
+y_t = E_t y_{t+1} - \frac{1}{\sigma}(i_t - E_t\pi_{t+1})
+$$
+
+Define the real rate $r_t \equiv i_t - E_t\pi_{t+1}$. Then the IS relation becomes:
+
+$$
+y_t = E_t y_{t+1} - \frac{1}{\sigma}r_t.
+$$
+
+### Step 1 (Solve the IS relation forward: no discounting)
+
+Write the $t+1$ version and take $E_t[\cdot]$:
+
+$$
+E_t y_{t+1} = E_t y_{t+2} - \frac{1}{\sigma}E_t r_{t+1}.
+$$
+
+Substitute into the time-$t$ equation and iterate. After $T$ substitutions:
+
+$$
+y_t = E_t y_{t+T+1} - \frac{1}{\sigma}\sum_{k=0}^{T}E_t r_{t+k}.
+$$
+
+Impose the standard transversality condition $\lim_{T\to\infty}E_t y_{t+T+1}=0$ to obtain the note’s key equation:
+
+$$
+y_t = -\frac{1}{\sigma}\sum_{s=t}^{\infty}E_t r_s.
+$$
+
+Math move: recursive substitution turns a forward-looking difference equation into an infinite sum.
+
+Economic meaning: **current output depends on the entire expected path of future real rates**.
+In this baseline form, there is **no discounting** of distant future real rates in the $y_t$ expression.
+That is the first ingredient of the puzzle.
+
+### Step 2 (Solve the NKPC forward)
+
+Apply the same recursive-substitution method to:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa y_t.
+$$
+
+Iterating forward and imposing $\lim_{T\to\infty}\beta^{T+1}E_t\pi_{t+T+1}=0$ gives:
+
+$$
+\pi_t = \kappa \sum_{s=t}^{\infty}\beta^{s-t}E_t y_s.
+$$
+
+Economic meaning: inflation today depends on a discounted sum of expected future real activity.
+Since $\beta$ is close to 1 in the slides, the discounting is weak, so far-future activity still matters a lot.
+
+### Step 3 (Why distant-horizon forward guidance can be unrealistically powerful)
+
+The note’s punchline is not "forward guidance works." It is: **in this baseline algebra, it works too much**.
+Here is a clean way to see that with one shock experiment.
+
+Suppose at time $t$ the central bank credibly announces a one-time reduction in the real rate at horizon $T$:
+
+$$
+E_t r_{t+T} \downarrow
+$$
+
+and assume the announced path holds in expectations (the thought experiment in the note).
+
+From the solved IS relation,
+for each $j=0,1,\dots,T$, the term $r_{t+T}$ appears in the sum for $y_{t+j}$.
+So (holding other rates fixed) the change implies:
+
+$$
+E_t y_{t+j} \uparrow \quad \text{for many consecutive future periods}.
+$$
+
+Now plug into the solved NKPC. The effect on current inflation is proportional to:
+
+$$
+\sum_{j=0}^{T}\beta^j,
+$$
+
+which grows with the horizon $T$ and is approximately $1/(1-\beta)$ for large $T$.
+This is exactly why the note writes a combined expression where long-horizon rates get very large cumulative weights.
+
+Economic meaning: the far-horizon rate cut affects *many* future output terms, and inflation today depends on (almost) the whole path of those outputs.
+So the further out the announcement is, the more periods it influences, making the impact grow rather than fade.
+
+## How the note mitigates the puzzle: discounting wedges (Complementary Lecture)
+
+The note then shows one class of "discounting" modifications:
+
+$$
+\pi_t = \alpha_{\pi}\beta E_t\pi_{t+1} + \kappa y_t
+$$
+
+$$
+y_t = \alpha_y E_t y_{t+1} - \frac{1}{\sigma}(i_t - E_t\pi_{t+1}),
+\qquad 0<\alpha_{\pi},\alpha_y<1.
+$$
+
+If you solve the modified IS relation forward, the weights become geometric:
+
+$$
+y_t = -\frac{1}{\sigma}\sum_{k=0}^{\infty}\alpha_y^k E_t r_{t+k}.
+$$
+
+So distant-horizon real rates matter less when $\alpha_y<1$.
+The note discusses mechanisms that can justify this kind of attenuation (finite horizons, inattention, credit constraints/incomplete markets).
+
+For more practice, use the **Quizzes** page and filter by Lecture 7.
+
+## Part B: The Phillips Curve Slope (Identification, Not Scatterplots)
+
+### B1. Modern NKPC and what the slope means (slides)
+
+The Lecture 7 slides present the modern NKPC as:
+
+$$
+\pi_t = \beta E_t\pi_{t+1} + \kappa x_t + u_t^{\pi}.
+$$
+
+The slide text defines $x_t$ as output relative to efficient output and highlights that **$\kappa$ is the slope**: how much inflation responds causally to real pressure.
+
+The slides also show an unemployment-gap representation (with Okun’s-law reasoning):
+
+$$
+\pi_t = \beta E_t\pi_{t+1} - \kappa_u \tilde{u}_t + u_t^{\pi}.
+$$
+
+### B2. How nominal rigidity links to a smaller slope (slides)
+
+The deck connects the slope to Calvo stickiness:
+
+$$
+\kappa = \lambda(\sigma+\phi)
+= \frac{(1-\beta\theta)(1-\theta)}{\theta}(\sigma+\phi).
+$$
+
+Economic meaning: a higher $\theta$ means prices are stickier on average, which reduces the slope $\kappa$.
+Lower $\kappa$ means real activity moves more for a given demand disturbance: the economy is "more Keynesian" in the slide’s wording.
+
+### B3. Identification: why the scatterplot does not reveal κ (slides)
+
+The lecture’s identification warning is very explicit. One slide lists three omitted-variable problems:
+
+1. expected inflation is hard to observe
+2. natural output / supply shocks are hard to observe
+3. cost-push shocks are often unobserved
+
+All three can create omitted-variable bias in naive slope estimates.
+
+One useful exam-level way to say this: the NKPC is a structural equation with multiple drivers.
+If you regress inflation on unemployment (or an output-gap proxy) without controlling for the other drivers, you are not identifying $\kappa$.
+
+<PhillipsCurveLens />
+
 <QuizCard
   client:load
   id="lecture7-pc-identification"
@@ -220,3 +322,30 @@ This template matches the style of the Lecture 7 discussion and the correspondin
     },
   ]}
 />
+
+### B4. "Did it flatten?" The slides’ four hypotheses
+
+The deck frames flattening as a hypothesis test with four candidate explanations:
+
+1. the structural slope $\kappa$ decreased (the Phillips curve changed)
+2. monetary policy was conducted optimally (Phillips curve alive, but stabilized outcomes)
+3. cost-push/supply shocks became more important (Phillips curve alive, but correlation shifts)
+4. labor market slack is mis-measured (Phillips curve alive, but the x-axis is wrong)
+
+Exam-safe move: you do not need to pick one. You need to show you understand that the observed correlation can change for multiple reasons, many of which do not imply a change in $\kappa$.
+
+## Common Mistakes / Pitfalls
+
+- Treating Delphic and Odyssean guidance as the same thing (forecast channel vs commitment channel).
+- Using the forward-guidance puzzle algebra as a literal quantitative forecast without stating model-friction caveats.
+- Saying "Phillips curve is flat" based on a scatterplot without discussing expected inflation and supply shocks.
+- Confusing the structural slope $\kappa$ with a reduced-form correlation between inflation and unemployment.
+
+## Exam-Useful Takeaways (What You Should Be Able To Do)
+
+- Define Delphic vs Odyssean guidance and distinguish time-contingent vs state-contingent examples.
+- Explain in words why the lower bound increases the importance of expectations management and why credibility matters.
+- Derive (by recursive substitution + transversality) the forward-guidance puzzle equations for $y_t$ and $\pi_t$ and explain why far-horizon policy news can have large effects in the baseline algebra.
+- Explain how introducing discounting wedges ($\alpha_y,\alpha_\pi$) attenuates long-horizon effects.
+- Write the NKPC and list the lecture’s identification issues; explain why scatterplots do not identify $\kappa$.
+- State the four "flattening" hypotheses from the slides and explain how each can change observed correlations.

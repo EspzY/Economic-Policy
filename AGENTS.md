@@ -302,8 +302,8 @@ Each lecture page should eventually include:
 
 1. Continue the lecture-by-lecture pedagogy upgrade systematically from Lecture 1 to Lecture 12 (do not jump around).
 2. Keep lecture pages to a few light checkpoints only; move the main active-recall workload into the central Quiz bank page.
-3. Upgrade Lecture 7 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
-4. Add a Lecture 7 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
+3. Upgrade Lecture 8 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
+4. Add a Lecture 8 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
 5. Keep changes in small, lecture-scoped commits and push regularly (code-only; course PDFs remain local inputs).
 
 ## Phase Progress
@@ -435,6 +435,12 @@ Each lecture page should eventually include:
   - Added a minimal timeline figure to clarify expectations timing (promise → expectations → temptation → equilibrium).
   - Kept only two embedded checkpoints and pointed most active recall to `/quizzes`.
 - `2026-04-08`: Added an initial Lecture 6 quiz set to `src/data/quiz-bank.ts` (time inconsistency meaning, key assumption, inflation-bias equilibrium, output result, independence interpretation, traps).
+- `2026-04-08`: Rewrote Lecture 7 to the new teaching standard:
+  - Added a proper symbols/objects section (forward guidance and Phillips-curve identification vocabulary).
+  - Added a step-by-step derivation of the forward-guidance puzzle equations (recursive substitution + transversality) and explained the long-horizon weighting logic.
+  - Tightened the Phillips-curve section around identification: what κ means, why scatterplots do not identify it, and the slide’s four “flattening” hypotheses.
+  - Kept only two light embedded checkpoints and pushed most practice to `/quizzes`.
+- `2026-04-08`: Added an initial Lecture 7 quiz set to `src/data/quiz-bank.ts` (forward guidance definitions/types, puzzle mechanism, discounting wedges, κ meaning, identification issues, flattening hypotheses).
 - `2026-04-08`: Updated `.gitignore` to ignore local course-material inputs (`Lecture *`, `Problem sets`, `Exams`, `*.pdf`) to prevent accidental commits/pushes.
 - `2026-04-08`: Created the first Git commits for the site source and pushed to `origin/main` (merged the remote initial README-only history).
 - `2026-04-08`: Set local Git author identity for this repo to `EspzY` + GitHub noreply email (repo-local `git config`, not global).
