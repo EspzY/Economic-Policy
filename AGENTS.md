@@ -302,8 +302,8 @@ Each lecture page should eventually include:
 
 1. Continue the lecture-by-lecture pedagogy upgrade systematically from Lecture 1 to Lecture 12 (do not jump around).
 2. Keep lecture pages to a few light checkpoints only; move the main active-recall workload into the central Quiz bank page.
-3. Upgrade Lecture 10 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
-4. Add a Lecture 10 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
+3. Upgrade Lecture 11 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
+4. Add a Lecture 11 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
 5. Keep changes in small, lecture-scoped commits and push regularly (code-only; course PDFs remain local inputs).
 
 ## Phase Progress
@@ -461,3 +461,10 @@ Each lecture page should eventually include:
   - Removed control-question blocks; kept only two light embedded checkpoints and added exam takeaways.
 - `2026-04-08`: Added a Lecture 9 quiz set to `src/data/quiz-bank.ts`, reusing the embedded checkpoint IDs so progress is shared between lecture and quiz bank.
 - `2026-04-08`: Ran `npm run check` with `0 errors` after the Lecture 9 updates.
+- `2026-04-08`: Rewrote Lecture 10 to the current "teaching-tool" standard:
+  - Big picture + symbols/objects section with explicit inflation-vs-default-probability notation discipline.
+  - Step-by-step derivation of the stable debt-ratio condition $(G-T)/Y=(g-r)\\lambda$ with explicit economic meaning per step.
+  - Crisis-model block tightened around the two-equation system (pricing + default mapping) and the self-fulfilling feedback loop.
+  - Removed control-question blocks; kept only two light embedded checkpoints and added exam takeaways.
+- `2026-04-08`: Added a Lecture 10 quiz set to `src/data/quiz-bank.ts`, reusing the embedded checkpoint IDs so progress is shared between lecture and quiz bank.
+- `2026-04-08`: Ran `npm run check` with `0 errors` after the Lecture 10 updates.

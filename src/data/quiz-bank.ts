@@ -2489,4 +2489,261 @@ export const quizBank: QuizQuestion[] = [
       },
     ],
   },
+  {
+    id: 'quiz:lecture10-strategic-debt',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Political economy of debt',
+    topicTag: 'political-economy',
+    difficulty: 'easy',
+    kind: 'concept',
+    question: 'In Lecture 10, what does "strategic debt accumulation" mean?',
+    hints: [
+      'It is not mainly about forgetting to balance the budget.',
+      'It is about constraining future policy choices.',
+    ],
+    options: [
+      {
+        label: 'Issuing debt today to constrain the fiscal choices of future governments (debt as a commitment device).',
+        correct: true,
+        explanation:
+          'Correct. The lecture frames strategic debt as a political-economy motive that reallocates future fiscal space.',
+      },
+      {
+        label: 'Running debt only because the government miscalculates its budget each year.',
+        correct: false,
+        explanation:
+          'No. The lecture’s mechanism is strategic and forward-looking, not an accounting mistake story.',
+      },
+      {
+        label: 'Using monetary policy to reduce inflation.',
+        correct: false,
+        explanation:
+          'No. Strategic debt is a fiscal/political-economy mechanism, not a monetary-policy action.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture10-lambda-definition',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Sustainable debt ratios',
+    topicTag: 'debt-ratio',
+    difficulty: 'easy',
+    kind: 'symbols',
+    question: 'In Lecture 10, what does λ represent in the sustainability condition?',
+    hints: ['It is a ratio of nominal debt to nominal GDP.'],
+    options: [
+      {
+        label: 'The debt-to-GDP ratio: λ = B / (P*Y).',
+        correct: true,
+        explanation:
+          'Correct. λ is the nominal debt ratio used to express sustainability conditions in scale-free form.',
+      },
+      {
+        label: 'The inflation rate.',
+        correct: false,
+        explanation:
+          'No. Inflation is π. λ is a debt ratio.',
+      },
+      {
+        label: 'The probability of default.',
+        correct: false,
+        explanation:
+          'No. Default probability is written π^{def} in this site to avoid confusion with inflation.',
+      },
+    ],
+  },
+  {
+    id: 'lecture10-sustainable-deficit',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Sustainable debt ratios: (g - r) logic',
+    topicTag: 'debt-ratio',
+    difficulty: 'medium',
+    kind: 'exam',
+    question:
+      'In the lecture sustainability rule, when can a government run a primary deficit (G > T) while keeping debt-to-GDP stable?',
+    hints: [
+      'Use (G - T)/Y = (g - r) λ.',
+      'Focus on the sign of (g - r).',
+    ],
+    options: [
+      {
+        label: 'When g > r, because growth can offset the debt burden at a given debt ratio.',
+        correct: true,
+        explanation:
+          'Correct. If growth exceeds the real interest rate, a primary deficit can be consistent with a stable ratio.',
+      },
+      {
+        label: 'Always, because debt-to-GDP is independent of the primary balance.',
+        correct: false,
+        explanation:
+          'No. The primary balance enters directly; stability depends on g, r, and λ.',
+      },
+      {
+        label: 'Only when inflation is high, regardless of real growth and real rates.',
+        correct: false,
+        explanation:
+          'No. The slide’s key condition is about g - r once the Fisher relation is used.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:truefalse-lecture10-pi-notation',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Notation discipline (inflation vs default probability)',
+    topicTag: 'notation',
+    difficulty: 'easy',
+    kind: 'truefalse',
+    question:
+      'True or false: in the Lecture 10 crisis block, the symbol π can refer to default probability rather than inflation, so you must keep notation explicit.',
+    hints: ['The lecture warns that π is reused across blocks.'],
+    options: [
+      {
+        label: 'True',
+        correct: true,
+        explanation:
+          'Correct. The site writes default probability as π^{def} to avoid confusion with inflation.',
+      },
+      {
+        label: 'False',
+        correct: false,
+        explanation:
+          'False. The lecture reuses π in different contexts; you must keep notation disciplined.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture10-pricing-condition',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Debt crises: risky-debt pricing',
+    topicTag: 'crisis-model',
+    difficulty: 'easy',
+    kind: 'math',
+    question:
+      "In the lecture's crisis model, what does the pricing condition (1 - pi_def)*R = R' capture?",
+    hints: [
+      'R is the promised gross return on risky government debt.',
+      "R' is the risk-free gross return.",
+    ],
+    options: [
+      {
+        label: 'Expected payoff on risky debt equals the risk-free payoff when default has zero payoff.',
+        correct: true,
+        explanation:
+          'Correct. With probability (1 - pi_def) you get R; pricing sets expected return equal to risk-free.',
+      },
+      {
+        label: 'The government always repays in full, so default probability is zero by assumption.',
+        correct: false,
+        explanation:
+          'No. Default probability is central; pricing links higher default probability to higher required promised returns.',
+      },
+      {
+        label: 'Inflation is always equal to the real interest rate.',
+        correct: false,
+        explanation:
+          'No. This condition is about pricing risky debt, not Fisher relations between inflation and real rates.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture10-default-mapping',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Debt crises: default probability mapping',
+    topicTag: 'crisis-model',
+    difficulty: 'easy',
+    kind: 'concept',
+    question:
+      'In the Lecture 10 crisis model, how is default probability linked to the required repayment burden?',
+    hints: [
+      'Default occurs when fiscal capacity (taxes) is below required repayment.',
+      'The mapping is written as a CDF F(RD).',
+    ],
+    options: [
+      {
+        label: 'pi_def = Pr(T < R*D) = F(RD): higher promised repayment increases default probability.',
+        correct: true,
+        explanation:
+          'Correct. A higher required repayment RD makes the default event more likely under the tax-capacity distribution.',
+      },
+      {
+        label: 'pi_def is constant and independent of debt levels.',
+        correct: false,
+        explanation:
+          'No. The lecture’s key mechanism is that debt burden and interest rates feed into default probability.',
+      },
+      {
+        label: 'pi_def depends only on inflation.',
+        correct: false,
+        explanation:
+          'No. Default probability in this model depends on repayment capacity relative to required repayment, not inflation per se.',
+      },
+    ],
+  },
+  {
+    id: 'lecture10-multiple-equilibria',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Debt crises: self-fulfilling dynamics',
+    topicTag: 'crisis-model',
+    difficulty: 'medium',
+    kind: 'exam',
+    question:
+      "Why can the lecture's sovereign-debt crisis model generate self-fulfilling default dynamics?",
+    hints: [
+      'Pricing makes R rise when default probability rises.',
+      'Higher R increases required repayment RD, which can raise default probability through F(RD).',
+    ],
+    options: [
+      {
+        label: 'Because higher perceived default risk raises required returns, which can raise default risk further via repayment capacity.',
+        correct: true,
+        explanation:
+          'Yes. That feedback loop is the core multiple-equilibria mechanism in the slides.',
+      },
+      {
+        label: 'Because default is always impossible when taxes are uncertain.',
+        correct: false,
+        explanation:
+          'Uncertainty about taxes is what creates default probability in the first place.',
+      },
+      {
+        label: "Because the risk-free rate R' is always zero in the model.",
+        correct: false,
+        explanation:
+          "No. The model uses a risk-free factor R' and compares risky debt pricing to it.",
+      },
+    ],
+  },
+  {
+    id: 'quiz:truefalse-lecture10-fundamentals',
+    lectureSlug: 'lecture-10',
+    lectureNumber: 10,
+    lectureTopic: 'Debt crises: fundamentals vs beliefs',
+    topicTag: 'crisis-model',
+    difficulty: 'easy',
+    kind: 'truefalse',
+    question:
+      'True or false: Lecture 10 argues that in multiple-equilibria debt crises, fundamentals still matter even if dynamics can be self-fulfilling.',
+    hints: ['The slides list debt level, risk-free rate, and fiscal capacity distribution as fundamentals.'],
+    options: [
+      {
+        label: 'True',
+        correct: true,
+        explanation:
+          'Correct. The lecture emphasizes both: beliefs can be self-fulfilling, but fundamentals shift the equilibrium set and default likelihood.',
+      },
+      {
+        label: 'False',
+        correct: false,
+        explanation:
+          'False. The lecture explicitly states fundamentals matter even in a multiple-equilibria framework.',
+      },
+    ],
+  },
 ];
