@@ -302,8 +302,8 @@ Each lecture page should eventually include:
 
 1. Continue the lecture-by-lecture pedagogy upgrade systematically from Lecture 1 to Lecture 12 (do not jump around).
 2. Keep lecture pages to a few light checkpoints only; move the main active-recall workload into the central Quiz bank page.
-3. Upgrade Lecture 8 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
-4. Add a Lecture 8 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
+3. Upgrade Lecture 9 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
+4. Add a Lecture 9 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
 5. Keep changes in small, lecture-scoped commits and push regularly (code-only; course PDFs remain local inputs).
 
 ## Phase Progress
@@ -444,3 +444,11 @@ Each lecture page should eventually include:
 - `2026-04-08`: Updated `.gitignore` to ignore local course-material inputs (`Lecture *`, `Problem sets`, `Exams`, `*.pdf`) to prevent accidental commits/pushes.
 - `2026-04-08`: Created the first Git commits for the site source and pushed to `origin/main` (merged the remote initial README-only history).
 - `2026-04-08`: Set local Git author identity for this repo to `EspzY` + GitHub noreply email (repo-local `git config`, not global).
+- `2026-04-08`: Fixed a missing `+` in the Lecture 3 recursive-substitution derivation (finite-horizon NKPC expression).
+- `2026-04-08`: Rewrote Lecture 8 to the current "teaching-tool" standard:
+  - Big picture + symbols/objects section.
+  - Step-by-step matching-multiplier derivation with explicit economic meaning.
+  - Redistribution-channel transmission map (Auclert intuition) and a tighter RANK vs HANK contrast.
+  - Pitfalls + exam-useful takeaways, while keeping only two light embedded checkpoints.
+- `2026-04-08`: Added a Lecture 8 quiz set to `src/data/quiz-bank.ts`, reusing the embedded checkpoint IDs so progress is shared between lecture and quiz bank.
+- `2026-04-08`: Ran `npm run check` with `0 errors` after the Lecture 3/Lecture 8 updates.

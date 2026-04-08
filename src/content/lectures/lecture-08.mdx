@@ -15,193 +15,197 @@ learningObjectives:
 examFocus:
   - Use the covariance logic in the matching multiplier to explain amplification without hand-waving.
   - Explain Auclert-style redistribution channels and why borrower/saver netting is incomplete.
-  - Connect inequality material to the exam’s broader policy logic.
+  - Connect inequality material to the exam's broader policy logic.
 ---
 
 import QuizCard from '../../components/interactive/QuizCard';
 import MpcAmplificationLens from '../../components/learning/MpcAmplificationLens.astro';
 
-## Overview
+## Big Picture (Why This Lecture Matters)
 
 Lecture 8 shifts the course from representative-agent stabilization logic to heterogeneous-agent macro logic.
-The central mechanism in the source slides is simple:
+In earlier lectures you can often talk as if there is one "typical" household and one "typical" transmission mechanism.
+Here the lecture forces you to separate two questions that get mixed up in representative-agent thinking:
 
-1. households differ in how much they consume out of income changes (different MPCs)
-2. shocks and policy do not hit all households equally
-3. aggregate effects depend on whether high-MPC households are the ones most exposed
+1. **Incidence:** who gains and who loses from a shock or a policy move?
+2. **Aggregation:** how do those gains/losses translate into total demand?
 
-This is why inequality and macro are treated as two-way interactions, not separate topics.
+The slides emphasize a simple but powerful mechanism:
 
-## Part A: From representative-agent macro to heterogeneous-agent macro
+- households have different marginal propensities to consume (different MPCs)
+- shocks and policy affect household incomes and balance sheets differently (different exposure)
+- the aggregate effect depends on whether the high-MPC households are the households that are most affected
 
-The lecture gives a history-of-thought framing:
+### Connection to the rest of the course
 
-- first generation (roughly 1970-1990): representative-agent macro (RBC/NK benchmark)
-- second generation (roughly 1990-pre-crisis): heterogeneous-agent models mainly used for distribution/welfare, with limited macro feedback
-- third generation (post-crisis): richer two-way interaction where inequality can change aggregate dynamics and policy transmission
+- Lectures 2 to 7: macro transmission is often summarized with real-rate gaps and expectations discipline in a baseline NK system.
+- Lecture 8: redistribution becomes part of the transmission mechanism because "who moves" and "who spends" are not the same.
+- Later lectures: this helps you write better policy answers because you can discuss both efficiency/stabilization and distribution/incidence clearly.
 
-The economic motivation in the slides is empirical:
+## Symbols, Parameters, and Objects (Keep These Straight)
 
-- growth and recessions are unequally distributed
-- welfare/policy questions require "who gains, who loses?" analysis
-- better data + better computation + post-crisis events increased the relevance of heterogeneity
+Lecture 8 reuses a small set of objects. If you can define them cleanly, the matching-multiplier derivation is just algebra.
 
-## Part B: MPC as the key state variable for distributional macro
+| Symbol | What it is in the lecture | How to say it on an exam |
+|---|---|---|
+| $C_i$ | consumption of household $i$ | "Household $i$'s spending." |
+| $E_i$ | earnings / labor income of household $i$ | "Household $i$'s labor-income exposure to the cycle." |
+| $C \\equiv \\sum_i C_i$ | aggregate consumption | "Total demand from consumption." |
+| $Y \\equiv \\sum_i E_i$ | aggregate output/income proxy used in the slides | "The aggregate scale variable that earnings sum to." |
+| $\\text{MPC}_i \\equiv \\frac{dC_i}{dE_i}$ | household $i$'s marginal propensity to consume out of earnings | "How much $i$ spends out of one extra unit of income." |
+| $w_i \\equiv \\frac{E_i}{Y}$ | earnings weight | "Income-share weight used in the decomposition." |
+| $x_i \\equiv \\frac{dE_i}{dY}\\frac{Y}{E_i}$ | cyclical exposure elasticity | "How cyclically sensitive $i$'s earnings are." |
+| $\\text{MPC}^{agg} \\equiv \\frac{dC}{dY}$ | aggregate MPC / consumption sensitivity | "How strongly total consumption reacts when aggregate output/income changes." |
 
-### B1. Definition used in the lecture
+## Core Theory: Why Heterogeneity Changes Macro
 
-The slides define the marginal propensity to consume (MPC) as the share of a small, unexpected windfall spent within
-the chosen horizon:
+The lecture gives a simple "history of thought" motivation for why modern macro moved beyond the representative-agent benchmark:
+
+- first-generation benchmark: representative-agent macro (RBC/NK), useful for clear stabilization logic but silent on incidence
+- second-generation heterogeneity: models mainly used for welfare/distribution questions, with limited aggregate feedback
+- third-generation (post-crisis): richer two-way interaction where inequality can affect aggregate dynamics and policy transmission
+
+The economic motivation in the slides is empirical and exam-relevant: growth, recessions, and policy effects are not evenly distributed.
+So if high-MPC households are systematically the ones who get hit in downturns (or helped by stimulus), the aggregate response will differ from what a
+representative-agent model would predict.
+
+## MPC Heterogeneity (Why MPC_i Is the Key State Variable)
+
+### Definition (used in the lecture)
+
+The slides define the marginal propensity to consume as the fraction of an income (or earnings) change that shows up as consumption within a given horizon:
 
 $$
-\text{MPC}_i = \frac{dC_i}{dY_i}
+\text{MPC}_i \equiv \frac{dC_i}{dY_i}
 $$
 
-with reported benchmark moments around:
+Two important interpretation points (exam-safe):
 
-- quarterly average MPC around 0.25
-- annual average MPC around 0.5
+- MPC is a *marginal* object (a derivative): it is about "one extra unit" of income, not average saving rates.
+- MPC depends on the *horizon*: the lecture cites benchmark quarterly and annual MPC magnitudes to emphasize that short-run and longer-run responses differ.
 
-### B2. Why representative-agent logic misses this margin
+### Why the distribution matters (not just the average)
 
-The lecture contrasts:
+The lecture contrast is:
 
-- representative-agent models: one common MPC, often low and close to interest-rate-scale behavior
-- heterogeneous-agent models with incomplete markets: dispersed MPCs and potentially large aggregate MPC
+- representative-agent models: one common MPC, typically low and closely tied to intertemporal substitution
+- heterogeneous-agent models with incomplete markets: dispersed MPCs, often with a right tail of high-MPC households
 
-So the exam-relevant point is not "MPC exists", but "MPC is distributed".
+So the key exam takeaway is not "MPC exists." It is: **MPC is distributed, and that distribution affects aggregates when shocks/policy redistribute income.**
 
-### B3. What drives MPC heterogeneity
+### What drives MPC heterogeneity (intuition)
 
-The slides list concrete drivers:
+The slides list practical drivers. Translate them into mechanisms:
 
-- employment stability and labor-income risk
-- liquid wealth (cash-on-hand)
-- illiquid wealth share (for example housing)
-- debt structure (fixed versus flexible rates)
-- demographics, preferences, and patience
+- liquid wealth / cash-on-hand: low liquid buffers tend to imply high MPCs
+- illiquid wealth: you can be "wealthy on paper" but still have high MPC if wealth is hard to access quickly
+- income risk / employment stability: higher risk raises the value of buffers and changes marginal spending behavior
+- debt structure (fixed vs floating): determines how rate changes map into disposable income
+- heterogeneity in preferences, patience, demographics: shifts desired saving and therefore marginal spending
 
-## Part C: Step-by-step matching-multiplier logic (Patterson)
+## Step-By-Step Derivation: The Matching Multiplier (Why Covariance Matters)
 
-### C1. Start from aggregate consumption sensitivity
+This is the highest-yield piece of algebra in Lecture 8. It answers a precise question:
 
-Define aggregate consumption and output:
+> When does inequality change aggregate demand responses, rather than only changing "who gets what"?
+
+The lecture's answer is: when there is **matching** between MPC heterogeneity and cyclical exposure heterogeneity.
+
+### Step 0 (Start from aggregate objects)
+
+Define aggregates as sums of household objects:
 
 $$
 C = \sum_i C_i, \quad Y = \sum_i E_i
 $$
 
+Math move: define aggregates.
+
+Economic meaning: total demand is built from many household spending decisions, and total income/output is built from many earnings streams.
+
+### Step 1 (Differentiate aggregate consumption with respect to aggregate output)
+
+The lecture's object of interest is:
+
+$$
+\text{MPC}^{agg} \equiv \frac{dC}{dY} = \sum_i \frac{dC_i}{dY}
+$$
+
+Math move: the derivative of a sum is the sum of derivatives.
+
+Economic meaning: the aggregate response is the sum of all household responses.
+
+### Step 2 (Chain rule: "MPC times exposure")
+
+The slides then channel the effect through household earnings:
+
+$$
+\frac{dC_i}{dY} = \frac{dC_i}{dE_i}\frac{dE_i}{dY}
+$$
+
+so:
+
+$$
+\frac{dC}{dY} = \sum_i \frac{dC_i}{dE_i}\frac{dE_i}{dY}
+$$
+
+Math move: chain rule.
+
+Economic meaning: a household matters for aggregate demand if it (i) has a high MPC and (ii) is actually hit when the aggregate moves.
+
+### Step 3 (Rewrite using weights and cyclical exposure elasticities)
+
+Define:
+
+$$
+w_i \equiv \frac{E_i}{Y},
+\quad
+x_i \equiv \frac{dE_i}{dY}\frac{Y}{E_i}
+$$
+
 Then:
 
 $$
-\frac{dC}{dY} = \sum_i \frac{dC_i}{dY}
-           = \sum_i \frac{dC_i}{dE_i}\frac{dE_i}{dY}
+\frac{dE_i}{dY} = \frac{E_i}{Y}\frac{dE_i}{dY}\frac{Y}{E_i} = w_i x_i
 $$
 
-This already shows the key interaction: household spending sensitivity times household earnings exposure to aggregate conditions.
+so the aggregate sensitivity can be written as:
 
-### C2. Decomposition emphasized in the slides
+$$
+\text{MPC}^{agg}
+= \sum_i w_i \underbrace{\left(\frac{dC_i}{dE_i}\right)}_{\text{MPC}_i}\underbrace{x_i}_{\text{exposure}}
+$$
 
-The lecture writes this as a weighted-average term plus a covariance term:
+Math move: multiply and divide by $Y$ and $E_i$ to isolate a weight and an elasticity.
+
+Economic meaning: the aggregate multiplier is larger when high-MPC households have high cyclical exposure.
+
+### Step 4 (Decompose into "average MPC" plus a covariance term)
+
+The lecture's slide writes the decomposition as:
 
 $$
 \text{MPC}^{agg}
 =
 \sum_i \frac{E_i}{Y}\frac{dC_i}{dE_i}
-\,
-\operatorname{cov}\!\left(
+ \operatorname{cov}\!\left(
 \frac{dC_i}{dE_i},
 \frac{dE_i}{dY}\frac{Y}{E_i}
 \right)
 $$
 
-Interpretation:
+Interpretation (what to say in words):
 
-- first term: average MPC (earnings-weighted)
-- second term: alignment between "high MPC" and "high cyclical earnings exposure"
+- first term: earnings-weighted average MPC
+- second term: a matching/covariance term that is positive if high-MPC households are also the households with high exposure $x_i$
 
-### C3. Economic meaning: the matching multiplier
+Intuition check: if exposure is proportional (roughly $x_i = 1$ for everyone), then the covariance term is zero, and the aggregate response collapses to the
+earnings-weighted average MPC.
 
-The lecture's matching-multiplier idea is:
-
-- if high-MPC households are also most exposed in downturns, aggregate responses are amplified
-- if exposure mainly falls on low-MPC households, amplification is weaker
-
-The slide reports calibration-style magnitudes from Patterson's framework:
-
-- heterogeneous cyclical exposure raises MPC by about 7 percentage points
-- adding nonlinear MPC effects raises total multiplier increase to about 17 percentage points
+The slide reports calibration-style magnitudes from Patterson's framework that are there to make the point quantitative: the covariance term and nonlinear MPCs
+can raise the effective aggregate multiplier relative to a representative-agent benchmark.
 
 <MpcAmplificationLens />
-
-## Part D: Why inequality and macro move both ways
-
-Using the "When Inequality Matters for Macro and Macro Matters for Inequality" discussion in the lecture:
-
-- macro -> inequality: aggregate shocks reallocate outcomes across households and skill groups
-- inequality -> macro: consumption dynamics depend on the share and behavior of hand-to-mouth/high-MPC households
-
-That is the exam-safe meaning of `inequality <-> macro`: two-direction causality, not a one-way distributional add-on.
-
-## Part E: Monetary policy transmission with redistribution channels
-
-### E1. Auclert channel decomposition
-
-The lecture highlights that an expansionary shock (higher income, higher inflation, lower real rates) affects households differently via:
-
-- earnings heterogeneity channel
-- Fisher channel (inflation and nominal positions)
-- interest-rate exposure channel
-
-So redistribution is part of transmission, not a side effect after transmission.
-
-### E2. HANK versus RANK reading of monetary policy
-
-The source slide summarizes:
-
-$$
-\Delta C = \text{direct real-rate effect} + \text{indirect income/distribution effects}
-$$
-
-Lecture interpretation:
-
-- RANK benchmark: direct intertemporal-substitution channel dominates
-- HANK benchmark: direct channel smaller; indirect income/distribution channels are larger and depend on MPC and asset structure
-
-This is why heterogeneity can change both policy multipliers and incidence.
-
-## Part F: Empirical and policy-strategy implications
-
-### F1. Empirical labor-market evidence block
-
-The Coglianese-Olsson-Patterson slide points to heterogeneous unemployment/earnings responses across the earnings distribution after monetary shocks.
-The lecture takeaway is that contractionary policy can have larger distributional effects than representative-agent language suggests.
-
-### F2. Fed 2020 review link used in the lecture
-
-The Fed section is used to connect theory to central-bank strategy:
-
-- more explicit focus on broad-based and inclusive employment outcomes
-- wording shift toward employment shortfalls
-- average-inflation-targeting logic after prolonged undershooting
-
-Exam framing:
-
-- this is not "inequality replaces inflation target"
-- it is strategy design under low neutral rates, persistent undershooting risk, and distributionally uneven labor-market outcomes
-
-## Common pitfalls
-
-- Saying "heterogeneity matters" without specifying which covariance/channel.
-- Assuming borrowers and savers net out mechanically in policy transmission.
-- Treating HANK as "RANK plus one extra parameter" instead of a distributional-state framework.
-- Using reduced-form inequality facts without connecting them to a transmission mechanism.
-
-## Control questions
-
-1. In one line, what does the covariance term in the aggregate-MPC decomposition capture?
-2. Why can the same policy-rate shock produce different aggregate demand effects across economies/time?
-3. How does the Fed 2020 review connect to inequality-aware macro evidence without abandoning price stability?
 
 <QuizCard
   client:load
@@ -231,6 +235,66 @@ Exam framing:
   ]}
 />
 
+## Two-Way Link: Macro and Inequality
+
+The lecture uses the phrase "macro matters for inequality and inequality matters for macro" in a precise sense:
+
+- macro -> inequality: recessions, recoveries, and policy moves redistribute earnings and employment outcomes across households and groups
+- inequality -> macro: aggregate demand depends on who is constrained/high-MPC versus who is wealthy/low-MPC, so the same aggregate shock can produce different
+  demand responses in economies with different distributions
+
+Exam-safe interpretation: this is not just "inequality is important." It is **two-way causality**: the distribution shapes aggregates and aggregates reshape the
+distribution.
+
+## Monetary Policy Transmission with Redistribution Channels (Auclert Intuition)
+
+In Lectures 2 to 7 you can often tell a clean story: policy changes the real interest rate, which shifts demand through intertemporal substitution.
+Lecture 8 adds an exam-relevant refinement: the policy move also redistributes resources across households, and those redistribution effects can feed back into
+aggregate demand because MPCs differ.
+
+### The incidence channels emphasized in the lecture
+
+The slides highlight that an expansionary shock (higher income, higher inflation, lower real rates) affects households differently through channels such as:
+
+- earnings heterogeneity channel (labor income exposure differs across households)
+- Fisher channel (unexpected inflation changes real values of nominal assets/liabilities)
+- interest-rate exposure channel (differences in maturity structure and repricing of assets/liabilities)
+
+<figure class="transmission-figure">
+  <figcaption>Lecture 8 mechanism: redistribution feeds back into aggregate demand through MPC heterogeneity</figcaption>
+  <div class="flow-grid">
+    <article>
+      <h3>Policy move</h3>
+      <p>Rates, inflation, and activity respond.</p>
+    </article>
+    <article>
+      <h3>Incidence</h3>
+      <p>Different households gain/lose depending on earnings risk, nominal positions, and rate exposure.</p>
+    </article>
+    <article>
+      <h3>MPC mapping</h3>
+      <p>Gains to high-MPC households raise demand more than equal gains to low-MPC households.</p>
+    </article>
+    <article>
+      <h3>Aggregate demand</h3>
+      <p>Redistribution becomes part of the transmission mechanism.</p>
+    </article>
+  </div>
+</figure>
+
+### HANK versus RANK reading of the consumption response
+
+The source slide summarizes the consumption response as:
+
+$$
+\Delta C = \text{direct real-rate effect} + \text{indirect income/distribution effects}
+$$
+
+Lecture interpretation (exam-safe):
+
+- RANK benchmark: the direct intertemporal-substitution channel is the core story.
+- HANK benchmark: indirect income/distribution channels can be quantitatively important because incidence interacts with the MPC distribution.
+
 <QuizCard
   client:load
   id="lecture8-hank-transmission"
@@ -258,3 +322,48 @@ Exam framing:
     },
   ]}
 />
+
+## Evidence and Policy Strategy (How the Lecture Uses It)
+
+The lecture uses evidence and institutional strategy to make the conceptual point concrete: distributional responses are not a footnote to policy, and in some
+contexts they can change aggregate transmission.
+
+### Evidence block (what to remember)
+
+The slides cite evidence (for example the Coglianese-Olsson-Patterson slide) that monetary-policy shocks can generate heterogeneous unemployment/earnings
+responses across the earnings distribution.
+
+Exam-safe takeaway: contractionary policy can have uneven labor-market incidence, and that incidence can matter for aggregate demand when MPCs differ.
+
+### Fed 2020 review (how it is used in the lecture)
+
+The Fed section is used to connect the heterogeneous-incidence perspective to real-world strategy language:
+
+- more explicit focus on broad-based and inclusive employment outcomes
+- wording shift toward employment shortfalls
+- average-inflation-targeting logic after prolonged undershooting
+
+Exam framing: this is not "inequality replaces the inflation target." It is strategy design under low neutral rates, persistent undershooting risk, and uneven
+labor-market outcomes.
+
+## Common Mistakes / Pitfalls
+
+- Saying "heterogeneity matters" without specifying which covariance/channel.
+- Interpreting the matching term as "just correlation" without stating what is covarying (MPC with exposure) and what the weights are.
+- Assuming borrowers and savers net out mechanically in policy transmission.
+- Treating HANK as "RANK plus one extra parameter" instead of a distributional-state framework.
+- Using reduced-form inequality facts without connecting them to a transmission mechanism.
+
+## Exam-Useful Takeaways
+
+- You should be able to define $\text{MPC}_i$ in words and explain why the **distribution** of MPCs matters for aggregates when shocks/policy redistribute income.
+- You should be able to reproduce the chain-rule logic: aggregate demand responds through "MPC times exposure,"
+  $$
+  \frac{dC}{dY} = \sum_i \frac{dC_i}{dE_i}\frac{dE_i}{dY}.
+  $$
+- You should be able to state and interpret the decomposition into an average term plus a matching/covariance term, and explain what a positive covariance means
+  economically (high-MPC households are also highly exposed).
+- You should be able to name the redistribution channels emphasized in the lecture (earnings heterogeneity, Fisher, interest-rate exposure) and explain why they
+  are part of transmission in a heterogeneous-agent view.
+- You should be able to explain (at a high level) how the lecture links distributional evidence to strategy discussions like the Fed 2020 review without claiming
+  that inflation targeting is abandoned.

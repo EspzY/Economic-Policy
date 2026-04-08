@@ -1844,4 +1844,344 @@ export const quizBank: QuizQuestion[] = [
       },
     ],
   },
+  {
+    id: 'quiz:lecture8-define-mpc',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'MPC heterogeneity and distributional transmission',
+    topicTag: 'mpc',
+    difficulty: 'easy',
+    kind: 'symbols',
+    question: 'In Lecture 8, what does MPC_i mean?',
+    hints: [
+      'It is a marginal object (a derivative), not an average saving rate.',
+      'It measures how much consumption changes when income/earnings change.',
+    ],
+    options: [
+      {
+        label: 'The share of a small income (or earnings) change that shows up as consumption within a given horizon.',
+        correct: true,
+        explanation:
+          'Correct. MPC_i is the marginal propensity to consume out of income/earnings changes over the relevant horizon.',
+      },
+      {
+        label: 'The average fraction of total lifetime income that a household consumes.',
+        correct: false,
+        explanation:
+          'No. That is an average concept. The MPC is a marginal response to a small change.',
+      },
+      {
+        label: 'The central bank policy rate that households face.',
+        correct: false,
+        explanation:
+          'No. MPC is a household consumption response object, not a policy instrument.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture8-aggregate-mpc',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'Matching multiplier and aggregate MPC',
+    topicTag: 'matching-multiplier',
+    difficulty: 'easy',
+    kind: 'symbols',
+    question: 'What is the aggregate MPC (MPC^agg) concept used in Lecture 8?',
+    hints: [
+      'It is a derivative at the aggregate level.',
+      'Think: how aggregate consumption changes when aggregate output/income changes.',
+    ],
+    options: [
+      {
+        label: 'dC/dY: how total consumption changes when aggregate output/income changes.',
+        correct: true,
+        explanation:
+          'Correct. The lecture uses MPC^agg as an aggregate consumption sensitivity.',
+      },
+      {
+        label: 'dY/dC: how output changes when consumption changes.',
+        correct: false,
+        explanation:
+          'No. That flips the object. The lecture defines a consumption response to output/income changes.',
+      },
+      {
+        label: 'The MPC of the representative agent in a RANK model.',
+        correct: false,
+        explanation:
+          'Not necessarily. In heterogeneous-agent logic, MPC^agg depends on the distribution of MPCs and exposure, not a single agent.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture8-exposure-elasticity',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'Matching multiplier: exposure',
+    topicTag: 'matching-multiplier',
+    difficulty: 'medium',
+    kind: 'symbols',
+    question:
+      'Lecture 8 uses an exposure term like (dE_i/dY)*(Y/E_i). What is its economic interpretation?',
+    hints: [
+      'It is an elasticity-like object.',
+      'It measures how sensitive household i earnings are to aggregate output.',
+    ],
+    options: [
+      {
+        label: 'A cyclical exposure elasticity: how strongly household i earnings move when aggregate output moves.',
+        correct: true,
+        explanation:
+          'Correct. It is an earnings-to-output sensitivity scaled into an elasticity-like term.',
+      },
+      {
+        label: 'A measure of how patient household i is (discount factor).',
+        correct: false,
+        explanation:
+          'No. Patience affects saving/consumption choices, but this term is about income exposure to the cycle.',
+      },
+      {
+        label: 'The household i inflation target.',
+        correct: false,
+        explanation:
+          'No. Inflation targets are policy/institutional objects, not household exposure terms.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture8-covariance-term-meaning',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'Matching multiplier: covariance logic',
+    topicTag: 'matching-multiplier',
+    difficulty: 'medium',
+    kind: 'concept',
+    question:
+      'In Lecture 8, what does the covariance (matching) term in the aggregate-MPC decomposition capture?',
+    hints: [
+      'It is about alignment between two household-level objects.',
+      'Think: high MPC and high cyclical exposure occurring in the same households.',
+    ],
+    options: [
+      {
+        label: 'Whether high-MPC households are also the households whose earnings are most cyclical (most exposed).',
+        correct: true,
+        explanation:
+          'Correct. A positive matching term means the households that spend a lot out of income are also the households that are most affected by aggregate movements.',
+      },
+      {
+        label: 'Whether inflation and output are negatively correlated in the data.',
+        correct: false,
+        explanation:
+          'No. That is about Phillips curve correlations, not the aggregate-MPC decomposition.',
+      },
+      {
+        label: 'Whether the central bank raises the nominal rate more than one-for-one with inflation (Taylor principle).',
+        correct: false,
+        explanation:
+          'No. That is a determinacy/monetary-policy rule condition from earlier lectures.',
+      },
+    ],
+  },
+  {
+    id: 'lecture8-matching-multiplier',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'Matching multiplier: amplification condition',
+    topicTag: 'matching-multiplier',
+    difficulty: 'medium',
+    kind: 'exam',
+    question:
+      "What is the key amplification condition in Lecture 8's matching-multiplier logic?",
+    hints: [
+      'Focus on the covariance term in the decomposition.',
+      'Ask whether high-MPC households are the same households whose earnings move most with aggregate output.',
+    ],
+    options: [
+      {
+        label: 'Amplification is strongest when high-MPC households have high cyclical earnings exposure.',
+        correct: true,
+        explanation:
+          'Correct. Positive covariance between MPC and cyclicality increases aggregate response.',
+      },
+      {
+        label: 'Amplification is strongest when all households have identical MPC and identical exposure.',
+        correct: false,
+        explanation:
+          'No. If everyone is identical, the covariance margin disappears.',
+      },
+      {
+        label: 'Amplification only depends on average MPC; covariance is irrelevant.',
+        correct: false,
+        explanation:
+          'No. The lecture emphasizes that covariance adds extra amplification beyond the average term.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:truefalse-lecture8-covariance-zero',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'Matching multiplier: intuition',
+    topicTag: 'matching-multiplier',
+    difficulty: 'easy',
+    kind: 'truefalse',
+    question:
+      'True or false: if all households have the same cyclical earnings exposure, the matching/covariance term adds no extra amplification beyond the average MPC term.',
+    hints: [
+      'Think about what covariance means when one variable is constant across households.',
+    ],
+    options: [
+      {
+        label: 'True',
+        correct: true,
+        explanation:
+          'Correct. If exposure is the same for everyone, there is no covariance between MPC and exposure.',
+      },
+      {
+        label: 'False',
+        correct: false,
+        explanation:
+          'False. If exposure is constant across households, the covariance term is zero by definition.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture8-auclert-channels',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'Redistribution channels in monetary transmission',
+    topicTag: 'redistribution',
+    difficulty: 'easy',
+    kind: 'concept',
+    question:
+      'Which set of channels is highlighted in Lecture 8 as ways monetary policy affects households differently?',
+    hints: [
+      'The lecture lists channels tied to earnings exposure and balance-sheet positions.',
+      'One of the channels is named after Irving Fisher.',
+    ],
+    options: [
+      {
+        label: 'Earnings heterogeneity, Fisher (nominal positions), and interest-rate exposure.',
+        correct: true,
+        explanation:
+          'Correct. These channels capture how incidence differs across households.',
+      },
+      {
+        label: 'Only the direct intertemporal-substitution channel, because redistribution always nets out.',
+        correct: false,
+        explanation:
+          'No. Lecture 8 explicitly argues redistribution can be part of aggregate transmission because MPCs differ.',
+      },
+      {
+        label: 'Only money growth and the exchange rate, because the lecture assumes fixed prices.',
+        correct: false,
+        explanation:
+          'No. The lecture discusses heterogeneous household exposure; it is not a fixed-price money-growth story.',
+      },
+    ],
+  },
+  {
+    id: 'lecture8-hank-transmission',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'HANK vs RANK: transmission logic',
+    topicTag: 'hank-vs-rank',
+    difficulty: 'medium',
+    kind: 'policy',
+    question:
+      'Why does Lecture 8 argue that redistribution is part of monetary-policy transmission?',
+    hints: [
+      'Auclert channels distinguish who gains and loses from rate/inflation/income changes.',
+      'Compare RANK direct-rate channel with HANK indirect income channel.',
+    ],
+    options: [
+      {
+        label: 'Because policy only changes aggregate variables and never household incidence.',
+        correct: false,
+        explanation: 'This is the opposite of the lecture argument.',
+      },
+      {
+        label: 'Because households are differently exposed, and gains/losses map into demand through heterogeneous MPCs.',
+        correct: true,
+        explanation:
+          'Exactly. Incidence and MPC heterogeneity jointly shape aggregate transmission.',
+      },
+      {
+        label: 'Because redistribution matters only for fairness, not for aggregate demand.',
+        correct: false,
+        explanation:
+          'Lecture 8 emphasizes redistribution can be quantitatively part of the aggregate mechanism.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture8-rank-vs-hank',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'RANK vs HANK: core contrast',
+    topicTag: 'hank-vs-rank',
+    difficulty: 'easy',
+    kind: 'concept',
+    question:
+      'Which statement best captures the RANK vs HANK contrast emphasized in Lecture 8?',
+    hints: [
+      'RANK focuses on a representative agent and direct real-rate effects.',
+      'HANK highlights distribution and indirect income/redistribution effects interacting with MPC heterogeneity.',
+    ],
+    options: [
+      {
+        label: 'RANK: distribution and heterogeneity are central drivers of aggregate multipliers. HANK: distribution is irrelevant for aggregates.',
+        correct: false,
+        explanation:
+          'No. This reverses the lecture’s emphasis. HANK is precisely about distributional states affecting aggregates.',
+      },
+      {
+        label: 'RANK: direct intertemporal-substitution channel dominates. HANK: indirect income/redistribution channels can matter because MPCs differ.',
+        correct: true,
+        explanation:
+          'Correct. This is the lecture’s conceptual contrast for why heterogeneity changes transmission.',
+      },
+      {
+        label: 'RANK and HANK are identical models; the only difference is notation.',
+        correct: false,
+        explanation:
+          'No. The central difference is the presence of household heterogeneity and incomplete markets that make incidence and MPC dispersion relevant.',
+      },
+    ],
+  },
+  {
+    id: 'quiz:lecture8-fed2020-link',
+    lectureSlug: 'lecture-08',
+    lectureNumber: 8,
+    lectureTopic: 'Evidence and strategy: Fed 2020 review',
+    topicTag: 'strategy',
+    difficulty: 'medium',
+    kind: 'exam',
+    question:
+      'How does Lecture 8 use the Fed 2020 review material in the course narrative?',
+    hints: [
+      'It is used to connect distribution-aware evidence to central bank strategy language.',
+      'It is not presented as "inflation target abandoned."',
+    ],
+    options: [
+      {
+        label: 'As an example of strategy language that incorporates inclusive employment considerations while keeping inflation as a nominal anchor.',
+        correct: true,
+        explanation:
+          'Correct. The lecture uses the Fed section to connect distributional evidence to policy strategy without claiming price stability is dropped.',
+      },
+      {
+        label: 'As proof that central banks no longer care about inflation and only target inequality.',
+        correct: false,
+        explanation:
+          'No. The lecture framing is about strategy under constraints, not abandoning inflation as the nominal anchor.',
+      },
+      {
+        label: 'As a purely historical anecdote with no relevance for policy transmission.',
+        correct: false,
+        explanation:
+          'No. The lecture uses it to motivate why incidence and employment outcomes can matter for strategy discussions.',
+      },
+    ],
+  },
 ];
