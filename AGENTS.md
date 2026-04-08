@@ -304,7 +304,7 @@ Each lecture page should eventually include:
 2. Keep lecture pages to a few light checkpoints only; move the main active-recall workload into the central Quiz bank page.
 3. Upgrade Lecture 7 next using the same structure (big picture, symbols, careful derivations, selective visuals, pitfalls, exam takeaways) and keep checkpoints light.
 4. Add a Lecture 7 quiz set, then continue adding quiz items lecture-by-lecture as each lecture page is upgraded.
-5. Before the first `git commit`, expand `.gitignore` so course PDFs/folders (lectures, problem sets, exams) are not accidentally committed/pushed.
+5. Keep changes in small, lecture-scoped commits and push regularly (code-only; course PDFs remain local inputs).
 
 ## Phase Progress
 
@@ -323,6 +323,7 @@ Each lecture page should eventually include:
 - There is a source-layout mismatch around lecture numbering/topics (especially lectures 5 to 7). The site currently follows inspected PDF titles and explicitly documents this.
 - In this sandbox, non-elevated builds may hit Windows permission errors in `node_modules/.vite`; elevated build succeeds. This appears environment-specific, not project-logic specific.
 - A few legacy scaffold lines still contain mojibake quote artifacts from earlier extraction/copy steps; cleanup is pending during the next content pass.
+- Some Git operations may require elevated execution due to Windows ACL quirks on `.git` in this environment (observed as `index.lock` permission errors). When that happens, rerun the Git command with escalation and document the fix.
 - `Lecture 10/Handwrittennotes1103.pdf` also appears to be mostly non-extractable via `pdftotext`, so Lecture 10 authoring is grounded primarily in `Lecture 10/Lecture 10.pdf` plus the included papers.
 - `Lecture 11/Handwrittennotes1803.pdf` currently yields effectively no usable text via `pdftotext`, so Lecture 11 authoring is grounded primarily in `Lecture 11/Lecture 11.pdf` plus the listed Norges Bank readings.
 - `Lecture 12/Handwrittennotes2503.pdf` currently yields effectively no usable text via `pdftotext`, so Lecture 12 authoring is grounded primarily in `Lecture 12/Lecture 12.pdf` plus the canonical readings in the folder.
@@ -434,3 +435,6 @@ Each lecture page should eventually include:
   - Added a minimal timeline figure to clarify expectations timing (promise → expectations → temptation → equilibrium).
   - Kept only two embedded checkpoints and pointed most active recall to `/quizzes`.
 - `2026-04-08`: Added an initial Lecture 6 quiz set to `src/data/quiz-bank.ts` (time inconsistency meaning, key assumption, inflation-bias equilibrium, output result, independence interpretation, traps).
+- `2026-04-08`: Updated `.gitignore` to ignore local course-material inputs (`Lecture *`, `Problem sets`, `Exams`, `*.pdf`) to prevent accidental commits/pushes.
+- `2026-04-08`: Created the first Git commits for the site source and pushed to `origin/main` (merged the remote initial README-only history).
+- `2026-04-08`: Set local Git author identity for this repo to `EspzY` + GitHub noreply email (repo-local `git config`, not global).
